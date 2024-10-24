@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class playerController : MonoBehaviour
 {
+    VirtualJoystick joystick;
+    NavMeshAgent navMeshAgent;
+
     public Rigidbody rig;
     public float vel;
     public bool movimentacaoLivre = true; 
-    private NavMeshAgent navMeshAgent;
-    VirtualJoystick joystick;
 
     public Text movimentacaoText;
-
     void Start()
     {
         rig = GetComponent<Rigidbody>();
@@ -37,32 +37,15 @@ public class playerController : MonoBehaviour
 
             navMeshAgent.enabled = true; 
             Vector2 movementJoystick = joystick.GetAxis();
-            Vector3 forward = transform.forward * movementJoystick.y * vel;
-            navMeshAgent.Move(forward * Time.deltaTime);
+            Vector3 movement = new Vector3(movementJoystick.x, 0, movementJoystick.y);
+            navMeshAgent.Move(movement * Time.deltaTime * vel);
 
 
-            if (movementJoystick.x != 0)
-            {
-
-                HandleBifurcation(movementJoystick.x);
-            }
         }
 
         movimentacaoText.text = movimentacaoLivre.ToString();
     }
 
-    void HandleBifurcation(float direction)
-    {
-
-        if (direction > 0)
-        {
-
-        }
-        else if (direction < 0)
-        {
-
-        }
-    }
 
     public void TrocarMovimentacao()
     {
