@@ -1,63 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
+using Terresquall;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class playerController : MonoBehaviour
 {
-    public Rigidbody2D rigi;
+    VirtualJoystick joystick;
+    NavMeshAgent navMeshAgent;
+
+    public Rigidbody rig;
     public float vel;
-    public float jump;
+    public bool movimentacaoLivre = true; 
 
-    public bool isGrounded;
-    public bool dJump;
-    public int respawn;
-
+    public Text movimentacaoText;
     void Start()
     {
-        rigi = GetComponent<Rigidbody2D>();
+        rig = GetComponent<Rigidbody>();
+        joystick = FindObjectOfType<VirtualJoystick>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+
+
+        navMeshAgent.enabled = false;
     }
 
-   
     void Update()
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
-        transform.position += movement * Time.deltaTime * vel;
-
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (movimentacaoLivre)
         {
-            rigi.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
+            navMeshAgent.enabled = false; 
+            Vector2 movementJoystick = joystick.GetAxis();
+            Vector3 movement = new Vector3(movementJoystick.x, 0, movementJoystick.y);
+            transform.position += movement * Time.deltaTime * vel;
         }
+        else
+        {
+
+            navMeshAgent.enabled = true; 
+            Vector2 movementJoystick = joystick.GetAxis();
+            Vector3 movement = new Vector3(movementJoystick.x, 0, movementJoystick.y);
+            navMeshAgent.Move(movement * Time.deltaTime * vel);
+
+
+        }
+
+        movimentacaoText.text = movimentacaoLivre.ToString();
     }
 
-    void OnCollisionEnter2D(Collision2D groundColi) 
-    {
-        if(groundColi.gameObject.layer == 8)
-        {
-            isGrounded = true;
-        }
 
-        if(groundColi.gameObject.layer == 9)
-        {
-            SceneManager.UnloadSceneAsync(1);
-            //SceneManager.LoadScene(respawn);
-        }
+    public void TrocarMovimentacao()
+    {
         
-        if(groundColi.gameObject.tag == "spike")
-        {
-            //Destroy(gameObject);
-            SceneManager.UnloadSceneAsync(1);
-            //SceneManager.LoadScene(respawn);
-        }
+            movimentacaoLivre = !movimentacaoLivre; 
+            Debug.Log("Trocou a movimentação: " + movimentacaoLivre);
+        
     }
-
-    void OnCollisionExit2D(Collision2D groundColi) 
-    {
-        if(groundColi.gameObject.layer == 8)
-        {
-        isGrounded = false;
-        Debug.Log("não ta no chão");
-        }
-    }
-
 }
