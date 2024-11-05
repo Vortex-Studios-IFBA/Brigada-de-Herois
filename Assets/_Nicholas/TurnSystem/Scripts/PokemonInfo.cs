@@ -4,13 +4,15 @@ using UnityEngine;
 [Serializable]
 public class PokemonInfo
 {
+    #region VARIAVEIS
     public string pokemonName;
     public float healthCurrent;
     public float healthMax;
     public int[] attackUseQuantRemaining;
     public bool dead = false;
+    #endregion
 
-    public PokemonInfo(Pokemon _pokemon) //construtor
+    public PokemonInfo(Pokemon _pokemon) // Construtor.
     {
         pokemonName = _pokemon.pokemonName;
         healthCurrent = _pokemon.healthMax;
@@ -30,7 +32,7 @@ public class PokemonInfo
         }
         else
         {
-            Debug.LogError("pokemon nn tem atk nenhum, adicione algum atk");
+            Debug.LogError("Nao existem ataques disponiveis, adicione um ataque.");
         }
     }
 }

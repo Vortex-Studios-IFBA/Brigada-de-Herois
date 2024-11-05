@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
     #region variaveis
     public static BattleManager instance;
 
-    [SerializeField] Pokemon[] player_pokemon; //pokemons do player
+    [SerializeField] Pokemon[] player_pokemon; // Ferramentas do jogador
     [SerializeField] PokemonInfo[] player_pokemonInfo;
-    [SerializeField] Pokemon[] enemy_pokemon; //pokemons do inimigo
+    [SerializeField] Pokemon[] enemy_pokemon; // Inimigos.
     [SerializeField] PokemonInfo[] enemy_pokemonInfo;
     [SerializeField] Vector3 player_pokemonSpawnPos;
     [SerializeField] Vector3 enemy_pokemonSpawnPos;
@@ -22,12 +23,12 @@ public class BattleManager : MonoBehaviour
     [SerializeField] [Range(0, 3)] int enemyAttackIndex;
     [SerializeField] float turnDelay;
 
-    [Header("Pokemon atual do player")]
-    [SerializeField] Pokemon player_pokemon_current; //somente leitura
+    [Header("Ferramenta atual do jogador")]
+    [SerializeField] Pokemon player_pokemon_current; // Somente leitura.
     [SerializeField] PokemonInfo player_pokemonInfo_current;
 
-    [Header("Pokemon atual do inimigo")]
-    [SerializeField] Pokemon enemy_pokemon_current; //somente leitura
+    [Header("Inimigo atual")]
+    [SerializeField] Pokemon enemy_pokemon_current; // Somente leitura.
     [SerializeField] PokemonInfo enemy_pokemonInfo_current;
 
     [Header("Canvas")]
@@ -42,23 +43,28 @@ public class BattleManager : MonoBehaviour
     [SerializeField] CanvasGroup cg_enemyPokemonHealthBar;
     [SerializeField] RectTransform rect_enemyPokemonHealthBar;
 
+    [SerializeField] TextMeshProUGUI txt_pokemonChange;
+    [SerializeField] Color color_disable;
+    bool canChange;
+
     float player_pokemonHealthBar_sizeIniX;
     float enemy_pokemonHealthBar_sizeIniX;
 
     int player_pokemonCurrent_index = 0;
+    int player_pokemonChange_index = 0;
     int enemy_pokemonCurrent_index = 0;
 
     GameObject go_player_pokemon;
     GameObject go_enemy_pokemon;
 
-    bool playerTurn = true; //define de quem eh o turno
+    bool playerTurn = true; // Define o turno atual entre o jogador e o inimigo.
     bool PlayerTurn
     {
         get { return playerTurn; }
         set { playerTurn = value; }
     }
 
-    Pokemon Player_Pokemon_Current //pokemon atual player
+    Pokemon Player_Pokemon_Current // Ferramenta atual do jogador.
     {
         get { return player_pokemon_current; }
         set { player_pokemon_current = value; }
@@ -69,7 +75,7 @@ public class BattleManager : MonoBehaviour
         set { player_pokemonInfo_current = value; }
     }
 
-    Pokemon Enemy_Pokemon_Current //pokemon atual inimigo
+    Pokemon Enemy_Pokemon_Current // Inimigo atual.
     {
         get { return enemy_pokemon_current; }
         set { enemy_pokemon_current = value; }
@@ -109,9 +115,10 @@ public class BattleManager : MonoBehaviour
         enemy_pokemonHealthBar_sizeIniX = rect_enemyPokemonHealthBar.sizeDelta.x;
 
         Pokemon_Inicialize();
+        Player_PokemonChangeIndex_Set(0);
     }
 
-    void Pokemon_Inicialize() //inicializacao dos pokemons do player e do inimigo
+    void Pokemon_Inicialize() // Inicializacao das ferramentas do jogador e inimigo.
     {
         player_pokemonInfo = new PokemonInfo[player_pokemon.Length];
         enemy_pokemonInfo = new PokemonInfo[enemy_pokemon.Length];
@@ -140,7 +147,7 @@ public class BattleManager : MonoBehaviour
         Enemy_PokemonCurrent_Set(enemy_pokemonCurrent_index);
     }
 
-    void Txt_PlayerAttack_Set()
+    void Txt_PlayerAttack_Set() // Seta os textos dos ataques criados.
     {
         for (int i = 0; i < 4; i++)
         {
@@ -148,14 +155,48 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void Player_Pokemon_Change() //troca pedida
+    public void Player_Pokemon_Change() // Troca de ferramenta atrelada ao botao.
     {
-        if (PlayerTurn)
+        if (PlayerTurn && PlayerPokemon_AliveQuant_Get() > 1 && canChange)
         {
             Player_PokemonCurrent_Set(player_pokemonCurrent_index == 0 ? 1 : 0);
 
+            StartCoroutine(PlayerPokemonHealthBar_Set());
             StartCoroutine(Turn_Routine());
+            Txt_PokemonChange_Set();
         }
+    }
+
+    void Txt_PokemonChange_Set()
+    {
+        if (player_pokemonChange_index == player_pokemonCurrent_index || player_pokemonInfo[player_pokemonChange_index].dead)
+        {
+            txt_pokemonChange.GetComponentInParent<Image>().color = color_disable;
+            canChange = false;
+        }
+        else
+        {
+            txt_pokemonChange.GetComponentInParent<Image>().color = Color.white;
+            canChange = true;
+        }
+
+        txt_pokemonChange.text = player_pokemonInfo[player_pokemonChange_index].pokemonName;
+    }
+
+    public void Player_PokemonChangeIndex_Set(int _value) // Chamado nos 2 botoes para trocar a ferramenta.
+    {
+        player_pokemonChange_index += _value;
+
+        if (player_pokemonChange_index < 0)
+        {
+            player_pokemonChange_index = player_pokemonInfo.Length - 1;
+        }
+        else if (player_pokemonChange_index > player_pokemonInfo.Length - 1)
+        {
+            player_pokemonChange_index = 0;
+        }
+
+        Txt_PokemonChange_Set();
     }
 
     void Player_PokemonCurrent_Set(int _index)
@@ -185,23 +226,24 @@ public class BattleManager : MonoBehaviour
         Txt_PokemonName_Set();
     }
 
-    void Txt_PokemonName_Set()
+    void Txt_PokemonName_Set() // Coloca o nome da ferramenta nos textos.
     {
         txt_playerPokemonName.text = Player_PokemonInfo_Current.pokemonName;
         txt_enemyPokemonName.text = Enemy_PokemonInfo_Current.pokemonName;
     }
 
-    public void Player_Atk(int _index) //metodo chamado quando botoes de atk sao clicados
+    #region Ataques do jogador e do inimigo
+    public void Player_Atk(int _index) // Metodo chamado quando os botoes de ataque sao clicados.
     {
-        Debug.Log("clicado");
+        Debug.Log("Clicado!");
         if (PlayerTurn)
         {
             if (Player_PokemonInfo_Current.attackUseQuantRemaining[_index] > 0)
             {
                 Player_PokemonInfo_Current.attackUseQuantRemaining[_index]--;
-                Enemy_Pokemon_Current.Reaction_Get(Player_Pokemon_Current.attack[_index].attackName); //envia para o pokemon q foi atacado o nome do atk
+                Enemy_Pokemon_Current.Reaction_Get(Player_Pokemon_Current.attack[_index].attackName); // Envia para o personagem que foi atacado o nome do ataque.
             }
-            else txt_battleFeedback.text = "atk nn pode ser utilizado";
+            else txt_battleFeedback.text = "Esse ataque não pode ser utilizado.";
         }
     }
 
@@ -210,13 +252,14 @@ public class BattleManager : MonoBehaviour
         Enemy_PokemonInfo_Current.attackUseQuantRemaining[_index]--;
         Player_Pokemon_Current.Reaction_Get(Enemy_Pokemon_Current.attack[_index].attackName);
     }
+    #endregion
 
-    public IEnumerator Reaction_Routine(Reaction _reaction, string _attackName, float _value) //acao q ira acontecer
+    public IEnumerator Reaction_Routine(Reaction _reaction, string _attackName, float _value) // Acao que vai acontecer.
     {
         yield return new WaitForSeconds(turnDelay);
 
-        PokemonInfo _pokemonInfoAttacking = PlayerTurn ? Player_PokemonInfo_Current : Enemy_PokemonInfo_Current; //se for turno do player, pokemon atacante eh do player
-        PokemonInfo _pokemonInfoAttacked = !PlayerTurn ? Player_PokemonInfo_Current : Enemy_PokemonInfo_Current; //se nn for turno do player, pokemon atacado eh do player
+        PokemonInfo _pokemonInfoAttacking = PlayerTurn ? Player_PokemonInfo_Current : Enemy_PokemonInfo_Current; // Se for turno do jogador, personagem atacante sera do jogador
+        PokemonInfo _pokemonInfoAttacked = !PlayerTurn ? Player_PokemonInfo_Current : Enemy_PokemonInfo_Current; // Se nao for turno do jogador, personagem atacado sera do jogador
 
         switch (_reaction)
         {
@@ -226,14 +269,14 @@ public class BattleManager : MonoBehaviour
                 break;
             case Reaction.Heal:
                 txt_battleFeedback.text = "O ataque " + _attackName.ToUpper() + " de " + _pokemonInfoAttacking.pokemonName.ToUpper() + " curou " + _pokemonInfoAttacked.pokemonName.ToUpper() + " em " + _value + " pontos de vida.";
-                if (PlayerTurn) { EnemyPokemon_TakeDamage(-_value); } else PlayerPokemon_TakeDamage(-_value); //valor negativo cura
+                if (PlayerTurn) { EnemyPokemon_TakeDamage(-_value); } else PlayerPokemon_TakeDamage(-_value); // Valor negativo cura.
                 break;
             case Reaction.Revenge:
                 txt_battleFeedback.text = "O ataque " + _attackName.ToUpper() + " de " + _pokemonInfoAttacking.pokemonName.ToUpper() + " causou a si mesmo " + _value + " de dano.";
                 if (PlayerTurn) { PlayerPokemon_TakeDamage(_value); } else EnemyPokemon_TakeDamage(_value);
                 break;
             case Reaction.Nothing:
-                txt_battleFeedback.text = "O ataque " + _attackName.ToUpper() + " de " + _pokemonInfoAttacking.pokemonName.ToUpper() + " foi inútil";
+                txt_battleFeedback.text = "O ataque " + _attackName.ToUpper() + " de " + _pokemonInfoAttacking.pokemonName.ToUpper() + " não foi efetivo";
                 break;
         }
 
@@ -242,7 +285,7 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator Turn_Routine()
     {
-        Debug.Log("inicializando o proximo turno");
+        Debug.Log("Inicializando o próximo turno.");
         yield return new WaitForSeconds(turnDelay);
 
         PlayerTurn = !PlayerTurn;
@@ -250,15 +293,15 @@ public class BattleManager : MonoBehaviour
         go_turnCube[0].SetActive(PlayerTurn);
         go_turnCube[1].SetActive(!PlayerTurn);
 
-        string _turnOwner = PlayerTurn ? "player" : "enemy";
-        Debug.Log("turno do " + _turnOwner + " iniciado");
+        string _turnOwner = PlayerTurn ? "Jogador" : "Inimigo";
+        Debug.Log("Turno do " + _turnOwner + " iniciado.");
     }
 
-    public void Enemy_Turn() //botao chama este metodo
+    public void Enemy_Turn() // O botao chama este metodo.
     {
         if (!PlayerTurn)
         {
-            bool _attackValid = false; //var para verificar se o inimigo tem algum atk com uso restante
+            bool _attackValid = false; // Var para verificar se o inimigo tem algum ataque com uso restante.
 
             foreach (int _attackUseQuantRemaining in Enemy_PokemonInfo_Current.attackUseQuantRemaining)
             {
@@ -313,12 +356,12 @@ public class BattleManager : MonoBehaviour
 
         if (Player_PokemonInfo_Current.healthCurrent > Player_PokemonInfo_Current.healthMax) Player_PokemonInfo_Current.healthCurrent = Player_PokemonInfo_Current.healthMax;
 
-        if (Player_PokemonInfo_Current.healthCurrent <= 0) //verifica se morreu
+        if (Player_PokemonInfo_Current.healthCurrent <= 0) // Verifica se morreu.
         {
             Player_PokemonInfo_Current.healthCurrent = 0;
             Player_PokemonInfo_Current.dead = true;
 
-            if (PlayerPokemonDeadAll_Get()) Result(false); //verifica se todos morreram
+            if (PlayerPokemon_DeadAll_Get()) Result(false); // Verifica se todos morreram.
             else
             {
                 List<int> _list_pokemonLiveIndex = new();
@@ -356,7 +399,7 @@ public class BattleManager : MonoBehaviour
             Enemy_PokemonInfo_Current.healthCurrent = 0;
             Enemy_PokemonInfo_Current.dead = true;
 
-            if (EnemyPokemonDeadAll_Get()) Result(true);
+            if (EnemyPokemon_DeadAll_Get()) Result(true);
             else
             {
                 List<int> _list_pokemonLiveIndex = new();
@@ -381,7 +424,19 @@ public class BattleManager : MonoBehaviour
     }
     #endregion
 
-    bool PlayerPokemonDeadAll_Get() //retorna true se todos os pokemons do player morreram
+    int PlayerPokemon_AliveQuant_Get()
+    {
+        int _quant = 0;
+
+        foreach (PokemonInfo _pokemonInfo in player_pokemonInfo)
+        {
+            if (!_pokemonInfo.dead) _quant++;
+        }
+
+        return _quant;
+    }
+
+    bool PlayerPokemon_DeadAll_Get() // Retorna true se todos os personagens do jogador morreram.
     {
         bool _deadAll = true;
 
@@ -397,7 +452,7 @@ public class BattleManager : MonoBehaviour
         return _deadAll;
     }
 
-    bool EnemyPokemonDeadAll_Get() //retorna true se todos os pokemons do enemy morreram
+    bool EnemyPokemon_DeadAll_Get() // Retorna true se todos os personagens do inimigo morreram.
     {
         bool _deadAll = true;
 
@@ -414,7 +469,7 @@ public class BattleManager : MonoBehaviour
     }
 
     #region Barras de vida
-    IEnumerator PlayerPokemonHealthBar_Set(float _delay = 0f) //seta o tamanho da barra de vida do pokemon
+    IEnumerator PlayerPokemonHealthBar_Set(float _delay = 0f) // Seta o tamanho da barra de vida do personagem.
     {
         yield return new WaitForSeconds(_delay);
 
@@ -424,7 +479,7 @@ public class BattleManager : MonoBehaviour
         rect_playerPokemonHealthBar.sizeDelta = new Vector2(Player_PokemonInfo_Current.healthCurrent / Player_PokemonInfo_Current.healthMax * player_pokemonHealthBar_sizeIniX, rect_playerPokemonHealthBar.sizeDelta.y);
     }
 
-    IEnumerator EnemyPokemonHealthBar_Set(float _delay = 0f) //seta o tamanho da barra de vida do pokemon
+    IEnumerator EnemyPokemonHealthBar_Set(float _delay = 0f) // Seta o tamanho da barra de vida do personagem.
     {
         yield return new WaitForSeconds(_delay);
 
@@ -432,15 +487,15 @@ public class BattleManager : MonoBehaviour
     }
     #endregion
 
-    void Result(bool _victory) //resultado do jogo
+    void Result(bool _victory) // Resultado do combate.
     {
         if (_victory)
         {
-            Debug.Log("vitoria");
+            Debug.Log("Venceu!");
         }
         else
         {
-            Debug.Log("derrota");
+            Debug.Log("Perdeu!");
         }
     }
 }

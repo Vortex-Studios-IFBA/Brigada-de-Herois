@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Shake : MonoBehaviour
 {
+    #region VARIAVEIS
     [SerializeField] bool inate;
 
     [SerializeField] float posX;
@@ -17,6 +18,7 @@ public class Shake : MonoBehaviour
 
     Vector3 posIni;
     Vector3 rotIni;
+    #endregion
 
     void Start()
     {
