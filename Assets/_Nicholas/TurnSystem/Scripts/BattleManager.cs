@@ -147,11 +147,26 @@ public class BattleManager : MonoBehaviour
         Enemy_PokemonCurrent_Set(enemy_pokemonCurrent_index);
     }
 
-    void Txt_PlayerAttack_Set() // Seta os textos dos ataques criados.
+    void Txt_PlayerAttack_Set()
     {
-        for (int i = 0; i < 4; i++)
+        // Obter o Pokemon atual
+        var currentPokemon = player_pokemon[player_pokemonCurrent_index];
+        int attacksCount = currentPokemon.attack.Length;
+
+        // Percorrer todos os TextMeshProUGUI para definir os textos dos ataques
+        for (int i = 0; i < txt_playerAttack.Length; i++)
         {
-            txt_playerAttack[i].text = player_pokemon[player_pokemonCurrent_index].attack[i].attackName;
+            if (i < attacksCount)
+            {
+                // Exibir o botao de ataque e definir o nome do ataque
+                txt_playerAttack[i].gameObject.SetActive(true);
+                txt_playerAttack[i].text = currentPokemon.attack[i].attackName;
+            }
+            else
+            {
+                // Desativar o botao de ataque se o ataque nao estiver disponivel
+                txt_playerAttack[i].gameObject.SetActive(false);
+            }
         }
     }
 
@@ -235,17 +250,32 @@ public class BattleManager : MonoBehaviour
     #region Ataques do jogador e do inimigo
     public void Player_Atk(int _index) // Metodo chamado quando os botoes de ataque sao clicados.
     {
-        Debug.Log("Clicado!");
         if (PlayerTurn)
         {
-            if (Player_PokemonInfo_Current.attackUseQuantRemaining[_index] > 0)
+            var currentPokemon = Player_Pokemon_Current;
+
+            // Verifica se o indice do ataque clicado e valido para o Pokemon atual
+            if (_index >= 0 && _index < currentPokemon.attack.Length)
             {
-                Player_PokemonInfo_Current.attackUseQuantRemaining[_index]--;
-                Enemy_Pokemon_Current.Reaction_Get(Player_Pokemon_Current.attack[_index].attackName); // Envia para o personagem que foi atacado o nome do ataque.
+                // Verifica se o ataque tem usos restantes
+                if (Player_PokemonInfo_Current.attackUseQuantRemaining[_index] > 0)
+                {
+                    Player_PokemonInfo_Current.attackUseQuantRemaining[_index]--;
+                    Enemy_Pokemon_Current.Reaction_Get(currentPokemon.attack[_index].attackName);
+                }
+                else
+                {
+                    txt_battleFeedback.text = "Esse ataque não pode ser utilizado.";
+                }
             }
-            else txt_battleFeedback.text = "Esse ataque não pode ser utilizado.";
+            else
+            {
+                Debug.LogWarning("Ataque inválido selecionado. Índice fora dos limites.");
+                txt_battleFeedback.text = "Esse ataque não está disponível.";
+            }
         }
     }
+
 
     void Enemy_Atk(int _index)
     {

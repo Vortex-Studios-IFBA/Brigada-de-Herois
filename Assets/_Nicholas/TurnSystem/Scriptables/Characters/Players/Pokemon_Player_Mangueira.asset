@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a238fc405b2743c4e804153918a4e794, type: 3}
-  m_Name: Pokemon_Enemy_ClasseA
+  m_Name: Pokemon_Player_Mangueira
   m_EditorClassIdentifier: 
-  go_mesh: {fileID: 0}
+  go_mesh: {fileID: 5652384961284737324, guid: c4807e3fb76aca24aa8c6772b7176a72, type: 3}
   img: {fileID: 0}
-  pokemonName: Fogo - Classe A
+  pokemonName: Mangueira
   healthMax: 100
   attack:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  actionAndReaction: []
+  - {fileID: 11400000, guid: 4d1b93a6e20f61e4494cc0932a924aba, type: 2}
+  actionAndReaction:
+  - attack: {fileID: 11400000, guid: a1a14334591f9644d857a708d21120be, type: 2}
+    reaction: 0
+    value: 10

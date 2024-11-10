@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -358,12 +358,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_pokemon:
-  - {fileID: 11400000, guid: 32b69c87c5de43b45af3557f56c574cc, type: 2}
-  - {fileID: 11400000, guid: 1d05dee8420acd14f89b1d331e09ef97, type: 2}
+  - {fileID: 11400000, guid: e890d0c8526dc744b806c18dbdad9fc1, type: 2}
+  - {fileID: 11400000, guid: 910f4a1985c8b0047a7e3dc469756550, type: 2}
+  - {fileID: 11400000, guid: 1f0d7da2e5c21f145bd53b9bd949a511, type: 2}
   player_pokemonInfo: []
   enemy_pokemon:
-  - {fileID: 11400000, guid: 0a2e0a0fc2a8f8148bdcf8ccbc3e2cf2, type: 2}
-  - {fileID: 11400000, guid: 834d0527ea067cf4bb7c1c026981eae1, type: 2}
+  - {fileID: 11400000, guid: 9415409c04d53d347af2d14f59930370, type: 2}
+  - {fileID: 11400000, guid: 29373f349a384434a85ee4309c867a39, type: 2}
+  - {fileID: 11400000, guid: 5516f5ece89601a478f48e0482d0e42f, type: 2}
+  - {fileID: 11400000, guid: c390bd7130da7644f8028e47fca32912, type: 2}
+  - {fileID: 11400000, guid: 99b23775d48cc574e9b6857173f59459, type: 2}
   enemy_pokemonInfo: []
   player_pokemonSpawnPos: {x: 1, y: 0, z: -2.5}
   enemy_pokemonSpawnPos: {x: -2.5, y: 0, z: 1}

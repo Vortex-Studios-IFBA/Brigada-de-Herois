@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d877d290aadc57b4f87e264f56777d42, type: 3}
-  m_Name: Attack_Water_Hot
+  m_Name: Attack_Extintor2_BicarbonatoDePotassio
   m_EditorClassIdentifier: 
-  attackName: "Jato de \xE1gua quente"
-  action: 0
-  useQuantMax: 5
+  attackName: "Bicarbonato de Pot\xE1ssio"
+  useQuantMax: 2
