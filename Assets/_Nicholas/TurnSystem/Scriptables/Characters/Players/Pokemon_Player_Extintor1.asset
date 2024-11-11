@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a238fc405b2743c4e804153918a4e794, type: 3}
+  m_Name: Pokemon_Player_Extintor1
+  m_EditorClassIdentifier: 
+  go_mesh: {fileID: 5652384961284737324, guid: 3b4de3a50cc8a6b449e8d41b36151015, type: 3}
+  img: {fileID: 0}
+  pokemonName: Extintor 1
+  healthMax: 100
+  attack:
+  - {fileID: 11400000, guid: 4454acec5a6ea58428eee8d87b070f02, type: 2}
+  - {fileID: 11400000, guid: 248f04503295a2244a9ff6613e96c485, type: 2}
+  - {fileID: 11400000, guid: 70b8ea05fbbc3204e83f400e380e0c37, type: 2}
+  actionAndReaction:
+  - attack: {fileID: 11400000, guid: a1a14334591f9644d857a708d21120be, type: 2}
+    reaction: 0
+    value: 10
