@@ -2,20 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//mover enum para class Ferramenta
-public enum ToolType {
-    Mangueira, ExtAgua, ExtQuimico
-}
-public class Recharge_Point : MonoBehaviour
+public class Disjuntor 
 {
-    GameObject recharge_infoView;
-    //Precisa criar uma classe Ferramenta para carregar seus ataques
-    
+    string nome;
+    bool ligado = false;
+
+    public void Ativaçao()
+    {
+        ligado = !ligado;
+    }
+}
+public class Electricity_Box : MonoBehaviour
+{
+    GameObject electricity_infoView;
+    Disjuntor[] disjuntores;
     // Start is called before the first frame update
     void Awake()
     {
-        recharge_infoView = transform.GetChild(0).gameObject;
-        recharge_infoView.SetActive(false);
+        electricity_infoView = transform.GetChild(0).gameObject;
+        electricity_infoView.SetActive(false);
     }
 
     // Update is called once per frame
@@ -25,12 +30,7 @@ public class Recharge_Point : MonoBehaviour
     }
     public void MostrarPainel(bool mode)
     {
-        recharge_infoView.SetActive(mode);
-    }
-    public void Recarregar()
-    {
-        //aumentar cargas de ataques de acordo com o tipo de ferramenta
-        Destroy(gameObject);
+        electricity_infoView.SetActive(mode);
     }
     void OnTriggerEnter(Collider col)
     {
@@ -43,7 +43,7 @@ public class Recharge_Point : MonoBehaviour
     {
         if(col.gameObject.CompareTag("Player"))
         {
-            //setTrigger e animação de UI
+            //setTrigger de animaçao de UI
             MostrarPainel(false);
         }
     }
