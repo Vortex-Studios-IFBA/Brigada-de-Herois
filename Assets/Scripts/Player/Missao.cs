@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Missao : MonoBehaviour
 {
-    bool concluida;
-    int totalTurnos, objetivos;
-    float tempoFinal;
+    public bool concluida;
+    public int totalTurnos, objetivos, eliminados;
+    public float tempoFinal;
     // Start is called before the first frame update
     void Start()
     {

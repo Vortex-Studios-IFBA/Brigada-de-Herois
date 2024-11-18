@@ -23,7 +23,7 @@ MonoBehaviour:
     reaction: 0
     value: 50
   - attack: {fileID: 11400000, guid: cd78db4116bfd3d4e9fe9cf06e1397ad, type: 2}
-    reaction: 1
+    reaction: 0
     value: 10
   - attack: {fileID: 11400000, guid: 3dc3107547e201342bf1ba891bbcf381, type: 2}
     reaction: 1
