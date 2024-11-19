@@ -10,15 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a238fc405b2743c4e804153918a4e794, type: 3}
-  m_Name: Pokemon_Player_Mangueira
+  m_Name: Pokemon_Enemy_FireGhost
   m_EditorClassIdentifier: 
-  go_mesh: {fileID: 5652384961284737324, guid: c4807e3fb76aca24aa8c6772b7176a72, type: 3}
+  go_mesh: {fileID: 5652384961284737324, guid: 3b4de3a50cc8a6b449e8d41b36151015, type: 3}
   img: {fileID: 0}
-  pokemonName: Mangueira
+  pokemonName: Fogo fantasma
   healthMax: 100
   attack:
-  - {fileID: 11400000, guid: 4d1b93a6e20f61e4494cc0932a924aba, type: 2}
+  - {fileID: 11400000, guid: 8ad9f2bae0146d040bcc6f5d0d94aff3, type: 2}
   actionAndReaction:
-  - attack: {fileID: 11400000, guid: a1a14334591f9644d857a708d21120be, type: 2}
+  - attack: {fileID: 11400000, guid: cd78db4116bfd3d4e9fe9cf06e1397ad, type: 2}
+    reaction: 0
+    value: 20
+  - attack: {fileID: 11400000, guid: 3dc3107547e201342bf1ba891bbcf381, type: 2}
     reaction: 0
     value: 20
