@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a238fc405b2743c4e804153918a4e794, type: 3}
-  m_Name: Pokemon_Player_Extintor2
+  m_Name: Pokemon_Player_FireExtinguisher
   m_EditorClassIdentifier: 
   go_mesh: {fileID: 5652384961284737324, guid: f7f8bdd5634895140bf8e11f05b9e178, type: 3}
   img: {fileID: 0}
-  pokemonName: Extintor 2
+  pokemonName: "Extintor de Inc\xEAndio"
   healthMax: 100
   attack:
-  - {fileID: 11400000, guid: 520a36f9007cdf7418e0ef9d6cef6c40, type: 2}
-  - {fileID: 11400000, guid: c971b8a7dfcece3448e55e9ffd3dab4c, type: 2}
-  - {fileID: 11400000, guid: 53c5092b5934aae47966f2e00e9c1616, type: 2}
-  - {fileID: 11400000, guid: 6bb960a6f30b0c840866df6fa7a17530, type: 2}
+  - {fileID: 11400000, guid: cd78db4116bfd3d4e9fe9cf06e1397ad, type: 2}
+  - {fileID: 11400000, guid: b4291dbec04f4684ca6b2f362bc9f2ca, type: 2}
+  - {fileID: 11400000, guid: e3d75cb5d947d774eb195aeca34fb370, type: 2}
+  - {fileID: 11400000, guid: 3dc3107547e201342bf1ba891bbcf381, type: 2}
   actionAndReaction:
-  - attack: {fileID: 11400000, guid: a1a14334591f9644d857a708d21120be, type: 2}
+  - attack: {fileID: 11400000, guid: 8ad9f2bae0146d040bcc6f5d0d94aff3, type: 2}
     reaction: 0
-    value: 20
+    value: 5

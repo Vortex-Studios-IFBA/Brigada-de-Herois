@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Pokemon : ScriptableObject
 {
     #region HEADER
-    [Header("Components")]
+    [Header("Componentes")]
     public GameObject go_mesh; // Malha que vai ser exibida na cena.
     public Image img; // Imagem no botao de troca.
     [Header("Atributos")]
