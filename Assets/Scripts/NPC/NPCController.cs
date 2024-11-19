@@ -3,45 +3,51 @@ using UnityEngine.AI;
 
 public class NPCController : MonoBehaviour
 {
-    public Transform pontoEntrada;
+    public Transform pontoDeEntrada; 
     private NavMeshAgent navMeshAgent;
-    private bool jogadorNaSala = false;
+    public bool jogadorNaSala;
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+
+        //ReposicionarNoNavMesh();
     }
 
-    void Update()
+    private void Update()
     {
         if (jogadorNaSala)
         {
             MoverParaEntrada();
         }
     }
-
-    private void MoverParaEntrada()
+    public void MoverParaEntrada()
     {
-        if (navMeshAgent.destination != pontoEntrada.position)
+        if (navMeshAgent.enabled && navMeshAgent.isOnNavMesh)
         {
-            navMeshAgent.SetDestination(pontoEntrada.position);
+            navMeshAgent.SetDestination(pontoDeEntrada.position);
+        }
+        else
+        {
+            Debug.LogError("NavMeshAgent não está ativo ou não está em uma área válida do NavMesh.");
+            ReposicionarNoNavMesh(); 
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void ReposicionarNoNavMesh()
     {
-        if (other.CompareTag("Player")) 
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(transform.position, out hit, 1.0f, NavMesh.AllAreas))
         {
-            jogadorNaSala = true;
-            Debug.Log("Jogador entrou na sala");
+            transform.position = hit.position; 
+            if (!navMeshAgent.isOnNavMesh)
+            {
+                navMeshAgent.enabled = true;
+            }
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        else
         {
-            jogadorNaSala = false;
+            Debug.LogError("Não foi possível encontrar uma posição válida no NavMesh.");
         }
     }
 }
