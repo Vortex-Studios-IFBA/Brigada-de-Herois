@@ -8,6 +8,7 @@ public enum ToolType {
 }
 public class Recharge_Point : MonoBehaviour
 {
+    [SerializeField] ToolType tipoRecarga;
     GameObject recharge_infoView;
     //Precisa criar uma classe Ferramenta para carregar seus ataques
     
