@@ -102,7 +102,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -147,7 +147,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -171,4 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750e19e8c257177448fd7da2e7df6073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pontoEntrada: {fileID: 0}
+  pontoDeEntrada: {fileID: 0}
+  entradaIfba: {fileID: 0}
+  jogadorNaSala: 0
+  vel: 2

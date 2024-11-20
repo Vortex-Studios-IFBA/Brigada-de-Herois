@@ -13,8 +13,8 @@ public class Trigger : MonoBehaviour
             NPCController controller = npc.GetComponent<NPCController>(); 
             if (controller != null)
             {
-                controller.MoverParaEntrada();
-                controller.transform.position = gameObject.transform.position;
+                controller.jogadorNaSala = true;
+                //controller.transform.position = gameObject.transform.position;
                 Debug.Log("Jogador entrou na sala");
             }
         }
