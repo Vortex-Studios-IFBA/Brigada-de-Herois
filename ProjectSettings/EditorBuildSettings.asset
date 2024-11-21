@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level.unity
     guid: e353b4eb6307efb48955509bd107cce3
+  - enabled: 1
+    path: Assets/_Nicholas/TurnSystem/Scenes/Scene_Battle.unity
+    guid: 7ff772469e80beb4eb9b4cc7db13297d
   m_configObjects: {}
