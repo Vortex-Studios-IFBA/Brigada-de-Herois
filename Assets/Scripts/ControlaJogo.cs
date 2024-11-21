@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ControlaJogo : MonoBehaviour
 {
     bool pausado = false;
+    public int missao;
     // Start is called before the first frame update
     void Awake()
     {
@@ -17,5 +18,10 @@ public class ControlaJogo : MonoBehaviour
     public void CarregarCena(int cenaID)
     {
         SceneManager.LoadScene(cenaID);
+    }
+    public void EntrarFase(int index)
+    {
+        missao = index;
+        SceneManager.LoadScene(3);
     }
 }
