@@ -600,6 +600,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5626d2ab22a704844b51f6f635859f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pokemonSelectionButtons:
+  - {fileID: 58546517}
+  - {fileID: 2121433738}
+  - {fileID: 295242090}
   player_pokemon:
   - {fileID: 11400000, guid: e890d0c8526dc744b806c18dbdad9fc1, type: 2}
   - {fileID: 11400000, guid: 910f4a1985c8b0047a7e3dc469756550, type: 2}

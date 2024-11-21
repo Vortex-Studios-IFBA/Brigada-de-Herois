@@ -1,3 +1,4 @@
+using OpenCover.Framework.Model;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,6 +8,9 @@ public class BattleManager : MonoBehaviour
 {
     #region Variaveis
     public static BattleManager instance;
+
+    [Header("Botões de Seleção de Pokémon")]
+    [SerializeField] UnityEngine.UI.Button[] pokemonSelectionButtons;
 
     [SerializeField] Pokemon[] player_pokemon; // Ferramentas do jogador
     [SerializeField] PokemonInfo[] player_pokemonInfo;
@@ -153,19 +157,49 @@ public class BattleManager : MonoBehaviour
         var currentPokemon = player_pokemon[player_pokemonCurrent_index];
         int attacksCount = currentPokemon.attack.Length;
 
-        // Percorrer todos os TextMeshProUGUI para definir os textos dos ataques.
+        // Percorrer todos os TextMeshProUGUI para configurar os botões de ataque.
         for (int i = 0; i < txt_playerAttack.Length; i++)
         {
             if (i < attacksCount)
             {
-                // Exibi o botao de ataque e defini o nome do ataque.
+                // Exibir o botão de ataque e configurar o texto com a quantidade restante.
                 txt_playerAttack[i].gameObject.SetActive(true);
-                txt_playerAttack[i].text = currentPokemon.attack[i].attackName;
+                int remainingUses = Player_PokemonInfo_Current.attackUseQuantRemaining[i];
+                txt_playerAttack[i].text = $"{currentPokemon.attack[i].attackName} ({remainingUses})";
+
+                // Desativar o botão se não houver usos restantes.
+                var button = txt_playerAttack[i].GetComponentInParent<UnityEngine.UI.Button>();
+                if (button != null)
+                {
+                    button.interactable = remainingUses > 0;
+                }
             }
             else
             {
-                // Desativa o botao de ataque se o ataque nao estiver disponivel.
+                // Ocultar os botões de ataque para ataques inexistentes.
                 txt_playerAttack[i].gameObject.SetActive(false);
+
+                // Desativar os botões de ataque extras.
+                var button = txt_playerAttack[i].GetComponentInParent<UnityEngine.UI.Button>();
+                if (button != null)
+                {
+                    button.interactable = false;
+                }
+            }
+        }
+
+        // Caso nenhum ataque esteja disponível, desativar todos os botões.
+        if (attacksCount == 0)
+        {
+            foreach (var txt in txt_playerAttack)
+            {
+                txt.gameObject.SetActive(false);
+
+                var button = txt.GetComponentInParent<UnityEngine.UI.Button>();
+                if (button != null)
+                {
+                    button.interactable = false;
+                }
             }
         }
     }
@@ -177,8 +211,20 @@ public class BattleManager : MonoBehaviour
         if (PlayerTurn && _value != player_pokemonCurrent_index)
         {
             Player_PokemonCurrent_Set(_value);
-
+            UpdatePokemonSelectionButtons(); // Atualiza os botões
             StartCoroutine(Turn_Routine());
+        }
+    }
+
+    void UpdatePokemonSelectionButtons()
+    {
+        for (int i = 0; i < pokemonSelectionButtons.Length; i++)
+        {
+            if (pokemonSelectionButtons[i] != null)
+            {
+                // Desabilitar o botão do Pokémon atual.
+                pokemonSelectionButtons[i].interactable = (i != player_pokemonCurrent_index);
+            }
         }
     }
 
@@ -194,6 +240,7 @@ public class BattleManager : MonoBehaviour
 
         Txt_PokemonName_Set();
         Txt_PlayerAttack_Set();
+        UpdatePokemonSelectionButtons(); // Atualiza os botões após mudar o Pokémon
     }
 
     void Enemy_PokemonCurrent_Set(int _index)
