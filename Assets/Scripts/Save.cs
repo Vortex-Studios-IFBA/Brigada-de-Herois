@@ -1,29 +1,58 @@
 using System.Collections;
-using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
-public class Save : MonoBehaviour
+public class SaveManager : MonoBehaviour
 {
-    public Missao[] save_missoes = new Missao[10];
-    // Start is called before the first frame update
-    void Start()
+    private string saveFilePath; 
+    private const string SaveFileName = "saveData.json";
+
+    void Awake()
     {
-        
+        saveFilePath = Path.Combine(Application.persistentDataPath, SaveFileName);
+        Debug.Log("Save file path: " + saveFilePath);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void SalvarResultado(bool completou, int turnoss, float tempo)
-    {
-        //salvar quando concluir a fase
-        int id = FindObjectOfType<ControlaJogo>().missao;
-        save_missoes[id] = new Missao(completou,turnoss,tempo);
-    }
-    public void CarregarSave()
-    {
 
+    public void SaveGame(SaveData data)
+    {
+        try
+        {
+            string json = JsonUtility.ToJson(data, true); 
+            File.WriteAllText(saveFilePath, json);
+            Debug.Log("Sucesso");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Falha ao salvar o jogo: " + e.Message);
+        }
+    }
+
+
+    public SaveData LoadGame()
+    {
+        if (File.Exists(saveFilePath))
+        {
+            try
+            {
+                string json = File.ReadAllText(saveFilePath);
+                return JsonUtility.FromJson<SaveData>(json);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError("Falha ao recuperar o save: " + e.Message);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Save não encontrado");
+        }
+        return null; 
+    }
+
+    
+    public bool SaveExists()
+    {
+        return File.Exists(saveFilePath);
     }
 }
