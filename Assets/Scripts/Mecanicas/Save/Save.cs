@@ -14,7 +14,7 @@ public class SaveManager : MonoBehaviour
     }
 
 
-    public void SaveGame(SaveData data)
+    public void SalvarJogo(SaveData data)
     {
         try
         {
@@ -29,7 +29,7 @@ public class SaveManager : MonoBehaviour
     }
 
 
-    public SaveData LoadGame()
+    public SaveData CarregarJogo()
     {
         if (File.Exists(saveFilePath))
         {
@@ -51,7 +51,7 @@ public class SaveManager : MonoBehaviour
     }
 
     
-    public bool SaveExists()
+    public bool SaveExistente()
     {
         return File.Exists(saveFilePath);
     }
