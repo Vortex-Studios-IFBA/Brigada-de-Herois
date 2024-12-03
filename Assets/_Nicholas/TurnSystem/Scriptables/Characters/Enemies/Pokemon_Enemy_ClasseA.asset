@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   go_mesh: {fileID: 5652384961284737324, guid: 5c01978faa4249145818b8eacce60d20, type: 3}
   img: {fileID: 0}
-  pokemonName: Classe A
+  pokemonName: Fogo - Classe A
   healthMax: 100
   attack:
   - {fileID: 11400000, guid: a1a14334591f9644d857a708d21120be, type: 2}

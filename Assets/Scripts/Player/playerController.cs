@@ -11,7 +11,7 @@ public class playerController : MonoBehaviour
 
     public float vel;
     public float velRotation;
-    public bool movimentacaoLivre = true;
+    public bool movimentacaoLivre;
 
     public Text movimentacaoText;
 
@@ -26,6 +26,7 @@ public class playerController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         navMeshAgent.enabled = false;
+        movimentacaoLivre = false;
     }
 
     void Update()
@@ -119,5 +120,15 @@ public class playerController : MonoBehaviour
     {
         movimentacaoLivre = !movimentacaoLivre;
         Debug.Log("Trocou a movimentação: " + movimentacaoLivre);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("TriggerSala"))
+        {
+            TrocarMovimentacao();
+            Trigger trigger = other.gameObject.GetComponent<Trigger>();
+            trigger.Teste();
+        }
     }
 }

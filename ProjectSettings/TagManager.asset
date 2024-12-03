@@ -10,6 +10,7 @@ TagManager:
   - Projetor
   - spike
   - PC
+  - TriggerSala
   layers:
   - Default
   - TransparentFX
