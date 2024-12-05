@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UI_MissionSelect : MonoBehaviour
 {
@@ -13,9 +14,20 @@ public class UI_MissionSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        int prevId = -1;
         for(int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).GetChild(0).GetComponent<TMP_Text>().text = (1 + i).ToString();
+            int num = 1 + i;
+            TMP_Text levelId = transform.GetChild(i).GetChild(0).GetComponent<TMP_Text>();
+            levelId.text = num.ToString();
+            if(num > 1 && prevId >= 0)
+            {
+                if(!transform.GetChild(prevId).GetComponent<Missao>().concluida)
+                {
+                    transform.GetChild(i).GetComponent<Button>().interactable = false;
+                }
+            }
+            prevId = i;
         }
         des_objetivos.text = "";
         des_turnos.text = "";
