@@ -5,13 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class ControlaJogo : MonoBehaviour
 {
-    bool pausado = false;
+    public static ControlaJogo Instance { get; private set; }
+
+    private bool pausado = false;
     public int missao;
-    // Start is called before the first frame update
-    void Awake()
+
+    private void Awake()
     {
-        //corrigir depois pra quando voltar ao menu
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
