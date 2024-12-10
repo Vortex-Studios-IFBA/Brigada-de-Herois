@@ -9,6 +9,11 @@ public class BattleManager : MonoBehaviour
     #region Variaveis
     public static BattleManager instance;
 
+    [Header("Chefão")]
+    [SerializeField] bool isBossFight = false; // Indica se o inimigo atual é um chefão.
+    [SerializeField] float bossEnergy = 0; // Energia acumulada do chefão.
+    [SerializeField] float bossEnergyThreshold = 100; // Limite para ativar o ataque especial do chefão.
+
     [Header("Botões de Seleção de Pokémon")]
     [SerializeField] UnityEngine.UI.Button[] pokemonSelectionButtons;
 
@@ -350,49 +355,57 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    void Enemy_Turn() // O botao chama este metodo caso o ataque nao seja automatico.
+    void Enemy_Turn() // O botão chama este método caso o ataque não seja automático.
     {
-        if (!PlayerTurn)
+        if (isBossFight)
         {
-            bool _attackValid = false; // Var para verificar se o inimigo tem algum ataque com uso restante.
+            bossEnergy += Random.Range(10, 30); // Aumenta a energia do chefão a cada turno.
 
-            foreach (int _attackUseQuantRemaining in Enemy_PokemonInfo_Current.attackUseQuantRemaining)
+            if (bossEnergy >= bossEnergyThreshold)
             {
-                if (_attackUseQuantRemaining > 0)
-                {
-                    _attackValid = true;
-                    break;
-                }
+                Boss_SpecialAttack();
+                bossEnergy = 0; // Reseta a energia após o ataque especial.
+                return; // Finaliza o turno do chefão.
             }
+        }
 
-            if (_attackValid) // Se existir algum ataque disponivel.
+        // (Mantém a lógica existente para ataques regulares do inimigo.)
+        bool _attackValid = false;
+        foreach (int _attackUseQuantRemaining in Enemy_PokemonInfo_Current.attackUseQuantRemaining)
+        {
+            if (_attackUseQuantRemaining > 0)
             {
-                if (enemyBehaviour == EnemyBehaviour.Random) // Se estiver no modo randomico.
+                _attackValid = true;
+                break;
+            }
+        }
+
+        if (_attackValid)
+        {
+            if (enemyBehaviour == EnemyBehaviour.Random)
+            {
+                bool _attacked = false;
+
+                while (!_attacked)
                 {
-                    bool _attacked = false;
+                    int _value = Random.Range(0, Enemy_Pokemon_Current.attack.Length);
 
-                    while (!_attacked)
+                    if (Enemy_PokemonInfo_Current.attackUseQuantRemaining[_value] > 0)
                     {
-                        int _value = Random.Range(0, Enemy_Pokemon_Current.attack.Length);
-
-                        if (Enemy_PokemonInfo_Current.attackUseQuantRemaining[_value] > 0)
-                        {
-                            Enemy_Atk(_value);
-                            break;
-                        }
+                        Enemy_Atk(_value);
+                        break;
                     }
                 }
-                else if (enemyBehaviour == EnemyBehaviour.Only) // Ainda nao foi implementado.
-                {
-                    // Tratar caso o index seja maior que o index maximo.
-                }
             }
-            else
+            else if (enemyBehaviour == EnemyBehaviour.Only)
             {
-                txt_battleFeedback.text = Enemy_PokemonInfo_Current.pokemonName + " não possui ataques disponíveis.";
-
-                StartCoroutine(Turn_Routine());
+                // Tratar caso o índice seja maior que o máximo.
             }
+        }
+        else
+        {
+            txt_battleFeedback.text = Enemy_PokemonInfo_Current.pokemonName + " não possui ataques disponíveis.";
+            StartCoroutine(Turn_Routine());
         }
     }
 
@@ -518,5 +531,18 @@ public class BattleManager : MonoBehaviour
         {
             player_pokemonInfo[_index] = new PokemonInfo(player_pokemon[_index]);
         }
+    }
+
+    /// <summary>
+    /// Executa o ataque especial do chefão, causando dano em área.
+    /// </summary>
+    void Boss_SpecialAttack()
+    {
+        Debug.Log("O Chefão executou seu ataque especial!");
+        float damage = Random.Range(20, 50); // Dano do ataque especial.
+        Player_TakeDamage(damage); // Aplica o dano ao jogador.
+
+        // Atualiza o feedback para o jogador.
+        txt_battleFeedback.text = "O Chefão lançou um ataque devastador, causando " + damage + " de dano!";
     }
 }
