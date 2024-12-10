@@ -2483,7 +2483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vel: 2
-  velRotation: 0
+  velRotation: 1
   movimentacaoLivre: 1
   movimentacaoText: {fileID: 1483595727384610488}
   transformCamera: {fileID: 6833522625758643613}
