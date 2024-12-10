@@ -5,13 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ControlaJogo : MonoBehaviour
-{
-<<<<<<< Updated upstream
-    bool pausado = false;
-    public int missao;
-    // Start is called before the first frame update
-    void Awake()
-=======
+{  
     public static ControlaJogo Instance { get; private set; }
 
     private bool pausado = false;
@@ -23,10 +17,16 @@ public class ControlaJogo : MonoBehaviour
     public Text verticalTexto;
 
     private void Awake()
->>>>>>> Stashed changes
     {
-        //corrigir depois pra quando voltar ao menu
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     private void Start()
     {
