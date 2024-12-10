@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class playerController : MonoBehaviour
 {
     VirtualJoystick joystick;
+    ControlaJogo jogoConfig;
     NavMeshAgent navMeshAgent;
     Rigidbody rig;
 
@@ -24,6 +25,12 @@ public class playerController : MonoBehaviour
         rig = GetComponent<Rigidbody>();
         joystick = FindObjectOfType<VirtualJoystick>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        jogoConfig = FindObjectOfType<ControlaJogo>();
+
+        if (jogoConfig != null)
+        {
+            Debug.Log("Pegou o config");            
+        }        
 
         navMeshAgent.enabled = false;
         movimentacaoLivre = false;
