@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class playerController : MonoBehaviour
 {
     VirtualJoystick joystick;
+    ControlaJogo jogoConfig;
     NavMeshAgent navMeshAgent;
     Rigidbody rig;
 
@@ -22,8 +23,14 @@ public class playerController : MonoBehaviour
     void Start()
     {
         rig = GetComponent<Rigidbody>();
-        joystick = FindObjectOfType<VirtualJoystick>();
+       
         navMeshAgent = GetComponent<NavMeshAgent>();
+        jogoConfig = FindObjectOfType<ControlaJogo>();
+
+        if (jogoConfig != null)
+        {
+            Debug.Log("Pegou o config");            
+        }        
 
         navMeshAgent.enabled = false;
         movimentacaoLivre = false;
@@ -61,59 +68,121 @@ public class playerController : MonoBehaviour
 
     void ControlarMovimentacao()
     {
-        if (movimentacaoLivre)
+        if (!jogoConfig.jogoVertical)
         {
-            navMeshAgent.enabled = false;
-
-            Vector2 movementJoystick = joystick.GetAxis();
-            Vector3 movement = new Vector3(movementJoystick.x, 0, movementJoystick.y);
-
-
-            Vector3 cameraForward = transformCamera.forward;
-            cameraForward.y = 0; 
-            cameraForward.Normalize();
-
-            Vector3 cameraRight = transformCamera.right;
-            cameraRight.y = 0;
-            cameraRight.Normalize();
-
-
-            Vector3 ajusteMovimento = (cameraForward * movement.z + cameraRight * movement.x).normalized;
-
-            transform.position += ajusteMovimento * Time.deltaTime * vel;
-
-            if (ajusteMovimento != Vector3.zero)
+            joystick = FindObjectOfType<VirtualJoystick>();
+            if (movimentacaoLivre)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(ajusteMovimento);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * velRotation);
+                navMeshAgent.enabled = false;
+
+                Vector2 movementJoystick = joystick.GetAxis();
+                Vector3 movement = new Vector3(movementJoystick.x, 0, movementJoystick.y);
+
+
+                Vector3 cameraForward = transformCamera.forward;
+                cameraForward.y = 0;
+                cameraForward.Normalize();
+
+                Vector3 cameraRight = transformCamera.right;
+                cameraRight.y = 0;
+                cameraRight.Normalize();
+
+
+                Vector3 ajusteMovimento = (cameraForward * movement.z + cameraRight * movement.x).normalized;
+
+                transform.position += ajusteMovimento * Time.deltaTime * vel;
+
+                if (ajusteMovimento != Vector3.zero)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(ajusteMovimento);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * velRotation);
+                }
             }
+            else
+            {
+                navMeshAgent.enabled = true;
+
+                Vector3 cameraForward = transformCamera.forward;
+                cameraForward.y = 0;
+                cameraForward.Normalize();
+                Vector2 movementJoystick = joystick.GetAxis();
+
+                Vector3 cameraRight = transformCamera.right;
+                cameraRight.y = 0;
+                cameraRight.Normalize();
+
+
+                Vector3 ajusteMovimento = (cameraForward * movementJoystick.y + cameraRight * movementJoystick.x).normalized;
+
+                navMeshAgent.Move(ajusteMovimento * Time.deltaTime * vel);
+
+                if (ajusteMovimento != Vector3.zero)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(ajusteMovimento);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * velRotation);
+                }
+            }
+
+            movimentacaoText.text = movimentacaoLivre.ToString();
         }
-        else
-        {
-            navMeshAgent.enabled = true;
-
-            Vector3 cameraForward = transformCamera.forward;
-            cameraForward.y = 0; 
-            cameraForward.Normalize();
-            Vector2 movementJoystick = joystick.GetAxis();
-
-            Vector3 cameraRight = transformCamera.right;
-            cameraRight.y = 0;
-            cameraRight.Normalize();
-
         
-            Vector3 ajusteMovimento = (cameraForward * movementJoystick.y + cameraRight * movementJoystick.x).normalized;
-
-            navMeshAgent.Move(ajusteMovimento * Time.deltaTime * vel);
-
-            if (ajusteMovimento != Vector3.zero)
+        if (jogoConfig.jogoVertical)
+        {
+            joystick = FindObjectOfType<VirtualJoystick>();
+            if (movimentacaoLivre)
             {
-            Quaternion targetRotation = Quaternion.LookRotation(ajusteMovimento);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * velRotation);
-            }
-        }
+                navMeshAgent.enabled = false;
 
-         movimentacaoText.text = movimentacaoLivre.ToString();
+                Vector2 movementJoystick = joystick.GetAxis();
+                Vector3 movement = new Vector3(movementJoystick.x, 0, movementJoystick.y);
+
+
+                Vector3 cameraForward = transformCamera.forward;
+                cameraForward.y = 0;
+                cameraForward.Normalize();
+
+                Vector3 cameraRight = transformCamera.right;
+                cameraRight.y = 0;
+                cameraRight.Normalize();
+
+
+                Vector3 ajusteMovimento = (cameraForward * movement.z + cameraRight * movement.x).normalized;
+
+                transform.position += ajusteMovimento * Time.deltaTime * vel;
+
+                if (ajusteMovimento != Vector3.zero)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(ajusteMovimento);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * velRotation);
+                }
+            }
+            else
+            {
+                navMeshAgent.enabled = true;
+
+                Vector3 cameraForward = transformCamera.forward;
+                cameraForward.y = 0;
+                cameraForward.Normalize();
+                Vector2 movementJoystick = joystick.GetAxis();
+
+                Vector3 cameraRight = transformCamera.right;
+                cameraRight.y = 0;
+                cameraRight.Normalize();
+
+
+                Vector3 ajusteMovimento = (cameraForward * movementJoystick.y + cameraRight * movementJoystick.x).normalized;
+
+                navMeshAgent.Move(ajusteMovimento * Time.deltaTime * vel);
+
+                if (ajusteMovimento != Vector3.zero)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(ajusteMovimento);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * velRotation);
+                }
+            }
+
+            movimentacaoText.text = movimentacaoLivre.ToString();
+        }
     }
 
     public void TrocarMovimentacao()
