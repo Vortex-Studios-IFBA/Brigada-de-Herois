@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ControlaJogo : MonoBehaviour
+
 {  
     public static ControlaJogo Instance { get; private set; }
 
@@ -31,6 +32,7 @@ public class ControlaJogo : MonoBehaviour
     private void Start()
     {
         AplicarRotacaoTela();
+
     }
 
     // Update is called once per frame
@@ -71,7 +73,7 @@ public class ControlaJogo : MonoBehaviour
         }
     }
 
-    //Associar no botão para trocar a rotação do CELULAR
+    //Associar no botï¿½o para trocar a rotaï¿½ï¿½o do CELULAR
     public void TrocarRotacao()
     {
         jogoVertical = !jogoVertical;
