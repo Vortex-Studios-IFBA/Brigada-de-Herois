@@ -12,7 +12,7 @@ public class ControlaJogo : MonoBehaviour
 
     public int missao;
 
-    public bool jogoVertical = false;
+    public bool jogoVertical ;
 
     public Text verticalTexto;
 
@@ -58,11 +58,20 @@ public class ControlaJogo : MonoBehaviour
         }
         else
         {
-            Screen.orientation = ScreenOrientation.LandscapeLeft;  
-            verticalTexto.text = jogoVertical.ToString();
+            Screen.orientation = ScreenOrientation.LandscapeLeft;
+            try
+            {
+                verticalTexto.text = jogoVertical.ToString();
+            }
+            
+            catch
+            {
+                Debug.Log("Trocou a rotacao: " + jogoVertical);
+            }
         }
     }
 
+    //Associar no botão para trocar a rotação do CELULAR
     public void TrocarRotacao()
     {
         jogoVertical = !jogoVertical;
