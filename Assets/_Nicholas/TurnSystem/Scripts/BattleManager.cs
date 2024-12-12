@@ -361,6 +361,18 @@ public class BattleManager : MonoBehaviour
         {
             bossEnergy += Random.Range(10, 30); // Aumenta a energia do chefão a cada turno.
 
+            // Ajusta o tamanho do chefão proporcionalmente à energia acumulada.
+            if (go_enemy_pokemon != null) // Certifica-se de que o objeto instanciado existe.
+            {
+                float scaleMultiplier = Mathf.Clamp(1 + (bossEnergy / bossEnergyThreshold) * 0.5f, 1, 2);
+                go_enemy_pokemon.transform.localScale = new Vector3(scaleMultiplier, scaleMultiplier, scaleMultiplier);
+            }
+
+            if (bossEnergy >= bossEnergyThreshold * 0.75f && bossEnergy < bossEnergyThreshold)
+            {
+                EnterRageMode();
+            }
+
             if (bossEnergy >= bossEnergyThreshold)
             {
                 Boss_SpecialAttack();
@@ -369,7 +381,7 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        // (Mantém a lógica existente para ataques regulares do inimigo.)
+        // Lógica existente para ataques regulares do inimigo.
         bool _attackValid = false;
         foreach (int _attackUseQuantRemaining in Enemy_PokemonInfo_Current.attackUseQuantRemaining)
         {
@@ -408,6 +420,45 @@ public class BattleManager : MonoBehaviour
             StartCoroutine(Turn_Routine());
         }
     }
+
+    /// <summary>
+    /// Ativa o modo enfurecido do chefão, aumentando o poder dos ataques.
+    /// </summary>
+    void EnterRageMode()
+    {
+        Debug.Log("O Chefão entrou no modo enfurecido!");
+        txt_battleFeedback.text = "O Chefão está enfurecido! Seus ataques são mais poderosos!";
+
+        // Opcional: altere a cor do chefão para indicar que ele está enfurecido.
+        if (go_enemy_pokemon != null)
+        {
+            Renderer renderer = go_enemy_pokemon.GetComponentInChildren<Renderer>();
+            if (renderer != null)
+            {
+                renderer.material.color = Color.red; // Define a cor do modo enfurecido.
+            }
+        }
+
+        // Aumenta o poder dos ataques do chefão.
+        foreach (var attack in Enemy_Pokemon_Current.attack)
+        {
+            attack.damage += 10; // Adiciona dano extra a cada ataque.
+        }
+    }
+
+    /// <summary>
+    /// Executa o ataque especial do chefão, causando dano em área.
+    /// </summary>
+    void Boss_SpecialAttack()
+    {
+        Debug.Log("O Chefão executou seu ataque especial!");
+        float damage = Random.Range(20, 50); // Dano do ataque especial.
+        Player_TakeDamage(damage); // Aplica o dano ao jogador.
+
+        // Atualiza o feedback para o jogador.
+        txt_battleFeedback.text = "O Chefão lançou um ataque devastador, causando " + damage + " de dano!";
+    }
+
 
     #region Dano
     void Player_TakeDamage(float _damage)
@@ -531,18 +582,5 @@ public class BattleManager : MonoBehaviour
         {
             player_pokemonInfo[_index] = new PokemonInfo(player_pokemon[_index]);
         }
-    }
-
-    /// <summary>
-    /// Executa o ataque especial do chefão, causando dano em área.
-    /// </summary>
-    void Boss_SpecialAttack()
-    {
-        Debug.Log("O Chefão executou seu ataque especial!");
-        float damage = Random.Range(20, 50); // Dano do ataque especial.
-        Player_TakeDamage(damage); // Aplica o dano ao jogador.
-
-        // Atualiza o feedback para o jogador.
-        txt_battleFeedback.text = "O Chefão lançou um ataque devastador, causando " + damage + " de dano!";
     }
 }
