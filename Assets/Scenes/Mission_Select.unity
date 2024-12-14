@@ -1035,9 +1035,9 @@ RectTransform:
   - {fileID: 289672938}
   m_Father: {fileID: 1118978740}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 8.534912, y: -76.04297}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 8.534912, y: 82}
   m_SizeDelta: {x: 16.712494, y: 132.87079}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &436937996
@@ -1801,8 +1801,8 @@ MonoBehaviour:
   m_StartAxis: 0
   m_CellSize: {x: 80, y: 80}
   m_Spacing: {x: 30, y: 15}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Constraint: 1
+  m_ConstraintCount: 5
 --- !u!114 &764069063
 MonoBehaviour:
   m_ObjectHideFlags: 0

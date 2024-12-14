@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+public class DadosFase {
+    public int[] salas;
+    public float tempo;
+    public int turnos;
+}
 public class ControlaJogo : MonoBehaviour
 
 {  
@@ -16,6 +21,8 @@ public class ControlaJogo : MonoBehaviour
     public bool jogoVertical ;
 
     public Text verticalTexto;
+
+    DadosFase faseInfo;
 
     private void Awake()
     {
@@ -44,6 +51,23 @@ public class ControlaJogo : MonoBehaviour
     {
         missao = index;
         SceneManager.LoadScene(3);
+    }
+
+    public void AtualizarInfo(float time, int turns, int[] rm = null)
+    {
+        if(rm != null)
+            faseInfo.salas = rm;
+        faseInfo.tempo = time;
+        faseInfo.turnos = turns;
+    }
+    public List<int> Salas()
+    {
+        List<int> salass = new List<int>();
+        foreach(int num in faseInfo.salas)
+        {
+            salass.Add(num);
+        }
+        return salass;
     }
 
     public void AplicarRotacaoTela()

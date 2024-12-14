@@ -24,8 +24,8 @@ public class Ponto_Incendio : MonoBehaviour
         if(vitoria)
         {
             //desativar indicador de incendio
-            transform.GetChild(0).gameObject.SetActive(false);
             eliminado = true;
+            gameObject.SetActive(false);
         }
         else if(!vitoria)
         {

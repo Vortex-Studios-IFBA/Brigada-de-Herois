@@ -37,6 +37,7 @@ public class UI_MissionSelect : MonoBehaviour
     {
         if(missao == missao_selecionada && missao_selecionada != null)
         {
+            FindObjectOfType<ControlaJogo>().AtualizarInfo(0,0,missao.GetComponent<Missao>().rooms);
             FindObjectOfType<ControlaJogo>().EntrarFase(missao.transform.GetSiblingIndex());
         }
         else if(missao != missao_selecionada)
