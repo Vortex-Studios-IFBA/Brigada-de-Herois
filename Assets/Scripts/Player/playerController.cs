@@ -13,12 +13,16 @@ public class playerController : MonoBehaviour
     public float vel;
     public float velRotation;
     public bool movimentacaoLivre;
+    bool movendoCamera = false;
 
     public Text movimentacaoText;
 
     public Transform transformCamera; 
     public float sensibilidadeCamera ; 
     private Vector2 ultimoToqueTela;
+
+    public GameObject rechargeBt;
+    public GameObject rechargeObj;
 
 
     void Start()
@@ -59,12 +63,27 @@ public class playerController : MonoBehaviour
                     }
                     else if (touch.phase == TouchPhase.Moved)
                     {
-                        Vector2 delta = touch.position - ultimoToqueTela;
-                        ultimoToqueTela = touch.position;
-
-                        transformCamera.Rotate(Vector3.up, delta.x * sensibilidadeCamera * Time.deltaTime, Space.World);
-                        transformCamera.Rotate(Vector3.right, -delta.y * sensibilidadeCamera * Time.deltaTime, Space.Self);
+                        movendoCamera = true;
                     }
+                    if (touch.phase == TouchPhase.Ended)
+                    {
+                        movendoCamera = false;
+                    }
+                }
+                if(movendoCamera)
+                {
+                    Vector2 delta = touch.position - ultimoToqueTela;
+                    ultimoToqueTela = touch.position;
+
+                    transformCamera.Rotate(Vector3.up, delta.x * sensibilidadeCamera * Time.deltaTime, Space.World);
+                    transformCamera.Rotate(Vector3.right, -delta.y * sensibilidadeCamera * Time.deltaTime, Space.Self);
+
+                    float xRot = transformCamera.eulerAngles.x - delta.y * sensibilidadeCamera * Time.deltaTime;
+
+                    if (xRot > 180)
+                        xRot -= 360;
+                    xRot = Mathf.Clamp(xRot, -90f, 90f);
+                    transformCamera.rotation = Quaternion.Euler(xRot, transformCamera.eulerAngles.y, transformCamera.eulerAngles.z);
                 }
             }
         }
@@ -127,7 +146,7 @@ public class playerController : MonoBehaviour
                 }
             }
 
-            movimentacaoText.text = movimentacaoLivre.ToString();
+            //movimentacaoText.text = movimentacaoLivre.ToString();
         }
 
         if (jogoConfig.jogoVertical)
@@ -162,7 +181,7 @@ public class playerController : MonoBehaviour
                 }
             }
 
-            movimentacaoText.text = movimentacaoLivre.ToString();
+            //movimentacaoText.text = movimentacaoLivre.ToString();
         }
     }
 
@@ -179,6 +198,11 @@ public class playerController : MonoBehaviour
             TrocarMovimentacao();
             Trigger trigger = other.gameObject.GetComponent<Trigger>();
             trigger.Teste();
+        }
+        if(other.CompareTag("Recharge"))
+        {
+            rechargeBt.SetActive(true);
+            rechargeObj = other.gameObject;
         }
     }
 }

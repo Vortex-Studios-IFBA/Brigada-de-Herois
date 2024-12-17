@@ -9,6 +9,7 @@ public class UI_MissionSelect : MonoBehaviour
     [SerializeField] TMP_Text des_objetivos, des_turnos, des_tempo; //caixa de texto de desempenhos
     [SerializeField] GameObject select;
     GameObject missao_selecionada;
+    GridLayoutGroup gridMissions;
     //int objetivosTT = 0, turnosTT = 0;
     //float tempo = 0;
     // Start is called before the first frame update
@@ -32,6 +33,16 @@ public class UI_MissionSelect : MonoBehaviour
         des_objetivos.text = "";
         des_turnos.text = "";
         des_tempo.text = "";
+
+        gridMissions = GetComponent<GridLayoutGroup>();
+        if(FindObjectOfType<ControlaJogo>().jogoVertical == true)
+        {
+            gridMissions.constraintCount = 2;
+        }
+        else
+        {
+            gridMissions.constraintCount = 5;
+        }
     }
     public void SelecionarMissao(GameObject missao)
     {
@@ -65,7 +76,6 @@ public class UI_MissionSelect : MonoBehaviour
         int minutes = Mathf.FloorToInt(tempo / 60);
         int seconds = Mathf.FloorToInt(tempo % 60);
 
-        // Format the time as MM:SS
         string clockDisplay = string.Format("{0:D2}:{1:D2}", minutes, seconds);
 
         return clockDisplay;

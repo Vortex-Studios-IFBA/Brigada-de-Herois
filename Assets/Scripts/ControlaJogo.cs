@@ -22,7 +22,7 @@ public class ControlaJogo : MonoBehaviour
 
     public Text verticalTexto;
 
-    DadosFase faseInfo;
+    DadosFase faseInfo = new DadosFase();
 
     private void Awake()
     {
@@ -38,7 +38,7 @@ public class ControlaJogo : MonoBehaviour
     }
     private void Start()
     {
-        AplicarRotacaoTela();
+        AplicarRotacaoTela(this);
 
     }
 
@@ -70,9 +70,9 @@ public class ControlaJogo : MonoBehaviour
         return salass;
     }
 
-    public void AplicarRotacaoTela()
+    public void AplicarRotacaoTela(ControlaJogo instJogo)
     {
-        if (jogoVertical)
+        if (instJogo.jogoVertical)
         {
             Screen.orientation = ScreenOrientation.AutoRotation; 
             Screen.autorotateToPortrait = true;                  
@@ -80,7 +80,7 @@ public class ControlaJogo : MonoBehaviour
             Screen.autorotateToLandscapeLeft = false;            
             Screen.autorotateToLandscapeRight = false;
 
-            verticalTexto.text = jogoVertical.ToString();
+            //verticalTexto.text = jogoVertical.ToString();
         }
         else
         {
@@ -100,8 +100,20 @@ public class ControlaJogo : MonoBehaviour
     //Associar no bot�o para trocar a rota��o do CELULAR
     public void TrocarRotacao()
     {
-        jogoVertical = !jogoVertical;
-        AplicarRotacaoTela();
-        Debug.Log("Trocou a rotacao: " + jogoVertical);
+        ControlaJogo control = FindObjectOfType<ControlaJogo>();
+        control.jogoVertical = !control.jogoVertical;
+        AplicarRotacaoTela(control);
+        Debug.Log("Trocou a rotacao: " + control.jogoVertical);
+    }
+    public void Pausar()
+    {
+        if(Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+        else
+        {
+            Time.timeScale = 0;
+        }
     }
 }
