@@ -7,7 +7,7 @@ public class Ponto_Incendio : MonoBehaviour
     int nivelPerigo = 1;
     [SerializeField] int salaNum;
     bool eliminado = false;
-    GameObject indicador;
+    [SerializeField] GameObject indicador;
     ControlaJogo missao;
 
     // Start is called before the first frame update

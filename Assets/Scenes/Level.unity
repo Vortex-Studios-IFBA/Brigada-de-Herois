@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9667,6 +9667,7 @@ MonoBehaviour:
   transformCamera: {fileID: 608273603}
   sensibilidadeCamera: 30.4
   rechargeBt: {fileID: 929200410}
+  rechargeObj: {fileID: 0}
 --- !u!136 &799548604
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16138,6 +16139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   salaNum: 44
+  indicador: {fileID: 1310777621}
 --- !u!1001 &1117321804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19266,6 +19268,11 @@ PrefabInstance:
 --- !u!4 &1310777620 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5346205028265265709, guid: d73e254c2d6eead49ba823903fa05d22, type: 3}
+  m_PrefabInstance: {fileID: 1310777619}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1310777621 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6992856370626806521, guid: d73e254c2d6eead49ba823903fa05d22, type: 3}
   m_PrefabInstance: {fileID: 1310777619}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1315906063
