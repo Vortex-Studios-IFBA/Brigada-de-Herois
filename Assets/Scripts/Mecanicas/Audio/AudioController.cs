@@ -6,18 +6,12 @@ using UnityEngine.UI;
 
 public class AudioController : MonoBehaviour
 {
-    public static AudioSource audiosource;
-    GameObject[] controlador;
-    public static float volumeMaximo = 1;
-    Slider volume;
+    public static AudioSource audiosource;  
+    public float volumeMaximo = 1;
+    public Slider volume;
     void Start()
     {
-        if (SceneManager.GetActiveScene().name == "configs")
-        {
-            volume = FindObjectOfType<Slider>();
-        }
-
-
+       
         audiosource = GetComponent<AudioSource>();
 
         if (audiosource != null)
@@ -38,12 +32,5 @@ public class AudioController : MonoBehaviour
         }
     }
 
-    private void OnLevelWasLoaded(int level)
-    {
-        if (SceneManager.GetActiveScene().name == "Menu_Config")
-        {
-            volume = FindObjectOfType<Slider>();
-        }
-        
-    }
+
 }

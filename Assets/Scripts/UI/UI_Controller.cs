@@ -10,9 +10,11 @@ public class UI_Controller : MonoBehaviour
     private GameObject botaoRotacao;
     private GameObject botaoJogar;
     private GameObject botaoConfig;
-
+    private GameObject botaoSair;
+    private GameObject barraVolume;
 
     private ControlaJogo jogoConfig;
+    private AudioController audioController;
 
     private bool estadoAtual;
 
@@ -34,7 +36,6 @@ public class UI_Controller : MonoBehaviour
         }
 
         
-
         jogoConfig = ControlaJogo.Instance;
 
         if (jogoConfig != null)
@@ -48,26 +49,24 @@ public class UI_Controller : MonoBehaviour
             Debug.LogError("ControlaJogo não encontrado!");
         }
 
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().name == "Main_Menu")
         {
             botaoJogar = GameObject.Find("BtnJogar");
             if (botaoJogar == null)
             {
-                Debug.LogError("Botao de jogar nao encontrado");
+                Debug.LogError("Botao de jogar nao encontrado START");
             }
             else
             {
                 botaoJogar.GetComponent<Button>().onClick.RemoveAllListeners();
                 botaoJogar.GetComponent<Button>().onClick.AddListener(() => ControlaJogo.Instance.CarregarCena(1));
+                Debug.Log("Botao de jogar encontrado START");
 
             }
-        }
-        if (SceneManager.GetActiveScene().buildIndex == 2)
-        {
             botaoConfig = GameObject.Find("BtnConfig");
             if (botaoConfig == null)
             {
-                Debug.LogError("Botao de config nao encontrado");
+                Debug.LogError("Botao de config nao encontrado START");
             }
             else
             {
@@ -76,6 +75,38 @@ public class UI_Controller : MonoBehaviour
 
             }
         }
+        if (SceneManager.GetActiveScene().name == "Menu_Config")
+        {
+            botaoSair = GameObject.Find("BtnSair");
+            if (botaoSair == null)
+            {
+                Debug.LogError("Botao de Sair nao encontrado START");
+            }
+            else
+            {
+                botaoSair.GetComponent<Button>().onClick.RemoveAllListeners();
+                botaoSair.GetComponent<Button>().onClick.AddListener(() => ControlaJogo.Instance.CarregarCena(0));
+                Debug.Log("Botao sair encontrado START");
+
+            }
+        }
+
+        
+        if (SceneManager.GetActiveScene().name == "Menu_Config")
+        {
+            audioController.volume = GameObject.FindObjectOfType<Slider>();
+            if (audioController.volume != null)
+            {
+                Debug.Log("Slider de audio associado");
+            }
+            else
+            {
+                Debug.Log("Slider de audio nao associado");
+            }
+
+  
+        }
+
     }
 
     void Update()
