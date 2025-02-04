@@ -10,6 +10,8 @@ public class ControlaJogo : MonoBehaviour
     public static ControlaJogo Instance { get; private set; }
 
     private bool pausado = false;
+
+
     public int missao;
     public bool jogoVertical;
 
@@ -49,6 +51,7 @@ public class ControlaJogo : MonoBehaviour
         SceneManager.LoadScene(cenaID);
         SceneManager.sceneLoaded += CenaCarregada;
     }
+
 
     private void CenaCarregada(Scene cena, LoadSceneMode modo)
     {

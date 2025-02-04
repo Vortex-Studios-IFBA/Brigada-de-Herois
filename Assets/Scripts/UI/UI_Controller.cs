@@ -1,12 +1,15 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UI_Controller : MonoBehaviour
 {
     private GameObject uiVertical;
     private GameObject uiHorizontal;
-    private GameObject butaoRotacao;
+    private GameObject botaoRotacao;
+    private GameObject botaoJogar;
+    private GameObject botaoConfig;
 
 
     private ControlaJogo jogoConfig;
@@ -44,6 +47,35 @@ public class UI_Controller : MonoBehaviour
         {
             Debug.LogError("ControlaJogo não encontrado!");
         }
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            botaoJogar = GameObject.Find("BtnJogar");
+            if (botaoJogar == null)
+            {
+                Debug.LogError("Botao de jogar nao encontrado");
+            }
+            else
+            {
+                botaoJogar.GetComponent<Button>().onClick.RemoveAllListeners();
+                botaoJogar.GetComponent<Button>().onClick.AddListener(() => ControlaJogo.Instance.CarregarCena(1));
+
+            }
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            botaoConfig = GameObject.Find("BtnConfig");
+            if (botaoConfig == null)
+            {
+                Debug.LogError("Botao de config nao encontrado");
+            }
+            else
+            {
+                botaoConfig.GetComponent<Button>().onClick.RemoveAllListeners();
+                botaoConfig.GetComponent<Button>().onClick.AddListener(() => ControlaJogo.Instance.CarregarCena(2));
+
+            }
+        }
     }
 
     void Update()
@@ -70,15 +102,15 @@ public class UI_Controller : MonoBehaviour
             uiVertical.SetActive(false);
         }
 
-        butaoRotacao = GameObject.Find("BtdTrocarRotacao");
-        if (butaoRotacao == null)
+        botaoRotacao = GameObject.Find("BtdTrocarRotacao");
+        if (botaoRotacao == null)
         {
             Debug.LogError("Botao de rotação nao encontrado");
         }
         else
         {
-            butaoRotacao.GetComponent<Button>().onClick.RemoveAllListeners();
-            butaoRotacao.GetComponent<Button>().onClick.AddListener(() => ControlaJogo.Instance.TrocarRotacao());
+            botaoRotacao.GetComponent<Button>().onClick.RemoveAllListeners();
+            botaoRotacao.GetComponent<Button>().onClick.AddListener(() => ControlaJogo.Instance.TrocarRotacao());
 
         }
     }
