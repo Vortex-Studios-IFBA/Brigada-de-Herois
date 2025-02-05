@@ -38,10 +38,14 @@ public class UI_MissionSelect : MonoBehaviour
         if(FindObjectOfType<ControlaJogo>().jogoVertical == true)
         {
             gridMissions.constraintCount = 2;
+            gridMissions.cellSize = new Vector2(45,45);
+            gridMissions.spacing = new Vector2(30,15 - Camera.main.pixelHeight/1000);
+            select.GetComponent<RectTransform>().sizeDelta = new Vector2(50,50);
         }
         else
         {
             gridMissions.constraintCount = 5;
+            gridMissions.cellSize = new Vector2(80,80);
         }
     }
     public void SelecionarMissao(GameObject missao)
@@ -62,7 +66,7 @@ public class UI_MissionSelect : MonoBehaviour
     void AtualizarResultados()
     {
         Missao mission = missao_selecionada.GetComponent<Missao>();
-        des_objetivos.text = "Pontos de Incêndio:\n" + mission.objetivos.ToString() + "/" + mission.eliminados.ToString();
+        des_objetivos.text = "Pontos de Incêndio:\n" + mission.eliminados.ToString() + "/" + mission.objetivos.ToString();
         des_turnos.text = "Turnos:\n" + mission.totalTurnos.ToString();
 
         float timer = mission.tempoFinal;

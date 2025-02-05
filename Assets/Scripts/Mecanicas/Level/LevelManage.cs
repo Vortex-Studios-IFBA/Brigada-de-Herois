@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManage : MonoBehaviour
 {
     [SerializeField] TMP_Text timer, objetivos;
+    //[SerializeField] List<GameObject> salasIncendio;
     public float tempo = 0;
     public int objetivosTT = 0, objetivosFeito = 0, turnos;
 
@@ -18,6 +20,8 @@ public class LevelManage : MonoBehaviour
             objetivosTT += 1;
         }
         AtualizarContador();
+        
+        SceneManager.LoadSceneAsync("Manual",LoadSceneMode.Additive);
     }
 
     // Update is called once per frame
