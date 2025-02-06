@@ -23,6 +23,12 @@ public class ControlaJogo : MonoBehaviour
     public delegate void CenaCarregadaHandler();
     public static event CenaCarregadaHandler OnCenaCarregada;
 
+    public AudioSource musicaSource;
+    public AudioSource efeitosSource;
+    public float volumeMusica = 1.0f;
+    public float volumeEfeitos = 1.0f;
+
+
     DadosFase faseInfo = new DadosFase();
 
     private void Awake()
@@ -118,5 +124,32 @@ public class ControlaJogo : MonoBehaviour
             Time.timeScale = 0;
         }
     }
+    public void AjustarVolumeMusica(float volume)
+    {
+        volumeMusica = volume;
+        if (musicaSource != null)
+        {
+            musicaSource.volume = volume;
+        }
+    }
+
+    public void AjustarVolumeEfeitos(float volume)
+    {
+        volumeEfeitos = volume;
+        if (efeitosSource != null)
+        {
+            efeitosSource.volume = volume;
+        }
+    }
+
+    public void AplicarVolumes()
+    {
+        if (musicaSource != null)
+            musicaSource.volume = volumeMusica;
+
+        if (efeitosSource != null)
+            efeitosSource.volume = volumeEfeitos;
+    }
+
 }
 

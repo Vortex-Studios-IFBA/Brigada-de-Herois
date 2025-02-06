@@ -98,24 +98,27 @@ public class playerController : MonoBehaviour
             {
                 navMeshAgent.enabled = false;
 
+                Vector2 movementJoystick = joystick.GetAxis();
+                Vector3 movement = new Vector3(movementJoystick.x, 0, movementJoystick.y);
+
+
                 Vector3 cameraForward = transformCamera.forward;
                 cameraForward.y = 0;
                 cameraForward.Normalize();
-                Vector2 movementJoystick = joystick.GetAxis();
 
                 Vector3 cameraRight = transformCamera.right;
                 cameraRight.y = 0;
                 cameraRight.Normalize();
 
 
-                Vector3 ajusteMovimento = (cameraForward * movementJoystick.y + cameraRight * movementJoystick.x).normalized;
+                Vector3 ajusteMovimento = (cameraForward * movement.z + cameraRight * movement.x).normalized;
 
-                navMeshAgent.Move(ajusteMovimento * Time.deltaTime * vel);
+                transform.position += ajusteMovimento * Time.deltaTime * vel;
 
                 if (ajusteMovimento != Vector3.zero)
                 {
                     Quaternion targetRotation = Quaternion.LookRotation(ajusteMovimento);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * vel);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 0);
                 }
             }
             else
@@ -143,7 +146,7 @@ public class playerController : MonoBehaviour
                 }
             }
 
-            //movimentacaoText.text = movimentacaoLivre.ToString();
+            movimentacaoText.text = movimentacaoLivre.ToString();
         }
 
         if (jogoConfig.jogoVertical)
@@ -152,10 +155,28 @@ public class playerController : MonoBehaviour
 
             if (movimentacaoLivre)
             {
+                //navMeshAgent.enabled = false;
+                //Vector2 movementJoystick = joystick.GetAxis();
+                //Vector3 movement = new Vector3(movementJoystick.x, 0, movementJoystick.y);
+                //transform.position += movement * Time.deltaTime * vel;
                 navMeshAgent.enabled = false;
                 Vector2 movementJoystick = joystick.GetAxis();
-                Vector3 movement = new Vector3(movementJoystick.x, 0, movementJoystick.y);
-                transform.position += movement * Time.deltaTime * vel;
+
+                Vector3 forwardMovement = transform.forward * movementJoystick.y * vel;
+                Vector3 sideMovement = transform.right * movementJoystick.x * vel;
+                Vector3 movement = forwardMovement + sideMovement;
+
+
+
+
+
+                transform.position += movement * Time.deltaTime;
+
+                if (movement != Vector3.zero)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(movement);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * vel);
+                }
             }
             else
             {
@@ -178,7 +199,7 @@ public class playerController : MonoBehaviour
                 }
             }
 
-            //movimentacaoText.text = movimentacaoLivre.ToString();
+            movimentacaoText.text = movimentacaoLivre.ToString();
         }
     }
 
