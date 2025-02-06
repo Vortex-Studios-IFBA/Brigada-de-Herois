@@ -4,7 +4,7 @@ using UnityEngine;
 
 //mover enum para class Ferramenta
 public enum ToolType {
-    Mangueira, ExtAgua, ExtQuimico
+    Mangueira, ExtEspuma, ExtQuimico
 }
 public class Recharge_Point : MonoBehaviour
 {

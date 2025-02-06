@@ -1904,31 +1904,29 @@ MonoBehaviour:
   texto: {fileID: 753496385}
   titulo: {fileID: 1170072440}
   txts:
-  - "Esse \xE9 o outro"
-  - "Lidar com fogo n\xE3o \xE9 uma tarefa simples e exige muita aten\xE7\xE3o e
-    cuidado com certos fatores para garantir a seguran\xE7a e controle da situa\xE7\xE3o."
+  - "Lidar com fogo n\xE3o \xE9 uma tarefa simples, \xE9 necess\xE1rio proeza com
+    o correto equipamento e exige muito cuidado para garantir a seguran\xE7a e controle
+    da situa\xE7\xE3o."
   - "Seu trabalho \xE9 ir at\xE9 os pontos de inc\xEAndio e combater o fogo. Para
     isso, \xE9 muito importante entender as propriedades das subst\xE2ncias nessa
     equa\xE7\xE3o."
-  - "O inc\xEAndio "
-  - Fogo da classe A
-  - Fogo da classe B
-  - Fogo da classe C
-  - Fogo da classe D
-  - Fogo da classe K
-  - ferramentas
-  - encontradas no mapa
-  - encontradas no mapa
-  - "fique atento ao cen\xE1rio"
+  - "O inc\xEAndio pode surgir de diferentes tipos de fonte de combust\xE3o, que
+    exigem m\xE9todos especiais para combater e apagar o fogo de forma segura."
+  - "Use das ferramentas \xE0 sua disposi\xE7\xE3o para resfriar ou abafar o fogo,
+    tendo no\xE7\xE3o das subst\xE2ncias contidas em cada uma delas na hora de escolher
+    a correta para o combate."
+  - "Para isso aperte o bot\xE3o superior para alternar a ferramenta ativa antes
+    de entrar em combate com o inc\xEAndio. Quando estiver pronto se aproxime do
+    fogo."
+  - "Suas ferramentas possuem um n\xFAmero limitado de cargas, por\xE9m pode facilmente
+    reabastecer com extintores e mangueiras que se encontram em pontos espec\xEDficos
+    do campus."
+  - "Fique de olho em sua volta, existem a\xE7\xF5es importantes a serem feitas em
+    certos momentos como deligar a energia por meio da intera\xE7\xE3o com as caixas
+    de eletricidade."
   titulos:
   - "ATEN\xC7\xC3O"
   - "ATEN\xC7\xC3O"
-  - "ATEN\xC7\xC3O"
-  - "Classes de inc\xEAndio"
-  - "Classes de inc\xEAndio"
-  - "Classes de inc\xEAndio"
-  - "Classes de inc\xEAndio"
-  - "Classes de inc\xEAndio"
   - "Classes de inc\xEAndio"
   - Suas ferramentas
   - Suas ferramentas
@@ -1939,12 +1937,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
   - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
   - {fileID: 21300000, guid: 168e4e5a38153374ba0e886c0a048d57, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
   - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
   - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
   - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
@@ -4116,34 +4108,37 @@ MonoBehaviour:
   texto: {fileID: 748177877}
   titulo: {fileID: 99200093}
   txts:
-  - "Como essa \xE9 sua primeira miss\xE3o, \xE9 obriga\xE7\xE3o da Brigada de Her\xF3is
-    ensinar o protocolo de seguran\xE7a quando se trata do combate ao inc\xEAndio."
-  - "Lidar com fogo n\xE3o \xE9 uma tarefa simples e exige muita aten\xE7\xE3o e
-    cuidado com certos fatores para garantir a seguran\xE7a e controle da situa\xE7\xE3o."
-  - "Seu trabalho \xE9 ir at\xE9 os pontos de inc\xEAndio e combater o fogo. Para
-    isso, \xE9 muito importante entender as propriedades das subst\xE2ncias nessa
-    equa\xE7\xE3o."
-  - "O inc\xEAndio "
-  - Fogo da classe A
-  - Fogo da classe B
-  - Fogo da classe C
-  - Fogo da classe D
-  - Fogo da classe K
-  - ferramentas
-  - encontradas no mapa
-  - encontradas no mapa
-  - "fique atento ao cen\xE1rio"
+  - "O inc\xEAndio pode surgir de diferentes tipos de fonte de combust\xE3o, que
+    exigem m\xE9todos especiais para combater e apagar o fogo de forma segura."
+  - "Inc\xEAndios da classe A envolvem materiais s\xF3lidos de f\xE1cil combust\xE3o,
+    como madeira, tecidos e papel."
+  - "Inc\xEAndios da classe B envolvem produtos inflam\xE1veis que queimem somente
+    em sua superf\xEDcie, como \xF3leos, tintas e gasolina."
+  - "Inc\xEAndios da classe C ocorrem em equipamentos el\xE9tricos energizados como
+    motores, transformadores, quadros de distribui\xE7\xE3o e fios."
+  - "Inc\xEAndios da classe D se referem a elementos que se inflamam ao entrar em
+    contato com a umidade do ar ou da pr\xF3pria \xE1gua. Magn\xE9sio, zirc\xF4nio
+    e tit\xE2nio s\xE3o elementos que podem reagir com o hidrog\xEAnio e causar grandes
+    explos\xF5es."
+  - "Por \xFAltimo, inc\xEAndios da classe K englobam \xF3leos de cozinha, gorduras
+    e graxa, esses podem facilmente causar acidentes portanto \xE9 preciso ter aten\xE7\xE3o
+    ao modo de combat\xEA-los."
+  - "Use das ferramentas \xE0 sua disposi\xE7\xE3o para resfriar ou abafar o fogo,
+    tendo no\xE7\xE3o das subst\xE2ncias contidas em cada uma delas na hora de escolher
+    a correta para o combate."
+  - "Suas ferramentas possuem um n\xFAmero limitado de cargas, por\xE9m pode facilmente
+    reabastecer com extintores e mangueiras que se encontram em pontos espec\xEDficos
+    do campus."
+  - "Fique de olho em sua volta, existem a\xE7\xF5es importantes a serem feitas em
+    certos momentos como deligar a energia por meio da intera\xE7\xE3o com as caixas
+    de eletricidade."
   titulos:
-  - "ATEN\xC7\xC3O"
-  - "ATEN\xC7\xC3O"
-  - "ATEN\xC7\xC3O"
   - "Classes de inc\xEAndio"
   - "Classes de inc\xEAndio"
   - "Classes de inc\xEAndio"
   - "Classes de inc\xEAndio"
   - "Classes de inc\xEAndio"
   - "Classes de inc\xEAndio"
-  - Suas ferramentas
   - Suas ferramentas
   - Suas ferramentas
   - "Antes de come\xE7ar"
@@ -4156,10 +4151,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
   - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
   - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
   - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
 --- !u!114 &1192201933
 MonoBehaviour:
