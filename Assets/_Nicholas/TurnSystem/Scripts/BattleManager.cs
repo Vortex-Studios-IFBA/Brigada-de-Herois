@@ -114,7 +114,7 @@ public class BattleManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // Persistir o objeto entre cenas
+            //DontDestroyOnLoad(gameObject); // Persistir o objeto entre cenas
         }
         else
         {
@@ -249,7 +249,7 @@ public class BattleManager : MonoBehaviour
             Destroy(go_player_pokemon);
         }
 
-        go_player_pokemon = Instantiate(Player_Pokemon_Current.go_mesh, player_pokemonSpawnPos, Quaternion.identity);
+        go_player_pokemon = Instantiate(Player_Pokemon_Current.go_mesh, player_pokemonSpawnPos, Player_Pokemon_Current.go_mesh.transform.rotation);
 
         Txt_PokemonName_Set();
         Txt_PlayerAttack_Set();
@@ -267,7 +267,7 @@ public class BattleManager : MonoBehaviour
             Destroy(go_enemy_pokemon);
         }
 
-        go_enemy_pokemon = Instantiate(Enemy_Pokemon_Current.go_mesh, enemy_pokemonSpawnPos, Quaternion.identity);
+        go_enemy_pokemon = Instantiate(Enemy_Pokemon_Current.go_mesh, enemy_pokemonSpawnPos, Enemy_Pokemon_Current.go_mesh.transform.rotation);
 
         Txt_PokemonName_Set();
     }
