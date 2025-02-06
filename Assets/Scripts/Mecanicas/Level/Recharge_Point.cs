@@ -4,7 +4,7 @@ using UnityEngine;
 
 //mover enum para class Ferramenta
 public enum ToolType {
-    Mangueira, ExtAgua, ExtQuimico
+    Mangueira, ExtEspuma, ExtQuimico
 }
 public class Recharge_Point : MonoBehaviour
 {
@@ -31,7 +31,8 @@ public class Recharge_Point : MonoBehaviour
     public void Recarregar()
     {
         //aumentar cargas de ataques de acordo com o tipo de ferramenta
-        Destroy(gameObject);
+        GameObject rch = FindObjectOfType<playerController>().rechargeObj;
+        Destroy(rch);
     }
     void OnTriggerEnter(Collider col)
     {

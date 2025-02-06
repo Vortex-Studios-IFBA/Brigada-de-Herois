@@ -5,6 +5,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+public class DadosFase {
+    public int[] salas;
+    public float tempo;
+    public int turnos;
+}
 public class ControlaJogo : MonoBehaviour
 {
     public static ControlaJogo Instance { get; private set; }
@@ -15,10 +20,7 @@ public class ControlaJogo : MonoBehaviour
 
     public Text verticalTexto;
 
-    public delegate void CenaCarregadaHandler();
-    public static event CenaCarregadaHandler OnCenaCarregada;
-
-    
+    DadosFase faseInfo = new DadosFase();
 
     private void Awake()
     {
@@ -56,15 +58,35 @@ public class ControlaJogo : MonoBehaviour
         OnCenaCarregada?.Invoke();
     }
 
-    public void AplicarRotacaoTela()
+    public void AtualizarInfo(float time, int turns, int[] rm = null)
     {
-        if (jogoVertical)
+        if(rm != null)
+            faseInfo.salas = rm;
+        faseInfo.tempo = time;
+        faseInfo.turnos = turns;
+        //guarda a condiçao das estrelas da fase
+    }
+    public List<int> Salas()
+    {
+        List<int> salass = new List<int>();
+        foreach(int num in faseInfo.salas)
+        {
+            salass.Add(num);
+        }
+        return salass;
+    }
+
+    public void AplicarRotacaoTela(ControlaJogo instJogo)
+    {
+        if (instJogo.jogoVertical)
         {
             Screen.orientation = ScreenOrientation.AutoRotation;
             Screen.autorotateToPortrait = true;
             Screen.autorotateToPortraitUpsideDown = true;
             Screen.autorotateToLandscapeLeft = false;
             Screen.autorotateToLandscapeRight = false;
+
+            //verticalTexto.text = jogoVertical.ToString();
         }
         else
         {
@@ -77,9 +99,21 @@ public class ControlaJogo : MonoBehaviour
 
     public void TrocarRotacao()
     {
-        jogoVertical = !jogoVertical;
-        AplicarRotacaoTela();
-        Debug.Log("Trocou a rotacao: " + jogoVertical);
+        ControlaJogo control = FindObjectOfType<ControlaJogo>();
+        control.jogoVertical = !control.jogoVertical;
+        AplicarRotacaoTela(control);
+        Debug.Log("Trocou a rotacao: " + control.jogoVertical);
+    }
+    public void Pausar()
+    {
+        if(Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+        else
+        {
+            Time.timeScale = 0;
+        }
     }
 }
 
