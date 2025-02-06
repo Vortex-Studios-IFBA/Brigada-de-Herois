@@ -10,6 +10,8 @@ TagManager:
   - Projetor
   - spike
   - PC
+  - TriggerSala
+  - Recharge
   layers:
   - Default
   - TransparentFX
