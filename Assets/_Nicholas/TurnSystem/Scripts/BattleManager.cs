@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
-    #region Variaveis
     public static BattleManager instance;
 
     [Header("Chefão")]
@@ -94,9 +93,7 @@ public class BattleManager : MonoBehaviour
         get { return enemy_pokemonInfo_current; }
         set { enemy_pokemonInfo_current = value; }
     }
-    #endregion
 
-    #region Enums
     public enum Reaction
     {
         Damage, Heal, Revenge, Nothing
@@ -111,11 +108,19 @@ public class BattleManager : MonoBehaviour
     {
         Random, Only
     }
-    #endregion
 
     void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject); // Persistir o objeto entre cenas
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         Application.targetFrameRate = 60;
 
@@ -236,26 +241,32 @@ public class BattleManager : MonoBehaviour
     void Player_PokemonCurrent_Set(int _index)
     {
         player_pokemonCurrent_index = _index;
-
         Player_Pokemon_Current = player_pokemon[_index];
         Player_PokemonInfo_Current = player_pokemonInfo[_index];
 
-        Destroy(go_player_pokemon);
+        if (go_player_pokemon != null)
+        {
+            Destroy(go_player_pokemon);
+        }
+
         go_player_pokemon = Instantiate(Player_Pokemon_Current.go_mesh, player_pokemonSpawnPos, Quaternion.identity);
 
         Txt_PokemonName_Set();
         Txt_PlayerAttack_Set();
-        UpdatePokemonSelectionButtons(); // Atualiza os botões após mudar o Pokémon
+        UpdatePokemonSelectionButtons();
     }
 
     void Enemy_PokemonCurrent_Set(int _index)
     {
         enemy_pokemonCurrent_index = _index;
-
         Enemy_Pokemon_Current = enemy_pokemon[_index];
         Enemy_PokemonInfo_Current = enemy_pokemonInfo[_index];
 
-        Destroy(go_enemy_pokemon);
+        if (go_enemy_pokemon != null)
+        {
+            Destroy(go_enemy_pokemon);
+        }
+
         go_enemy_pokemon = Instantiate(Enemy_Pokemon_Current.go_mesh, enemy_pokemonSpawnPos, Quaternion.identity);
 
         Txt_PokemonName_Set();
@@ -267,7 +278,6 @@ public class BattleManager : MonoBehaviour
         txt_enemyPokemonName.text = Enemy_PokemonInfo_Current.pokemonName;
     }
 
-    #region Ataques do Jogador e do Inimigo
     public void Player_Atk(int _index) // Metodo chamado quando os botoes de ataque sao clicados.
     {
         Debug.Log("Jogador atacou.");
@@ -303,7 +313,6 @@ public class BattleManager : MonoBehaviour
         Enemy_PokemonInfo_Current.attackUseQuantRemaining[_index]--;
         Player_Pokemon_Current.Reaction_Get(Enemy_Pokemon_Current.attack[_index].attackName);
     }
-    #endregion
 
     public IEnumerator Reaction_Routine(Reaction _reaction, string _attackName, float _value) // Acao que vai acontecer.
     {
@@ -459,8 +468,6 @@ public class BattleManager : MonoBehaviour
         txt_battleFeedback.text = "O Chefão lançou um ataque devastador, causando " + damage + " de dano!";
     }
 
-
-    #region Dano
     void Player_TakeDamage(float _damage)
     {
         player_healthCurrent -= _damage;
@@ -519,7 +526,6 @@ public class BattleManager : MonoBehaviour
 
         StartCoroutine(EnemyPokemonHealthBar_Set());
     }
-    #endregion
 
     bool EnemyPokemon_DeadAll_Get() // Retorna true se todos os personagens do inimigo morreram.
     {
@@ -537,7 +543,6 @@ public class BattleManager : MonoBehaviour
         return _deadAll;
     }
 
-    #region Barras de Vida
     IEnumerator PlayerPokemonHealthBar_Set(float _delay = 0f) // Seta o tamanho da barra de vida do personagem.
     {
         yield return new WaitForSeconds(_delay);
@@ -555,7 +560,6 @@ public class BattleManager : MonoBehaviour
 
         rect_enemyPokemonHealthBar.sizeDelta = new Vector2(Enemy_PokemonInfo_Current.healthCurrent / Enemy_PokemonInfo_Current.healthMax * enemy_pokemonHealthBar_sizeIniX, rect_enemyPokemonHealthBar.sizeDelta.y);
     }
-    #endregion
 
     void Result(bool _victory) // Resultado do combate.
     {

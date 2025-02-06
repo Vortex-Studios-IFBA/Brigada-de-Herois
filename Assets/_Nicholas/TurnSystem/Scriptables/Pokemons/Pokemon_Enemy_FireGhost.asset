@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   go_mesh: {fileID: 5652384961284737324, guid: 3b4de3a50cc8a6b449e8d41b36151015, type: 3}
   img: {fileID: 0}
-  pokemonName: Fogo fantasma
+  pokemonName: Fogo Fantasma
   healthMax: 100
   attack:
   - {fileID: 11400000, guid: 8ad9f2bae0146d040bcc6f5d0d94aff3, type: 2}
