@@ -98,27 +98,24 @@ public class playerController : MonoBehaviour
             {
                 navMeshAgent.enabled = false;
 
-                Vector2 movementJoystick = joystick.GetAxis();
-                Vector3 movement = new Vector3(movementJoystick.x, 0, movementJoystick.y);
-
-
                 Vector3 cameraForward = transformCamera.forward;
                 cameraForward.y = 0;
                 cameraForward.Normalize();
+                Vector2 movementJoystick = joystick.GetAxis();
 
                 Vector3 cameraRight = transformCamera.right;
                 cameraRight.y = 0;
                 cameraRight.Normalize();
 
 
-                Vector3 ajusteMovimento = (cameraForward * movement.z + cameraRight * movement.x).normalized;
+                Vector3 ajusteMovimento = (cameraForward * movementJoystick.y + cameraRight * movementJoystick.x).normalized;
 
-                transform.position += ajusteMovimento * Time.deltaTime * vel;
+                navMeshAgent.Move(ajusteMovimento * Time.deltaTime * vel);
 
                 if (ajusteMovimento != Vector3.zero)
                 {
                     Quaternion targetRotation = Quaternion.LookRotation(ajusteMovimento);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 0);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * vel);
                 }
             }
             else

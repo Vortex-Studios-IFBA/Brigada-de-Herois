@@ -20,6 +20,9 @@ public class ControlaJogo : MonoBehaviour
 
     public Text verticalTexto;
 
+    public delegate void CenaCarregadaHandler();
+    public static event CenaCarregadaHandler OnCenaCarregada;
+
     DadosFase faseInfo = new DadosFase();
 
     private void Awake()
@@ -37,7 +40,7 @@ public class ControlaJogo : MonoBehaviour
 
     private void Start()
     {
-        AplicarRotacaoTela();
+        AplicarRotacaoTela(this);
     }
 
     public void EntrarFase(int index)
