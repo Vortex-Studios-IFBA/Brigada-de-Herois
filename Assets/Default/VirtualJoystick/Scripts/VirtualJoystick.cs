@@ -380,8 +380,8 @@ namespace Terresquall {
             // If a joystick is toggled and we are debugging, output to console.
             if(axis.sqrMagnitude > 0) {
                 string output = string.Format("Virtual Joystick ({0}): {1}",name,axis);
-                if(consolePrintAxis)
-                    Debug.Log(output);
+                //if(consolePrintAxis)
+                //    Debug.Log(output);
             }
         }
 

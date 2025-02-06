@@ -21,4 +21,4 @@ MonoBehaviour:
   actionAndReaction:
   - attack: {fileID: 11400000, guid: a1a14334591f9644d857a708d21120be, type: 2}
     reaction: 0
-    value: 10
+    value: 20
