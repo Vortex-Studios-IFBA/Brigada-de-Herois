@@ -186,7 +186,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 492741216}
+      - m_Target: {fileID: 483782356}
         m_TargetAssemblyTypeName: Manual_Control, Assembly-CSharp
         m_MethodName: MudarPagina
         m_Mode: 3
@@ -1264,7 +1264,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 492741216}
+      - m_Target: {fileID: 483782356}
         m_TargetAssemblyTypeName: Manual_Control, Assembly-CSharp
         m_MethodName: FecharAlt
         m_Mode: 1
@@ -1500,9 +1500,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1118978740}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 16, y: 79.652}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 16, y: -89.8}
   m_SizeDelta: {x: 19.6899, y: 144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &436937996
@@ -1616,6 +1616,7 @@ GameObject:
   - component: {fileID: 483782354}
   - component: {fileID: 483782353}
   - component: {fileID: 483782352}
+  - component: {fileID: 483782356}
   m_Layer: 5
   m_Name: ManualPrevencao
   m_TagString: Untagged
@@ -1706,6 +1707,61 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &483782356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483782351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71f302ad4165ac48b1873ec1860d64f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  back: {fileID: 804956266}
+  next: {fileID: 91641320}
+  fechar: {fileID: 1224654756}
+  imagem: {fileID: 528040325}
+  texto: {fileID: 753496385}
+  titulo: {fileID: 1170072440}
+  txts:
+  - "Lidar com fogo n\xE3o \xE9 uma tarefa simples, \xE9 necess\xE1rio proeza com
+    o correto equipamento e exige muito cuidado para garantir a seguran\xE7a e controle
+    da situa\xE7\xE3o."
+  - "Seu trabalho \xE9 ir at\xE9 os pontos de inc\xEAndio e combater o fogo. Para
+    isso, \xE9 muito importante entender as propriedades das subst\xE2ncias nessa
+    equa\xE7\xE3o."
+  - "O inc\xEAndio pode surgir de diferentes tipos de fonte de combust\xE3o, que
+    exigem m\xE9todos especiais para combater e apagar o fogo de forma segura."
+  - "Use das ferramentas \xE0 sua disposi\xE7\xE3o para resfriar ou abafar o fogo,
+    tendo no\xE7\xE3o das subst\xE2ncias contidas em cada uma delas na hora de escolher
+    a correta para o combate."
+  - "Para isso aperte o bot\xE3o superior para alternar a ferramenta ativa antes
+    de entrar em combate com o inc\xEAndio. Quando estiver pronto se aproxime do
+    fogo."
+  - "Suas ferramentas possuem um n\xFAmero limitado de cargas, por\xE9m pode facilmente
+    reabastecer com extintores e mangueiras que se encontram em pontos espec\xEDficos
+    do campus."
+  - "Fique de olho em sua volta, existem a\xE7\xF5es importantes a serem feitas em
+    certos momentos como deligar a energia por meio da intera\xE7\xE3o com as caixas
+    de eletricidade."
+  titulos:
+  - "ATEN\xC7\xC3O"
+  - "ATEN\xC7\xC3O"
+  - "Classes de inc\xEAndio"
+  - Suas ferramentas
+  - Suas ferramentas
+  - Suas ferramentas
+  - "Antes de come\xE7ar"
+  imgs:
+  - {fileID: 21300000, guid: 757bcc081eddeaf4992fbfe77c1f5a70, type: 3}
+  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
+  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
+  - {fileID: 21300000, guid: 168e4e5a38153374ba0e886c0a048d57, type: 3}
+  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
+  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
+  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
 --- !u!1 &490317822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,7 +1907,6 @@ GameObject:
   - component: {fileID: 492741215}
   - component: {fileID: 492741218}
   - component: {fileID: 492741217}
-  - component: {fileID: 492741216}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1885,61 +1940,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 529.2162, y: 590.871}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &492741216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 492741214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d71f302ad4165ac48b1873ec1860d64f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  back: {fileID: 804956266}
-  next: {fileID: 91641320}
-  fechar: {fileID: 1224654756}
-  imagem: {fileID: 528040325}
-  texto: {fileID: 753496385}
-  titulo: {fileID: 1170072440}
-  txts:
-  - "Lidar com fogo n\xE3o \xE9 uma tarefa simples, \xE9 necess\xE1rio proeza com
-    o correto equipamento e exige muito cuidado para garantir a seguran\xE7a e controle
-    da situa\xE7\xE3o."
-  - "Seu trabalho \xE9 ir at\xE9 os pontos de inc\xEAndio e combater o fogo. Para
-    isso, \xE9 muito importante entender as propriedades das subst\xE2ncias nessa
-    equa\xE7\xE3o."
-  - "O inc\xEAndio pode surgir de diferentes tipos de fonte de combust\xE3o, que
-    exigem m\xE9todos especiais para combater e apagar o fogo de forma segura."
-  - "Use das ferramentas \xE0 sua disposi\xE7\xE3o para resfriar ou abafar o fogo,
-    tendo no\xE7\xE3o das subst\xE2ncias contidas em cada uma delas na hora de escolher
-    a correta para o combate."
-  - "Para isso aperte o bot\xE3o superior para alternar a ferramenta ativa antes
-    de entrar em combate com o inc\xEAndio. Quando estiver pronto se aproxime do
-    fogo."
-  - "Suas ferramentas possuem um n\xFAmero limitado de cargas, por\xE9m pode facilmente
-    reabastecer com extintores e mangueiras que se encontram em pontos espec\xEDficos
-    do campus."
-  - "Fique de olho em sua volta, existem a\xE7\xF5es importantes a serem feitas em
-    certos momentos como deligar a energia por meio da intera\xE7\xE3o com as caixas
-    de eletricidade."
-  titulos:
-  - "ATEN\xC7\xC3O"
-  - "ATEN\xC7\xC3O"
-  - "Classes de inc\xEAndio"
-  - Suas ferramentas
-  - Suas ferramentas
-  - Suas ferramentas
-  - "Antes de come\xE7ar"
-  imgs:
-  - {fileID: 21300000, guid: 757bcc081eddeaf4992fbfe77c1f5a70, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 168e4e5a38153374ba0e886c0a048d57, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
 --- !u!114 &492741217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3150,7 +3150,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1192201932}
+      - m_Target: {fileID: 1349728737}
         m_TargetAssemblyTypeName: Manual_Control, Assembly-CSharp
         m_MethodName: MudarPagina
         m_Mode: 3
@@ -3503,7 +3503,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 492741216}
+      - m_Target: {fileID: 483782356}
         m_TargetAssemblyTypeName: Manual_Control, Assembly-CSharp
         m_MethodName: MudarPagina
         m_Mode: 3
@@ -4055,7 +4055,6 @@ GameObject:
   - component: {fileID: 1192201931}
   - component: {fileID: 1192201934}
   - component: {fileID: 1192201933}
-  - component: {fileID: 1192201932}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -4089,69 +4088,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 529.2162, y: 590.871}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1192201932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192201930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d71f302ad4165ac48b1873ec1860d64f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  back: {fileID: 765278794}
-  next: {fileID: 1700717041}
-  fechar: {fileID: 1126502596}
-  imagem: {fileID: 1701591107}
-  texto: {fileID: 748177877}
-  titulo: {fileID: 99200093}
-  txts:
-  - "O inc\xEAndio pode surgir de diferentes tipos de fonte de combust\xE3o, que
-    exigem m\xE9todos especiais para combater e apagar o fogo de forma segura."
-  - "Inc\xEAndios da classe A envolvem materiais s\xF3lidos de f\xE1cil combust\xE3o,
-    como madeira, tecidos e papel."
-  - "Inc\xEAndios da classe B envolvem produtos inflam\xE1veis que queimem somente
-    em sua superf\xEDcie, como \xF3leos, tintas e gasolina."
-  - "Inc\xEAndios da classe C ocorrem em equipamentos el\xE9tricos energizados como
-    motores, transformadores, quadros de distribui\xE7\xE3o e fios."
-  - "Inc\xEAndios da classe D se referem a elementos que se inflamam ao entrar em
-    contato com a umidade do ar ou da pr\xF3pria \xE1gua. Magn\xE9sio, zirc\xF4nio
-    e tit\xE2nio s\xE3o elementos que podem reagir com o hidrog\xEAnio e causar grandes
-    explos\xF5es."
-  - "Por \xFAltimo, inc\xEAndios da classe K englobam \xF3leos de cozinha, gorduras
-    e graxa, esses podem facilmente causar acidentes portanto \xE9 preciso ter aten\xE7\xE3o
-    ao modo de combat\xEA-los."
-  - "Use das ferramentas \xE0 sua disposi\xE7\xE3o para resfriar ou abafar o fogo,
-    tendo no\xE7\xE3o das subst\xE2ncias contidas em cada uma delas na hora de escolher
-    a correta para o combate."
-  - "Suas ferramentas possuem um n\xFAmero limitado de cargas, por\xE9m pode facilmente
-    reabastecer com extintores e mangueiras que se encontram em pontos espec\xEDficos
-    do campus."
-  - "Fique de olho em sua volta, existem a\xE7\xF5es importantes a serem feitas em
-    certos momentos como deligar a energia por meio da intera\xE7\xE3o com as caixas
-    de eletricidade."
-  titulos:
-  - "Classes de inc\xEAndio"
-  - "Classes de inc\xEAndio"
-  - "Classes de inc\xEAndio"
-  - "Classes de inc\xEAndio"
-  - "Classes de inc\xEAndio"
-  - "Classes de inc\xEAndio"
-  - Suas ferramentas
-  - Suas ferramentas
-  - "Antes de come\xE7ar"
-  imgs:
-  - {fileID: 21300000, guid: 757bcc081eddeaf4992fbfe77c1f5a70, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 168e4e5a38153374ba0e886c0a048d57, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
 --- !u!114 &1192201933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4815,6 +4751,7 @@ GameObject:
   - component: {fileID: 1349728735}
   - component: {fileID: 1349728734}
   - component: {fileID: 1349728733}
+  - component: {fileID: 1349728737}
   m_Layer: 5
   m_Name: ManualClasses
   m_TagString: Untagged
@@ -4905,6 +4842,69 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1349728737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349728732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71f302ad4165ac48b1873ec1860d64f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  back: {fileID: 765278794}
+  next: {fileID: 1700717041}
+  fechar: {fileID: 1126502596}
+  imagem: {fileID: 1701591107}
+  texto: {fileID: 748177877}
+  titulo: {fileID: 99200093}
+  txts:
+  - "O inc\xEAndio pode surgir de diferentes tipos de fonte de combust\xE3o, que
+    exigem m\xE9todos especiais para combater e apagar o fogo de forma segura."
+  - "Inc\xEAndios da classe A envolvem materiais s\xF3lidos de f\xE1cil combust\xE3o,
+    como madeira, tecidos e papel."
+  - "Inc\xEAndios da classe B envolvem produtos inflam\xE1veis que queimem somente
+    em sua superf\xEDcie, como \xF3leos, tintas e gasolina."
+  - "Inc\xEAndios da classe C ocorrem em equipamentos el\xE9tricos energizados como
+    motores, transformadores, quadros de distribui\xE7\xE3o e fios."
+  - "Inc\xEAndios da classe D se referem a elementos que se inflamam ao entrar em
+    contato com a umidade do ar ou da pr\xF3pria \xE1gua. Magn\xE9sio, zirc\xF4nio
+    e tit\xE2nio s\xE3o elementos que podem reagir com o hidrog\xEAnio e causar grandes
+    explos\xF5es."
+  - "Por \xFAltimo, inc\xEAndios da classe K englobam \xF3leos de cozinha, gorduras
+    e graxa, esses podem facilmente causar acidentes portanto \xE9 preciso ter aten\xE7\xE3o
+    ao modo de combat\xEA-los."
+  - "Use das ferramentas \xE0 sua disposi\xE7\xE3o para resfriar ou abafar o fogo,
+    tendo no\xE7\xE3o das subst\xE2ncias contidas em cada uma delas na hora de escolher
+    a correta para o combate."
+  - "Suas ferramentas possuem um n\xFAmero limitado de cargas, por\xE9m pode facilmente
+    reabastecer com extintores e mangueiras que se encontram em pontos espec\xEDficos
+    do campus."
+  - "Fique de olho em sua volta, existem a\xE7\xF5es importantes a serem feitas em
+    certos momentos como deligar a energia por meio da intera\xE7\xE3o com as caixas
+    de eletricidade."
+  titulos:
+  - "Classes de inc\xEAndio"
+  - "Classes de inc\xEAndio"
+  - "Classes de inc\xEAndio"
+  - "Classes de inc\xEAndio"
+  - "Classes de inc\xEAndio"
+  - "Classes de inc\xEAndio"
+  - Suas ferramentas
+  - Suas ferramentas
+  - "Antes de come\xE7ar"
+  imgs:
+  - {fileID: 21300000, guid: 757bcc081eddeaf4992fbfe77c1f5a70, type: 3}
+  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
+  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
+  - {fileID: 21300000, guid: 168e4e5a38153374ba0e886c0a048d57, type: 3}
+  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
+  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
+  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
+  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
 --- !u!224 &1388005606 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5128790660541147346, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
@@ -5068,7 +5068,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1192201932}
+      - m_Target: {fileID: 1349728737}
         m_TargetAssemblyTypeName: Manual_Control, Assembly-CSharp
         m_MethodName: MudarPagina
         m_Mode: 3
@@ -6032,7 +6032,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1192201932}
+      - m_Target: {fileID: 1349728737}
         m_TargetAssemblyTypeName: Manual_Control, Assembly-CSharp
         m_MethodName: FecharAlt
         m_Mode: 1
@@ -6138,9 +6138,9 @@ RectTransform:
   - {fileID: 1095612596}
   m_Father: {fileID: 1118978740}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 17.890015, y: -28.770004}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 17.890015, y: 93}
   m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1908686609
@@ -6504,9 +6504,9 @@ RectTransform:
   - {fileID: 289902907}
   m_Father: {fileID: 1118978740}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 17.890015, y: -79}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 17.890015, y: 42.77002}
   m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2047803624

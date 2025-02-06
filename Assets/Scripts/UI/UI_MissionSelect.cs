@@ -15,11 +15,12 @@ public class UI_MissionSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //antes disso as missoes precisam receber os dados do save
         int prevId = -1;
         for(int i = 0; i < transform.childCount; i++)
         {
             int num = 1 + i;
-            TMP_Text levelId = transform.GetChild(i).GetChild(0).GetComponent<TMP_Text>();
+            TMP_Text levelId = transform.GetChild(i).GetChild(1).GetComponent<TMP_Text>();
             levelId.text = num.ToString();
             if(num > 1 && prevId >= 0)
             {

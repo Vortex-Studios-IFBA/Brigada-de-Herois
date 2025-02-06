@@ -13,6 +13,7 @@ public class Missao : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //antes disso receber resultados da fase
         VerificarPontuacao();
     }
     public void IniciarMissao()

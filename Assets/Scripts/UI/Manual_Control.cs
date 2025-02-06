@@ -49,6 +49,8 @@ public class Manual_Control : MonoBehaviour
 
     public void FecharAlt()
     {
+        pagina = 0;
+        MudarPagina(pagina);
         gameObject.SetActive(false);
     }
 }

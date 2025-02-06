@@ -59,6 +59,7 @@ public class ControlaJogo : MonoBehaviour
             faseInfo.salas = rm;
         faseInfo.tempo = time;
         faseInfo.turnos = turns;
+        //guarda a condiçao das estrelas da fase
     }
     public List<int> Salas()
     {

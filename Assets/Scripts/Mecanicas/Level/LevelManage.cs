@@ -51,7 +51,7 @@ public class LevelManage : MonoBehaviour
     }
     public void AtualizarContador()
     {
-        objetivos.text = "Objetivos: "+ objetivosTT.ToString() +"/"+ objetivosFeito.ToString();
+        objetivos.text = "Objetivos: "+ objetivosFeito.ToString() +"/"+ objetivosTT.ToString();
     }
     IEnumerator TerminarMissao()
     {
