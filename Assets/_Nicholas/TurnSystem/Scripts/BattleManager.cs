@@ -114,7 +114,6 @@ public class BattleManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // Persistir o objeto entre cenas
         }
         else
         {
