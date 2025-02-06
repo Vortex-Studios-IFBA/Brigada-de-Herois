@@ -14,7 +14,7 @@ public class ControlaJogo : MonoBehaviour
 {
     public static ControlaJogo Instance { get; private set; }
 
-    private bool pausado = false;
+    //private bool pausado = false;
     public int missao;
     public bool jogoVertical;
 
@@ -83,6 +83,14 @@ public class ControlaJogo : MonoBehaviour
             salass.Add(num);
         }
         return salass;
+    }
+    public float TempoMax()
+    {
+        return faseInfo.tempo;
+    }
+    public int TurnosMax()
+    {
+        return faseInfo.turnos;
     }
 
     public void AplicarRotacaoTela(ControlaJogo instJogo)

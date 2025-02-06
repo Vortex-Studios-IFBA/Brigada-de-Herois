@@ -146,7 +146,7 @@ public class playerController : MonoBehaviour
                 }
             }
 
-            movimentacaoText.text = movimentacaoLivre.ToString();
+            //movimentacaoText.text = movimentacaoLivre.ToString();
         }
 
         if (jogoConfig.jogoVertical)
@@ -199,7 +199,7 @@ public class playerController : MonoBehaviour
                 }
             }
 
-            movimentacaoText.text = movimentacaoLivre.ToString();
+            //movimentacaoText.text = movimentacaoLivre.ToString();
         }
     }
 

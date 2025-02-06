@@ -10,6 +10,7 @@ public class LevelManage : MonoBehaviour
     //[SerializeField] List<GameObject> salasIncendio;
     public float tempo = 0;
     public int objetivosTT = 0, objetivosFeito = 0, turnos;
+    [SerializeField] GameObject[] estrelas;
 
     bool concluiu;
     // Start is called before the first frame update
@@ -29,6 +30,7 @@ public class LevelManage : MonoBehaviour
     {
         if(!concluiu)
         {
+            //e se não estiver em batalha, ou confere logo após o ultimo inimigo morrer
             if(objetivosFeito == objetivosTT)
             {
                 concluiu = true;
@@ -55,9 +57,21 @@ public class LevelManage : MonoBehaviour
     }
     IEnumerator TerminarMissao()
     {
-        FindObjectOfType<ControlaJogo>().AtualizarInfo(tempo,turnos);
+        
         //aqui evento fim de missao
         
+        int score = 1;
+            if(turnos <= FindObjectOfType<ControlaJogo>().TurnosMax())
+                score += 1;
+            if(tempo <= FindObjectOfType<ControlaJogo>().TempoMax())
+                score += 1;
+            for(int i = 0; i < score; i++)
+            {
+                estrelas[i].SetActive(true);
+                yield return new WaitForSeconds(1f);
+            }  
+        
+        FindObjectOfType<ControlaJogo>().AtualizarInfo(tempo,turnos);
         //aqui salvar
         
         yield return new WaitForSeconds(5f);
