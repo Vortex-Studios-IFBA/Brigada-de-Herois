@@ -5,21 +5,15 @@ using UnityEngine;
 public class Ponto_Incendio : MonoBehaviour
 {
     int nivelPerigo = 1;
-    [SerializeField] int salaNum;
+    public int salaNum;
     bool eliminado = false;
     [SerializeField] Inimigo inim;
     [SerializeField] GameObject indicador;
-    ControlaJogo missao;
 
     // Start is called before the first frame update
     void Awake()
     {
-        missao = FindObjectOfType<ControlaJogo>();
-        if(missao.Salas().Contains(salaNum))
-        {
-            //PEGAR INT DA CENA DO INIMIGO
-            gameObject.SetActive(true);
-        }
+        
     }
 
     // Update is called once per frame
@@ -30,11 +24,18 @@ public class Ponto_Incendio : MonoBehaviour
             //desativar indicador de incendio
             eliminado = true;
             indicador.SetActive(false);
+            FindObjectOfType<LevelManage>().objetivosFeito += 1;
         }
         else if(!vitoria)
         {
             nivelPerigo += 1;
             //aumenta a dificuldade do inimigo no objetivo
         }
+    }
+    public void Spawnar()
+    {
+        gameObject.SetActive(true);
+        //inim.classe = 
+        //PEGAR INT DA CENA EM controla jogo Inimigos()
     }
 }

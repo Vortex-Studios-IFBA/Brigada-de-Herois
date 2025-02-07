@@ -62,12 +62,17 @@ public class playerController : MonoBehaviour
                 {
                     if (touch.phase == TouchPhase.Began)
                     {
+                        movendoCamera = true;
                         ultimoToqueTela = touch.position;
                     }
-                    else if (touch.phase == TouchPhase.Moved)
+                    
+                    if (touch.phase == TouchPhase.Ended)
                     {
-                        movendoCamera = true;
+                        movendoCamera = false;
                     }
+                }
+                else
+                {
                     if (touch.phase == TouchPhase.Ended)
                     {
                         movendoCamera = false;

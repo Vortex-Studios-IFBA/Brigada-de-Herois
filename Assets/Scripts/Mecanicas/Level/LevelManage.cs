@@ -8,6 +8,7 @@ public class LevelManage : MonoBehaviour
 {
     [SerializeField] TMP_Text timer, objetivos;
     //[SerializeField] List<GameObject> salasIncendio;
+    private int nivel;
     public float tempo = 0;
     public int objetivosTT = 0, objetivosFeito = 0, turnos;
     [SerializeField] GameObject[] estrelas;
@@ -16,9 +17,16 @@ public class LevelManage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        nivel = FindObjectOfType<ControlaJogo>().saveLevel;
         foreach(Ponto_Incendio ptInc in FindObjectsOfType<Ponto_Incendio>())
         {
-            objetivosTT += 1;
+            if(FindObjectOfType<ControlaJogo>().Salas().Contains(ptInc.salaNum))
+            {
+                print("okfoi");
+                ptInc.Spawnar();
+                objetivosTT += 1; 
+            }
+            
         }
         AtualizarContador();
         
@@ -71,8 +79,19 @@ public class LevelManage : MonoBehaviour
                 yield return new WaitForSeconds(1f);
             }  
         
-        FindObjectOfType<ControlaJogo>().AtualizarInfo(tempo,turnos);
+        FindObjectOfType<ControlaJogo>().AtualizarInfo(nivel,tempo,turnos);
         //aqui salvar
+
+        SaveData dados = FindObjectOfType<ControlaJogo>().save.CarregarJogo()??new SaveData(nivel);
+        
+        dados.fases[nivel].completou = true;
+        dados.fases[nivel].tempo = tempo;
+        dados.fases[nivel].turnos = turnos;
+        
+        FindObjectOfType<ControlaJogo>().save.SalvarJogo(dados);
+        
+        //no save tem que pegar FindObjectOfType<ControlaJogo>().TempoMax() e TurnosMax() 
+        //                      salvando dentro das variaveis do respectivo nivel
         
         yield return new WaitForSeconds(5f);
         FindObjectOfType<ControlaJogo>().CarregarCena(1);
