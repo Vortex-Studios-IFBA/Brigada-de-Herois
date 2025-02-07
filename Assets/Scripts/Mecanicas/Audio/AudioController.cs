@@ -11,6 +11,7 @@ public class AudioController : MonoBehaviour
     void Start()
     {
         jogo = GetComponent<ControlaJogo>();
+        TocarMusica(0);
     }
 
     void Update()
@@ -33,6 +34,7 @@ public class AudioController : MonoBehaviour
         if (jogo.efeitosSource != null && efeitosSonoros.Length > index)
         {
             jogo.efeitosSource.PlayOneShot(efeitosSonoros[index]);
+            Debug.Log("clicou");
         }
     }
 
