@@ -6,7 +6,6 @@ public class Ponto_Incendio : MonoBehaviour
 {
     int nivelPerigo = 1;
     public int salaNum;
-    bool eliminado = false;
     [SerializeField] Inimigo inim;
     [SerializeField] GameObject indicador;
 
@@ -19,10 +18,10 @@ public class Ponto_Incendio : MonoBehaviour
     // Update is called once per frame
     public void AtualizarObjetivo(bool vitoria)
     {
+        FindObjectOfType<LevelManage>().SairBatalha(inim.classe);
         if(vitoria)
         {
             //desativar indicador de incendio
-            eliminado = true;
             indicador.SetActive(false);
             FindObjectOfType<LevelManage>().objetivosFeito += 1;
         }
@@ -32,10 +31,10 @@ public class Ponto_Incendio : MonoBehaviour
             //aumenta a dificuldade do inimigo no objetivo
         }
     }
-    public void Spawnar()
+    public void Spawnar(int claasse)
     {
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        //inim.classe = 
-        //PEGAR INT DA CENA EM controla jogo Inimigos()
+        inim.classe = claasse;
+        print("inimigoclasse" + inim.classe.ToString());
     }
 }

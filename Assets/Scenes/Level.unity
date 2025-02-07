@@ -2684,7 +2684,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1600100761552120594, guid: cddf779c777e61743a858662680389a5, type: 3}
       propertyPath: m_Name
-      value: Sala
+      value: Sala44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600100761552120594, guid: cddf779c777e61743a858662680389a5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5267392429537847867, guid: cddf779c777e61743a858662680389a5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4237,7 +4241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &133268644
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5641,6 +5645,8 @@ MonoBehaviour:
   - {fileID: 1219165433}
   - {fileID: 1605848476}
   - {fileID: 2034000620}
+  ui_fase: {fileID: 172475627}
+  telaResultado: {fileID: 133268643}
 --- !u!114 &172475630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14492,7 +14498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &474434891
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25854,7 +25860,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799548600}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -37586,6 +37592,8 @@ MonoBehaviour:
   - {fileID: 501081325}
   - {fileID: 456297902}
   - {fileID: 1528900478}
+  ui_fase: {fileID: 1142530683}
+  telaResultado: {fileID: 474434890}
 --- !u!1001 &1144455543
 PrefabInstance:
   m_ObjectHideFlags: 0

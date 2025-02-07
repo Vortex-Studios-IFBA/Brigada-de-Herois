@@ -24,6 +24,6 @@ public class Inimigo : MonoBehaviour
     }
     void OnCollisionEnter(Collision col)
     {
-        FindObjectOfType<ControlaJogo>().CarregarCena(4);
+        FindObjectOfType<LevelManage>().EntrarBatalha(classe);
     }
 }

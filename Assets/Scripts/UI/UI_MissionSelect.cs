@@ -70,6 +70,7 @@ public class UI_MissionSelect : MonoBehaviour
     {
         if(missao == missao_selecionada && missao_selecionada != null)
         {
+            print("nivel " + missao.transform.GetSiblingIndex().ToString());
             FindObjectOfType<ControlaJogo>().AtualizarInfo(missao.transform.GetSiblingIndex(),0,0,
                 missao.GetComponent<Missao>().rooms,missao.GetComponent<Missao>().inimigos);
             FindObjectOfType<ControlaJogo>().EntrarFase(missao.transform.GetSiblingIndex());

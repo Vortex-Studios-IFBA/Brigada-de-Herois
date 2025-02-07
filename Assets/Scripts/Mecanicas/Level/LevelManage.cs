@@ -12,6 +12,7 @@ public class LevelManage : MonoBehaviour
     public float tempo = 0;
     public int objetivosTT = 0, objetivosFeito = 0, turnos;
     [SerializeField] GameObject[] estrelas;
+    [SerializeField] GameObject ui_fase, telaResultado;
 
     bool concluiu;
     // Start is called before the first frame update
@@ -20,16 +21,20 @@ public class LevelManage : MonoBehaviour
         nivel = FindObjectOfType<ControlaJogo>().saveLevel;
         foreach(Ponto_Incendio ptInc in FindObjectsOfType<Ponto_Incendio>())
         {
-            if(FindObjectOfType<ControlaJogo>().Salas().Contains(ptInc.salaNum))
+            int salaIndex = FindObjectOfType<ControlaJogo>().Salas().FindIndex(sala => sala == ptInc.salaNum);
+
+            if (salaIndex != -1) 
             {
-                print("okfoi");
-                ptInc.Spawnar();
+                print("okfoi" + ptInc.salaNum.ToString());
+                ptInc.Spawnar(FindObjectOfType<ControlaJogo>().Inimigos()[salaIndex]);
                 objetivosTT += 1; 
             }
             
         }
         AtualizarContador();
         
+        telaResultado = GameObject.Find("Resultados");
+        telaResultado.SetActive(false);
         SceneManager.LoadSceneAsync("Manual",LoadSceneMode.Additive);
     }
 
@@ -63,14 +68,20 @@ public class LevelManage : MonoBehaviour
     {
         objetivos.text = "Objetivos: "+ objetivosFeito.ToString() +"/"+ objetivosTT.ToString();
     }
-    public void EntrarBatalha()
+    public void EntrarBatalha(int classse)
     {
-        
+        ui_fase.SetActive(false);
+        FindObjectOfType<ControlaJogo>().CarregarCena(classse);
+    }
+    public void SairBatalha(int classse)
+    {
+        ui_fase.SetActive(true);
+        SceneManager.UnloadSceneAsync(classse);
     }
     IEnumerator TerminarMissao()
     {
-        
         //aqui evento fim de missao
+        telaResultado.SetActive(true);
         
         int score = 1;
             if(turnos <= FindObjectOfType<ControlaJogo>().TurnosMax())
@@ -86,7 +97,7 @@ public class LevelManage : MonoBehaviour
         FindObjectOfType<ControlaJogo>().AtualizarInfo(nivel,tempo,turnos);
         //aqui salvar
 
-        SaveData dados = FindObjectOfType<ControlaJogo>().save.CarregarJogo()??new SaveData(nivel);
+        SaveData dados = FindObjectOfType<ControlaJogo>().save.CarregarJogo()??new SaveData(10);
         
         dados.fases[nivel].completou = true;
         dados.fases[nivel].tempo = tempo;

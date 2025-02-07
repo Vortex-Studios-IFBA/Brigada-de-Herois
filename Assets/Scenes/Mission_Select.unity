@@ -714,6 +714,7 @@ MonoBehaviour:
   tempoMax: 360
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &99284844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1708,6 +1709,7 @@ MonoBehaviour:
   tempoMax: 180
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &258237789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2218,6 +2220,7 @@ MonoBehaviour:
   tempoMax: 360
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &293064424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2517,6 +2520,7 @@ MonoBehaviour:
   tempoMax: 240
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &312232146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6438,6 +6442,7 @@ MonoBehaviour:
   tempoMax: 300
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &933513305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8650,6 +8655,7 @@ MonoBehaviour:
   tempoMax: 180
   tempoFinal: 0
   rooms: 2c000000
+  inimigos: 
 --- !u!114 &1323688477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9769,6 +9775,7 @@ MonoBehaviour:
   tempoMax: 360
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &1437767181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10133,6 +10140,7 @@ MonoBehaviour:
   tempoMax: 300
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &1482362152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10926,6 +10934,7 @@ MonoBehaviour:
   tempoMax: 360
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &1614462415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12797,7 +12806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: tempoMax
-      value: 180
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: objetivos
@@ -12805,7 +12814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: turnosMax
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: rooms.Array.size
@@ -12997,6 +13006,7 @@ MonoBehaviour:
   tempoMax: 180
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &1921071478
 MonoBehaviour:
   m_ObjectHideFlags: 0

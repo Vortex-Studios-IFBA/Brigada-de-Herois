@@ -22,7 +22,10 @@ public class Missao : MonoBehaviour
     {
         int score = 0;
         if(concluida == true)
+        {
+            print("fase foi concluida");
             score += 1;
+        }
         if(score > 0)
         {
             if(totalTurnos <= turnosMax)
