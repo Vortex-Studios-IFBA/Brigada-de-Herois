@@ -48,4 +48,10 @@ public class Ferramenta : MonoBehaviour
             break;
         }
     }
+    public void Recarregar()
+    {
+        //aumentar cargas de ataques de acordo com o tipo de ferramenta
+        GameObject rch = FindObjectOfType<playerController>().rechargeObj;
+        Destroy(rch);
+    }
 }

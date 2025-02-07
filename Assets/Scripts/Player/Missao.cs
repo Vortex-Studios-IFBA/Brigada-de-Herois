@@ -8,7 +8,7 @@ public class Missao : MonoBehaviour
     public bool concluida;
     public int turnosMax, totalTurnos, objetivos, eliminados;
     public float tempoMax, tempoFinal;
-    public int[] rooms;
+    public int[] rooms, inimigos;
 
     // Start is called before the first frame update
     void Start()

@@ -35,20 +35,11 @@ public class Recharge_Point : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void MostrarPainel(bool mode)
     {
         recharge_infoView.SetActive(mode);
     }
-    public void Recarregar()
-    {
-        //aumentar cargas de ataques de acordo com o tipo de ferramenta
-        GameObject rch = FindObjectOfType<playerController>().rechargeObj;
-        Destroy(rch);
-    }
+    
     void OnTriggerEnter(Collider col)
     {
         if(col.gameObject.CompareTag("Player"))

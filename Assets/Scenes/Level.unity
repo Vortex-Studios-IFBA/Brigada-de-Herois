@@ -7951,8 +7951,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3425749118980661501, guid: c63252694e9ac504a821bf8872faa50e, type: 3}
-        m_TargetAssemblyTypeName: Recharge_Point, Assembly-CSharp
+      - m_Target: {fileID: 799548608}
+        m_TargetAssemblyTypeName: Ferramenta, Assembly-CSharp
         m_MethodName: Recarregar
         m_Mode: 1
         m_Arguments:
@@ -12691,8 +12691,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3425749118980661501, guid: c63252694e9ac504a821bf8872faa50e, type: 3}
-        m_TargetAssemblyTypeName: Recharge_Point, Assembly-CSharp
+      - m_Target: {fileID: 799548608}
+        m_TargetAssemblyTypeName: Ferramenta, Assembly-CSharp
         m_MethodName: Recarregar
         m_Mode: 1
         m_Arguments:
