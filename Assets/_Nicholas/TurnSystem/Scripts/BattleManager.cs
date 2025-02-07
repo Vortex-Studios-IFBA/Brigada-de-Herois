@@ -109,7 +109,7 @@ public class BattleManager : MonoBehaviour
         Random, Only
     }
 
-    Ponto_Incendio pontoIncend;
+    public Ponto_Incendio pontoIncend;
 
     void Awake()
     {

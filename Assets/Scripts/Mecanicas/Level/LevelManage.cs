@@ -70,8 +70,10 @@ public class LevelManage : MonoBehaviour
     }
     public void EntrarBatalha(int classse)
     {
+        //tem que ver isso
+        FindObjectOfType<ControlaJogo>().CarregarCena(4);
         ui_fase.SetActive(false);
-        FindObjectOfType<ControlaJogo>().CarregarCena(classse);
+        
     }
     public void SairBatalha(int classse)
     {
