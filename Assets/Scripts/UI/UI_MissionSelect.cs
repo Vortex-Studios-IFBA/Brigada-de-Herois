@@ -26,14 +26,18 @@ public class UI_MissionSelect : MonoBehaviour
 
             SaveData dados = FindObjectOfType<ControlaJogo>().save.CarregarJogo();
             
-            transform.GetChild(i).GetComponent<Missao>().concluida = dados.fases[i].completou;
-
-            if(FindObjectOfType<ControlaJogo>().FaseConcluida(i))
+            if(dados!=null)
             {
-                
-                transform.GetChild(i).GetComponent<Missao>().totalTurnos = dados.fases[i].turnos;
-                transform.GetChild(i).GetComponent<Missao>().tempoFinal = dados.fases[i].tempo;
+                transform.GetChild(i).GetComponent<Missao>().concluida = dados.fases[i].completou;
+
+                if(FindObjectOfType<ControlaJogo>().FaseConcluida(i))
+                {
+                    
+                    transform.GetChild(i).GetComponent<Missao>().totalTurnos = dados.fases[i].turnos;
+                    transform.GetChild(i).GetComponent<Missao>().tempoFinal = dados.fases[i].tempo;
+                }
             }
+            
 
             if(num > 1 && prevId >= 0)
             {

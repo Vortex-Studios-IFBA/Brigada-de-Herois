@@ -63,6 +63,10 @@ public class LevelManage : MonoBehaviour
     {
         objetivos.text = "Objetivos: "+ objetivosFeito.ToString() +"/"+ objetivosTT.ToString();
     }
+    public void EntrarBatalha()
+    {
+        
+    }
     IEnumerator TerminarMissao()
     {
         
