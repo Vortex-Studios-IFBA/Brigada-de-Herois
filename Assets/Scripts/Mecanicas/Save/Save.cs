@@ -2,7 +2,7 @@ using System.Collections;
 using System.IO;
 using UnityEngine;
 
-public class SaveManager : MonoBehaviour
+public class Save : MonoBehaviour
 {
     private string saveFilePath; 
     private const string SaveFileName = "saveData.json";
@@ -45,7 +45,7 @@ public class SaveManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Save não encontrado");
+            Debug.LogWarning("Save nï¿½o encontrado");
         }
         return null; 
     }

@@ -28,7 +28,8 @@ public class ControlaJogo : MonoBehaviour
     public float volumeMusica = 1.0f;
     public float volumeEfeitos = 1.0f;
 
-
+    public int saveLevel = 0;
+    public Save save;
     DadosFase faseInfo = new DadosFase();
 
     private void Awake()
@@ -46,6 +47,7 @@ public class ControlaJogo : MonoBehaviour
 
     private void Start()
     {
+        save = GetComponent<Save>();
         AplicarRotacaoTela(this);
     }
 
@@ -54,6 +56,15 @@ public class ControlaJogo : MonoBehaviour
         missao = index;
         SceneManager.LoadScene(3);
         SceneManager.sceneLoaded += CenaCarregada;
+    }
+    public bool FaseConcluida(int faseId)
+    {
+        SaveData dados = save.CarregarJogo();
+        if(dados!= null && faseId < dados.fases.Length)
+        {
+            return dados.fases[faseId].completou;
+        }
+        return false;
     }
     public void CarregarCena(int cenaID)
     {
@@ -67,8 +78,9 @@ public class ControlaJogo : MonoBehaviour
         OnCenaCarregada?.Invoke();
     }
 
-    public void AtualizarInfo(float time, int turns, int[] rm = null, int[] enmy = null)
+    public void AtualizarInfo(int level,float time, int turns, int[] rm = null, int[] enmy = null)
     {
+        saveLevel = level;
         if(rm != null)
             faseInfo.salas = rm;
         if(enmy != null)
