@@ -8,16 +8,12 @@ public class Missao : MonoBehaviour
     public bool concluida;
     public int turnosMax, totalTurnos, objetivos, eliminados;
     public float tempoMax, tempoFinal;
+    public int[] rooms;
 
-    public Missao(bool done, int turns, float endTime)
-    {
-        this.concluida = done;
-        this.totalTurnos = turns;
-        this.tempoFinal = endTime;
-    }
     // Start is called before the first frame update
     void Start()
     {
+        //antes disso receber resultados da fase
         VerificarPontuacao();
     }
     public void IniciarMissao()

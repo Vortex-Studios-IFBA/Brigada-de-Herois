@@ -11,6 +11,7 @@ TagManager:
   - spike
   - PC
   - TriggerSala
+  - Recharge
   layers:
   - Default
   - TransparentFX

@@ -2507,6 +2507,8 @@ MonoBehaviour:
   movimentacaoText: {fileID: 1483595727384610488}
   transformCamera: {fileID: 6833522625758643613}
   sensibilidadeCamera: 100
+  rechargeBt: {fileID: 0}
+  rechargeObj: {fileID: 0}
 --- !u!1 &3637851701104984579
 GameObject:
   m_ObjectHideFlags: 0

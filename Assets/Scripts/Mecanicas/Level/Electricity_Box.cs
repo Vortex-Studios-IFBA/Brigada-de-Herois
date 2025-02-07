@@ -1,21 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class Disjuntor 
-{
-    string nome;
-    bool ligado = false;
-
-    public void Ativaçao()
-    {
-        ligado = !ligado;
-    }
-}
 public class Electricity_Box : MonoBehaviour
 {
     GameObject electricity_infoView;
-    Disjuntor[] disjuntores;
+    [SerializeField] TMP_Text estado;
+    public bool ligado;
     // Start is called before the first frame update
     void Awake()
     {
@@ -38,6 +30,16 @@ public class Electricity_Box : MonoBehaviour
         {
             MostrarPainel(true);
         }
+    }
+    public void Ativaçao()
+    {
+        ligado = !ligado;
+        if(ligado)
+        {
+            estado.text = "Desligar";
+        }
+        else
+            estado.text = "Ligar";
     }
     void OnTriggerExit(Collider col)
     {
