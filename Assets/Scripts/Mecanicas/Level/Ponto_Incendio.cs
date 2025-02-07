@@ -34,7 +34,7 @@ public class Ponto_Incendio : MonoBehaviour
     }
     public void Spawnar()
     {
-        gameObject.SetActive(true);
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
         //inim.classe = 
         //PEGAR INT DA CENA EM controla jogo Inimigos()
     }
