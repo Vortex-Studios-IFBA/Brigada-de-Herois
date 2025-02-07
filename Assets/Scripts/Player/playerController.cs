@@ -39,6 +39,9 @@ public class playerController : MonoBehaviour
 
         navMeshAgent.enabled = false;
         movimentacaoLivre = false;
+
+        rechargeBt = GameObject.Find("Recharge");
+        rechargeBt.SetActive(false);
     }
 
     void Update()
@@ -220,7 +223,14 @@ public class playerController : MonoBehaviour
         if(other.CompareTag("Recharge"))
         {
             rechargeBt.SetActive(true);
-            rechargeObj = other.gameObject;
+            rechargeObj = other.transform.parent.gameObject;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Recharge"))
+        {
+            rechargeBt.SetActive(false);
         }
     }
 }
