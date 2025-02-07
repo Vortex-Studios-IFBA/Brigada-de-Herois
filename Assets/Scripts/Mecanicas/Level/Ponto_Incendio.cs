@@ -5,32 +5,36 @@ using UnityEngine;
 public class Ponto_Incendio : MonoBehaviour
 {
     int nivelPerigo = 1;
-    bool eliminado = false;
-    //TMPro contador de objetivos
+    public int salaNum;
+    [SerializeField] Inimigo inim;
+    [SerializeField] GameObject indicador;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void AtualizarObjetivo(bool vitoria)
     {
+        FindObjectOfType<LevelManage>().SairBatalha(inim.classe);
         if(vitoria)
         {
             //desativar indicador de incendio
-            transform.GetChild(0).gameObject.SetActive(false);
-            eliminado = true;
+            indicador.SetActive(false);
+            FindObjectOfType<LevelManage>().objetivosFeito += 1;
         }
         else if(!vitoria)
         {
             nivelPerigo += 1;
             //aumenta a dificuldade do inimigo no objetivo
         }
+    }
+    public void Spawnar(int claasse)
+    {
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        inim.classe = claasse;
+        print("inimigoclasse" + inim.classe.ToString());
     }
 }

@@ -1,4 +1,4 @@
-using OpenCover.Framework.Model;
+//using OpenCover.Framework.Model;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,10 +6,14 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
-    #region Variaveis
     public static BattleManager instance;
 
-    [Header("Botões de Seleção de Pokémon")]
+    [Header("Chefï¿½o")]
+    [SerializeField] bool isBossFight = false; // Indica se o inimigo atual ï¿½ um chefï¿½o.
+    [SerializeField] float bossEnergy = 0; // Energia acumulada do chefï¿½o.
+    [SerializeField] float bossEnergyThreshold = 100; // Limite para ativar o ataque especial do chefï¿½o.
+
+    [Header("Botï¿½es de Seleï¿½ï¿½o de Pokï¿½mon")]
     [SerializeField] UnityEngine.UI.Button[] pokemonSelectionButtons;
 
     [SerializeField] Pokemon[] player_pokemon; // Ferramentas do jogador
@@ -89,9 +93,7 @@ public class BattleManager : MonoBehaviour
         get { return enemy_pokemonInfo_current; }
         set { enemy_pokemonInfo_current = value; }
     }
-    #endregion
 
-    #region Enums
     public enum Reaction
     {
         Damage, Heal, Revenge, Nothing
@@ -106,11 +108,20 @@ public class BattleManager : MonoBehaviour
     {
         Random, Only
     }
-    #endregion
+
+    public Ponto_Incendio pontoIncend;
 
     void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         Application.targetFrameRate = 60;
 
@@ -157,17 +168,17 @@ public class BattleManager : MonoBehaviour
         var currentPokemon = player_pokemon[player_pokemonCurrent_index];
         int attacksCount = currentPokemon.attack.Length;
 
-        // Percorrer todos os TextMeshProUGUI para configurar os botões de ataque.
+        // Percorrer todos os TextMeshProUGUI para configurar os botï¿½es de ataque.
         for (int i = 0; i < txt_playerAttack.Length; i++)
         {
             if (i < attacksCount)
             {
-                // Exibir o botão de ataque e configurar o texto com a quantidade restante.
+                // Exibir o botï¿½o de ataque e configurar o texto com a quantidade restante.
                 txt_playerAttack[i].gameObject.SetActive(true);
                 int remainingUses = Player_PokemonInfo_Current.attackUseQuantRemaining[i];
                 txt_playerAttack[i].text = $"{currentPokemon.attack[i].attackName} ({remainingUses})";
 
-                // Desativar o botão se não houver usos restantes.
+                // Desativar o botï¿½o se nï¿½o houver usos restantes.
                 var button = txt_playerAttack[i].GetComponentInParent<UnityEngine.UI.Button>();
                 if (button != null)
                 {
@@ -176,10 +187,10 @@ public class BattleManager : MonoBehaviour
             }
             else
             {
-                // Ocultar os botões de ataque para ataques inexistentes.
+                // Ocultar os botï¿½es de ataque para ataques inexistentes.
                 txt_playerAttack[i].gameObject.SetActive(false);
 
-                // Desativar os botões de ataque extras.
+                // Desativar os botï¿½es de ataque extras.
                 var button = txt_playerAttack[i].GetComponentInParent<UnityEngine.UI.Button>();
                 if (button != null)
                 {
@@ -188,7 +199,7 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        // Caso nenhum ataque esteja disponível, desativar todos os botões.
+        // Caso nenhum ataque esteja disponï¿½vel, desativar todos os botï¿½es.
         if (attacksCount == 0)
         {
             foreach (var txt in txt_playerAttack)
@@ -211,7 +222,7 @@ public class BattleManager : MonoBehaviour
         if (PlayerTurn && _value != player_pokemonCurrent_index)
         {
             Player_PokemonCurrent_Set(_value);
-            UpdatePokemonSelectionButtons(); // Atualiza os botões
+            UpdatePokemonSelectionButtons(); // Atualiza os botï¿½es
             StartCoroutine(Turn_Routine());
         }
     }
@@ -222,7 +233,7 @@ public class BattleManager : MonoBehaviour
         {
             if (pokemonSelectionButtons[i] != null)
             {
-                // Desabilitar o botão do Pokémon atual.
+                // Desabilitar o botï¿½o do Pokï¿½mon atual.
                 pokemonSelectionButtons[i].interactable = (i != player_pokemonCurrent_index);
             }
         }
@@ -231,26 +242,32 @@ public class BattleManager : MonoBehaviour
     void Player_PokemonCurrent_Set(int _index)
     {
         player_pokemonCurrent_index = _index;
-
         Player_Pokemon_Current = player_pokemon[_index];
         Player_PokemonInfo_Current = player_pokemonInfo[_index];
 
-        Destroy(go_player_pokemon);
+        if (go_player_pokemon != null)
+        {
+            Destroy(go_player_pokemon);
+        }
+
         go_player_pokemon = Instantiate(Player_Pokemon_Current.go_mesh, player_pokemonSpawnPos, Quaternion.identity);
 
         Txt_PokemonName_Set();
         Txt_PlayerAttack_Set();
-        UpdatePokemonSelectionButtons(); // Atualiza os botões após mudar o Pokémon
+        UpdatePokemonSelectionButtons();
     }
 
     void Enemy_PokemonCurrent_Set(int _index)
     {
         enemy_pokemonCurrent_index = _index;
-
         Enemy_Pokemon_Current = enemy_pokemon[_index];
         Enemy_PokemonInfo_Current = enemy_pokemonInfo[_index];
 
-        Destroy(go_enemy_pokemon);
+        if (go_enemy_pokemon != null)
+        {
+            Destroy(go_enemy_pokemon);
+        }
+
         go_enemy_pokemon = Instantiate(Enemy_Pokemon_Current.go_mesh, enemy_pokemonSpawnPos, Quaternion.identity);
 
         Txt_PokemonName_Set();
@@ -262,7 +279,6 @@ public class BattleManager : MonoBehaviour
         txt_enemyPokemonName.text = Enemy_PokemonInfo_Current.pokemonName;
     }
 
-    #region Ataques do Jogador e do Inimigo
     public void Player_Atk(int _index) // Metodo chamado quando os botoes de ataque sao clicados.
     {
         Debug.Log("Jogador atacou.");
@@ -282,13 +298,13 @@ public class BattleManager : MonoBehaviour
                 }
                 else
                 {
-                    txt_battleFeedback.text = "Esse ataque não pode ser utilizado.";
+                    txt_battleFeedback.text = "Esse ataque nï¿½o pode ser utilizado.";
                 }
             }
             else
             {
-                Debug.LogWarning("Ataque inválido selecionado. Índice fora dos limites.");
-                txt_battleFeedback.text = "Esse ataque não está disponível.";
+                Debug.LogWarning("Ataque invï¿½lido selecionado. ï¿½ndice fora dos limites.");
+                txt_battleFeedback.text = "Esse ataque nï¿½o estï¿½ disponï¿½vel.";
             }
         }
     }
@@ -298,7 +314,6 @@ public class BattleManager : MonoBehaviour
         Enemy_PokemonInfo_Current.attackUseQuantRemaining[_index]--;
         Player_Pokemon_Current.Reaction_Get(Enemy_Pokemon_Current.attack[_index].attackName);
     }
-    #endregion
 
     public IEnumerator Reaction_Routine(Reaction _reaction, string _attackName, float _value) // Acao que vai acontecer.
     {
@@ -322,7 +337,7 @@ public class BattleManager : MonoBehaviour
                 if (PlayerTurn) { Player_TakeDamage(_value); } else EnemyPokemon_TakeDamage(_value);
                 break;
             case Reaction.Nothing:
-                txt_battleFeedback.text = "O ataque " + _attackName.ToUpper() + " de " + _pokemonInfoAttacking.pokemonName.ToUpper() + " não foi efetivo";
+                txt_battleFeedback.text = "O ataque " + _attackName.ToUpper() + " de " + _pokemonInfoAttacking.pokemonName.ToUpper() + " nï¿½o foi efetivo";
                 break;
         }
 
@@ -331,7 +346,7 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator Turn_Routine()
     {
-        Debug.Log("Inicializando o próximo turno.");
+        Debug.Log("Inicializando o prï¿½ximo turno.");
         yield return new WaitForSeconds(turnDelay);
 
         PlayerTurn = !PlayerTurn;
@@ -350,53 +365,110 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    void Enemy_Turn() // O botao chama este metodo caso o ataque nao seja automatico.
+    void Enemy_Turn() // O botï¿½o chama este mï¿½todo caso o ataque nï¿½o seja automï¿½tico.
     {
-        if (!PlayerTurn)
+        if (isBossFight)
         {
-            bool _attackValid = false; // Var para verificar se o inimigo tem algum ataque com uso restante.
+            bossEnergy += Random.Range(10, 30); // Aumenta a energia do chefï¿½o a cada turno.
 
-            foreach (int _attackUseQuantRemaining in Enemy_PokemonInfo_Current.attackUseQuantRemaining)
+            // Ajusta o tamanho do chefï¿½o proporcionalmente ï¿½ energia acumulada.
+            if (go_enemy_pokemon != null) // Certifica-se de que o objeto instanciado existe.
             {
-                if (_attackUseQuantRemaining > 0)
-                {
-                    _attackValid = true;
-                    break;
-                }
+                float scaleMultiplier = Mathf.Clamp(1 + (bossEnergy / bossEnergyThreshold) * 0.5f, 1, 2);
+                go_enemy_pokemon.transform.localScale = new Vector3(scaleMultiplier, scaleMultiplier, scaleMultiplier);
             }
 
-            if (_attackValid) // Se existir algum ataque disponivel.
+            if (bossEnergy >= bossEnergyThreshold * 0.75f && bossEnergy < bossEnergyThreshold)
             {
-                if (enemyBehaviour == EnemyBehaviour.Random) // Se estiver no modo randomico.
+                EnterRageMode();
+            }
+
+            if (bossEnergy >= bossEnergyThreshold)
+            {
+                Boss_SpecialAttack();
+                bossEnergy = 0; // Reseta a energia apï¿½s o ataque especial.
+                return; // Finaliza o turno do chefï¿½o.
+            }
+        }
+
+        // Lï¿½gica existente para ataques regulares do inimigo.
+        bool _attackValid = false;
+        foreach (int _attackUseQuantRemaining in Enemy_PokemonInfo_Current.attackUseQuantRemaining)
+        {
+            if (_attackUseQuantRemaining > 0)
+            {
+                _attackValid = true;
+                break;
+            }
+        }
+
+        if (_attackValid)
+        {
+            if (enemyBehaviour == EnemyBehaviour.Random)
+            {
+                bool _attacked = false;
+
+                while (!_attacked)
                 {
-                    bool _attacked = false;
+                    int _value = Random.Range(0, Enemy_Pokemon_Current.attack.Length);
 
-                    while (!_attacked)
+                    if (Enemy_PokemonInfo_Current.attackUseQuantRemaining[_value] > 0)
                     {
-                        int _value = Random.Range(0, Enemy_Pokemon_Current.attack.Length);
-
-                        if (Enemy_PokemonInfo_Current.attackUseQuantRemaining[_value] > 0)
-                        {
-                            Enemy_Atk(_value);
-                            break;
-                        }
+                        Enemy_Atk(_value);
+                        break;
                     }
                 }
-                else if (enemyBehaviour == EnemyBehaviour.Only) // Ainda nao foi implementado.
-                {
-                    // Tratar caso o index seja maior que o index maximo.
-                }
             }
-            else
+            else if (enemyBehaviour == EnemyBehaviour.Only)
             {
-                txt_battleFeedback.text = Enemy_PokemonInfo_Current.pokemonName + " não possui ataques disponíveis.";
-
-                StartCoroutine(Turn_Routine());
+                // Tratar caso o ï¿½ndice seja maior que o mï¿½ximo.
             }
+        }
+        else
+        {
+            txt_battleFeedback.text = Enemy_PokemonInfo_Current.pokemonName + " nï¿½o possui ataques disponï¿½veis.";
+            StartCoroutine(Turn_Routine());
         }
     }
 
-    #region Dano
+    /// <summary>
+    /// Ativa o modo enfurecido do chefï¿½o, aumentando o poder dos ataques.
+    /// </summary>
+    void EnterRageMode()
+    {
+        Debug.Log("O Chefï¿½o entrou no modo enfurecido!");
+        txt_battleFeedback.text = "O Chefï¿½o estï¿½ enfurecido! Seus ataques sï¿½o mais poderosos!";
+
+        // Opcional: altere a cor do chefï¿½o para indicar que ele estï¿½ enfurecido.
+        if (go_enemy_pokemon != null)
+        {
+            Renderer renderer = go_enemy_pokemon.GetComponentInChildren<Renderer>();
+            if (renderer != null)
+            {
+                renderer.material.color = Color.red; // Define a cor do modo enfurecido.
+            }
+        }
+
+        // Aumenta o poder dos ataques do chefï¿½o.
+        foreach (var attack in Enemy_Pokemon_Current.attack)
+        {
+            attack.damage += 10; // Adiciona dano extra a cada ataque.
+        }
+    }
+
+    /// <summary>
+    /// Executa o ataque especial do chefï¿½o, causando dano em ï¿½rea.
+    /// </summary>
+    void Boss_SpecialAttack()
+    {
+        Debug.Log("O Chefï¿½o executou seu ataque especial!");
+        float damage = Random.Range(20, 50); // Dano do ataque especial.
+        Player_TakeDamage(damage); // Aplica o dano ao jogador.
+
+        // Atualiza o feedback para o jogador.
+        txt_battleFeedback.text = "O Chefï¿½o lanï¿½ou um ataque devastador, causando " + damage + " de dano!";
+    }
+
     void Player_TakeDamage(float _damage)
     {
         player_healthCurrent -= _damage;
@@ -455,7 +527,6 @@ public class BattleManager : MonoBehaviour
 
         StartCoroutine(EnemyPokemonHealthBar_Set());
     }
-    #endregion
 
     bool EnemyPokemon_DeadAll_Get() // Retorna true se todos os personagens do inimigo morreram.
     {
@@ -473,7 +544,6 @@ public class BattleManager : MonoBehaviour
         return _deadAll;
     }
 
-    #region Barras de Vida
     IEnumerator PlayerPokemonHealthBar_Set(float _delay = 0f) // Seta o tamanho da barra de vida do personagem.
     {
         yield return new WaitForSeconds(_delay);
@@ -491,7 +561,6 @@ public class BattleManager : MonoBehaviour
 
         rect_enemyPokemonHealthBar.sizeDelta = new Vector2(Enemy_PokemonInfo_Current.healthCurrent / Enemy_PokemonInfo_Current.healthMax * enemy_pokemonHealthBar_sizeIniX, rect_enemyPokemonHealthBar.sizeDelta.y);
     }
-    #endregion
 
     void Result(bool _victory) // Resultado do combate.
     {
@@ -503,6 +572,8 @@ public class BattleManager : MonoBehaviour
         {
             Debug.Log("Perdeu!");
         }
+        if(pontoIncend!=null)
+            pontoIncend.AtualizarObjetivo(_victory);
     }
 
     public void Recharge(int _index = -1) // Metodo para recarregar os ataques.

@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: CO2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.17842808, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -222,7 +222,6 @@ GameObject:
   - component: {fileID: 3266224534523784947}
   - component: {fileID: 4149818759573594223}
   - component: {fileID: 7272385300624181950}
-  - component: {fileID: 8114673728274381607}
   m_Layer: 0
   m_Name: ExtintorUI
   m_TagString: Untagged
@@ -313,18 +312,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8114673728274381607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4390841950347775189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc752cc082c23aa43aa2daf4644b78c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9021217689933240146
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,12 +323,12 @@ GameObject:
   - component: {fileID: 4294551014963565899}
   - component: {fileID: 8619129003922968527}
   - component: {fileID: 5299573264958738873}
-  - component: {fileID: 4783986588880759744}
   - component: {fileID: 3425749118980661501}
   - component: {fileID: 4460778896957801682}
+  - component: {fileID: 7966423606218626902}
   m_Layer: 0
   m_Name: Extintor
-  m_TagString: Untagged
+  m_TagString: Recharge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -356,8 +343,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.3, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8704935321692844882}
   m_Father: {fileID: 0}
@@ -412,27 +399,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4783986588880759744
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9021217689933240146}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3425749118980661501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,7 +411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866dbaa58e940ad42b9cfb04e08b7196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipoRecarga: 0
+  tipoRecarga: 1
+  nome: {fileID: 5183785620715043573}
 --- !u!135 &4460778896957801682
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -465,5 +432,28 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.02
+  m_Center: {x: 0, y: 0, z: -1.34}
+--- !u!136 &7966423606218626902
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9021217689933240146}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.52900803
+  m_Height: 1.7569549
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: -0.36462176}

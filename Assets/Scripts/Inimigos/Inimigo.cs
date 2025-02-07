@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Inimigo : MonoBehaviour
 {
+    public int classe;
+    //componentes de animação
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,8 +18,12 @@ public class Inimigo : MonoBehaviour
     {
         
     }
+    public void Atacar()
+    {
+        //play animação de ataque
+    }
     void OnCollisionEnter(Collision col)
     {
-        FindObjectOfType<ControlaJogo>().CarregarCena(4);
+        FindObjectOfType<LevelManage>().EntrarBatalha(classe);
     }
 }
