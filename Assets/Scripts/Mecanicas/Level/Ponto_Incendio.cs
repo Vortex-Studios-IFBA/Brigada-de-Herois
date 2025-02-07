@@ -7,6 +7,7 @@ public class Ponto_Incendio : MonoBehaviour
     int nivelPerigo = 1;
     [SerializeField] int salaNum;
     bool eliminado = false;
+    [SerializeField] Inimigo inim;
     [SerializeField] GameObject indicador;
     ControlaJogo missao;
 
@@ -16,7 +17,7 @@ public class Ponto_Incendio : MonoBehaviour
         missao = FindObjectOfType<ControlaJogo>();
         if(missao.Salas().Contains(salaNum))
         {
-            print("oi");
+            //PEGAR INT DA CENA DO INIMIGO
             gameObject.SetActive(true);
         }
     }

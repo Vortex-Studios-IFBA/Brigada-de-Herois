@@ -23057,7 +23057,7 @@ GameObject:
   - component: {fileID: 1378970868}
   - component: {fileID: 1378970867}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: Ferramentas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34317,7 +34317,7 @@ GameObject:
   - component: {fileID: 2131333189}
   - component: {fileID: 2131333188}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: Ferramentas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

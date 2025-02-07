@@ -86,6 +86,15 @@ public class ControlaJogo : MonoBehaviour
         }
         return salass;
     }
+    public List<int> Inimigos()
+    {
+        List<int> inimigoss = new List<int>();
+        foreach(int num in faseInfo.salas)
+        {
+            inimigoss.Add(num);
+        }
+        return inimigoss;
+    }
     public float TempoMax()
     {
         return faseInfo.tempo;
