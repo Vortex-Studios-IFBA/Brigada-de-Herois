@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DadosFase {
-    public int[] salas;
+    public int[] salas, inimigos;
     public float tempo;
     public int turnos;
 }
@@ -67,10 +67,12 @@ public class ControlaJogo : MonoBehaviour
         OnCenaCarregada?.Invoke();
     }
 
-    public void AtualizarInfo(float time, int turns, int[] rm = null)
+    public void AtualizarInfo(float time, int turns, int[] rm = null, int[] enmy = null)
     {
         if(rm != null)
             faseInfo.salas = rm;
+        if(enmy != null)
+            faseInfo.inimigos = enmy;
         faseInfo.tempo = time;
         faseInfo.turnos = turns;
         //guarda a condiçao das estrelas da fase

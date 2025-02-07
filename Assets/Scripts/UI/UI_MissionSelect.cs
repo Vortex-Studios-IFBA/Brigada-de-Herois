@@ -16,6 +16,8 @@ public class UI_MissionSelect : MonoBehaviour
     void Start()
     {
         //antes disso as missoes precisam receber os dados do save
+        if(Time.timeScale == 0)
+            Time.timeScale = 1;
         int prevId = -1;
         for(int i = 0; i < transform.childCount; i++)
         {
