@@ -11,12 +11,15 @@ public class Ferramenta : MonoBehaviour
     [SerializeField] GameObject mangueiraObj, extintorEsObj, extintorQuimObj;
     GameObject ferramentaAtiva;
     [SerializeField] Image mangueiraImg, extintorEsImg, extintorQuimImg;
-    Tipo tipoAtivo = Tipo.Agua;
+    public Tipo tipoAtivo = Tipo.Agua;
 
     // Start is called before the first frame update
     void Start()
     {
         ferramentaAtiva = mangueiraObj;
+        mangueiraImg = GameObject.Find("Ferramentas").transform.GetChild(0).GetComponent<Image>();
+        extintorEsImg = GameObject.Find("Ferramentas").transform.GetChild(1).GetComponent<Image>();
+        extintorQuimImg = GameObject.Find("Ferramentas").transform.GetChild(2).GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -47,5 +50,11 @@ public class Ferramenta : MonoBehaviour
                 ferramentaAtiva = mangueiraObj;
             break;
         }
+    }
+    public void Recarregar()
+    {
+        //aumentar cargas de ataques de acordo com o tipo de ferramenta
+        GameObject rch = FindObjectOfType<playerController>().rechargeObj;
+        Destroy(rch);
     }
 }

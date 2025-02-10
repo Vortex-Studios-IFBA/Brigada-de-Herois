@@ -38,7 +38,7 @@ public class Fase
 public class TempoData
 {
     public int fase;
-    public int estrela;
-    public int tempo;
+    public bool completou;
+    public float tempo;
     public int turnos;
 }

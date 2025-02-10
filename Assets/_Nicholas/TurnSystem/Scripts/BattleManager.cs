@@ -8,12 +8,12 @@ public class BattleManager : MonoBehaviour
 {
     public static BattleManager instance;
 
-    [Header("Chefão")]
-    [SerializeField] bool isBossFight = false; // Indica se o inimigo atual é um chefão.
-    [SerializeField] float bossEnergy = 0; // Energia acumulada do chefão.
-    [SerializeField] float bossEnergyThreshold = 100; // Limite para ativar o ataque especial do chefão.
+    [Header("Chefï¿½o")]
+    [SerializeField] bool isBossFight = false; // Indica se o inimigo atual ï¿½ um chefï¿½o.
+    [SerializeField] float bossEnergy = 0; // Energia acumulada do chefï¿½o.
+    [SerializeField] float bossEnergyThreshold = 100; // Limite para ativar o ataque especial do chefï¿½o.
 
-    [Header("Botões de Seleção de Pokémon")]
+    [Header("Botï¿½es de Seleï¿½ï¿½o de Pokï¿½mon")]
     [SerializeField] UnityEngine.UI.Button[] pokemonSelectionButtons;
 
     [SerializeField] Pokemon[] player_pokemon; // Ferramentas do jogador
@@ -109,6 +109,8 @@ public class BattleManager : MonoBehaviour
         Random, Only
     }
 
+    public Ponto_Incendio pontoIncend;
+
     void Awake()
     {
         if (instance == null)
@@ -166,17 +168,17 @@ public class BattleManager : MonoBehaviour
         var currentPokemon = player_pokemon[player_pokemonCurrent_index];
         int attacksCount = currentPokemon.attack.Length;
 
-        // Percorrer todos os TextMeshProUGUI para configurar os botões de ataque.
+        // Percorrer todos os TextMeshProUGUI para configurar os botï¿½es de ataque.
         for (int i = 0; i < txt_playerAttack.Length; i++)
         {
             if (i < attacksCount)
             {
-                // Exibir o botão de ataque e configurar o texto com a quantidade restante.
+                // Exibir o botï¿½o de ataque e configurar o texto com a quantidade restante.
                 txt_playerAttack[i].gameObject.SetActive(true);
                 int remainingUses = Player_PokemonInfo_Current.attackUseQuantRemaining[i];
                 txt_playerAttack[i].text = $"{currentPokemon.attack[i].attackName} ({remainingUses})";
 
-                // Desativar o botão se não houver usos restantes.
+                // Desativar o botï¿½o se nï¿½o houver usos restantes.
                 var button = txt_playerAttack[i].GetComponentInParent<UnityEngine.UI.Button>();
                 if (button != null)
                 {
@@ -185,10 +187,10 @@ public class BattleManager : MonoBehaviour
             }
             else
             {
-                // Ocultar os botões de ataque para ataques inexistentes.
+                // Ocultar os botï¿½es de ataque para ataques inexistentes.
                 txt_playerAttack[i].gameObject.SetActive(false);
 
-                // Desativar os botões de ataque extras.
+                // Desativar os botï¿½es de ataque extras.
                 var button = txt_playerAttack[i].GetComponentInParent<UnityEngine.UI.Button>();
                 if (button != null)
                 {
@@ -197,7 +199,7 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        // Caso nenhum ataque esteja disponível, desativar todos os botões.
+        // Caso nenhum ataque esteja disponï¿½vel, desativar todos os botï¿½es.
         if (attacksCount == 0)
         {
             foreach (var txt in txt_playerAttack)
@@ -220,7 +222,7 @@ public class BattleManager : MonoBehaviour
         if (PlayerTurn && _value != player_pokemonCurrent_index)
         {
             Player_PokemonCurrent_Set(_value);
-            UpdatePokemonSelectionButtons(); // Atualiza os botões
+            UpdatePokemonSelectionButtons(); // Atualiza os botï¿½es
             StartCoroutine(Turn_Routine());
         }
     }
@@ -231,7 +233,7 @@ public class BattleManager : MonoBehaviour
         {
             if (pokemonSelectionButtons[i] != null)
             {
-                // Desabilitar o botão do Pokémon atual.
+                // Desabilitar o botï¿½o do Pokï¿½mon atual.
                 pokemonSelectionButtons[i].interactable = (i != player_pokemonCurrent_index);
             }
         }
@@ -296,13 +298,13 @@ public class BattleManager : MonoBehaviour
                 }
                 else
                 {
-                    txt_battleFeedback.text = "Esse ataque não pode ser utilizado.";
+                    txt_battleFeedback.text = "Esse ataque nï¿½o pode ser utilizado.";
                 }
             }
             else
             {
-                Debug.LogWarning("Ataque inválido selecionado. Índice fora dos limites.");
-                txt_battleFeedback.text = "Esse ataque não está disponível.";
+                Debug.LogWarning("Ataque invï¿½lido selecionado. ï¿½ndice fora dos limites.");
+                txt_battleFeedback.text = "Esse ataque nï¿½o estï¿½ disponï¿½vel.";
             }
         }
     }
@@ -335,7 +337,7 @@ public class BattleManager : MonoBehaviour
                 if (PlayerTurn) { Player_TakeDamage(_value); } else EnemyPokemon_TakeDamage(_value);
                 break;
             case Reaction.Nothing:
-                txt_battleFeedback.text = "O ataque " + _attackName.ToUpper() + " de " + _pokemonInfoAttacking.pokemonName.ToUpper() + " não foi efetivo";
+                txt_battleFeedback.text = "O ataque " + _attackName.ToUpper() + " de " + _pokemonInfoAttacking.pokemonName.ToUpper() + " nï¿½o foi efetivo";
                 break;
         }
 
@@ -344,7 +346,7 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator Turn_Routine()
     {
-        Debug.Log("Inicializando o próximo turno.");
+        Debug.Log("Inicializando o prï¿½ximo turno.");
         yield return new WaitForSeconds(turnDelay);
 
         PlayerTurn = !PlayerTurn;
@@ -363,13 +365,13 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    void Enemy_Turn() // O botão chama este método caso o ataque não seja automático.
+    void Enemy_Turn() // O botï¿½o chama este mï¿½todo caso o ataque nï¿½o seja automï¿½tico.
     {
         if (isBossFight)
         {
-            bossEnergy += Random.Range(10, 30); // Aumenta a energia do chefão a cada turno.
+            bossEnergy += Random.Range(10, 30); // Aumenta a energia do chefï¿½o a cada turno.
 
-            // Ajusta o tamanho do chefão proporcionalmente à energia acumulada.
+            // Ajusta o tamanho do chefï¿½o proporcionalmente ï¿½ energia acumulada.
             if (go_enemy_pokemon != null) // Certifica-se de que o objeto instanciado existe.
             {
                 float scaleMultiplier = Mathf.Clamp(1 + (bossEnergy / bossEnergyThreshold) * 0.5f, 1, 2);
@@ -384,12 +386,12 @@ public class BattleManager : MonoBehaviour
             if (bossEnergy >= bossEnergyThreshold)
             {
                 Boss_SpecialAttack();
-                bossEnergy = 0; // Reseta a energia após o ataque especial.
-                return; // Finaliza o turno do chefão.
+                bossEnergy = 0; // Reseta a energia apï¿½s o ataque especial.
+                return; // Finaliza o turno do chefï¿½o.
             }
         }
 
-        // Lógica existente para ataques regulares do inimigo.
+        // Lï¿½gica existente para ataques regulares do inimigo.
         bool _attackValid = false;
         foreach (int _attackUseQuantRemaining in Enemy_PokemonInfo_Current.attackUseQuantRemaining)
         {
@@ -419,25 +421,25 @@ public class BattleManager : MonoBehaviour
             }
             else if (enemyBehaviour == EnemyBehaviour.Only)
             {
-                // Tratar caso o índice seja maior que o máximo.
+                // Tratar caso o ï¿½ndice seja maior que o mï¿½ximo.
             }
         }
         else
         {
-            txt_battleFeedback.text = Enemy_PokemonInfo_Current.pokemonName + " não possui ataques disponíveis.";
+            txt_battleFeedback.text = Enemy_PokemonInfo_Current.pokemonName + " nï¿½o possui ataques disponï¿½veis.";
             StartCoroutine(Turn_Routine());
         }
     }
 
     /// <summary>
-    /// Ativa o modo enfurecido do chefão, aumentando o poder dos ataques.
+    /// Ativa o modo enfurecido do chefï¿½o, aumentando o poder dos ataques.
     /// </summary>
     void EnterRageMode()
     {
-        Debug.Log("O Chefão entrou no modo enfurecido!");
-        txt_battleFeedback.text = "O Chefão está enfurecido! Seus ataques são mais poderosos!";
+        Debug.Log("O Chefï¿½o entrou no modo enfurecido!");
+        txt_battleFeedback.text = "O Chefï¿½o estï¿½ enfurecido! Seus ataques sï¿½o mais poderosos!";
 
-        // Opcional: altere a cor do chefão para indicar que ele está enfurecido.
+        // Opcional: altere a cor do chefï¿½o para indicar que ele estï¿½ enfurecido.
         if (go_enemy_pokemon != null)
         {
             Renderer renderer = go_enemy_pokemon.GetComponentInChildren<Renderer>();
@@ -447,7 +449,7 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        // Aumenta o poder dos ataques do chefão.
+        // Aumenta o poder dos ataques do chefï¿½o.
         foreach (var attack in Enemy_Pokemon_Current.attack)
         {
             attack.damage += 10; // Adiciona dano extra a cada ataque.
@@ -455,16 +457,16 @@ public class BattleManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Executa o ataque especial do chefão, causando dano em área.
+    /// Executa o ataque especial do chefï¿½o, causando dano em ï¿½rea.
     /// </summary>
     void Boss_SpecialAttack()
     {
-        Debug.Log("O Chefão executou seu ataque especial!");
+        Debug.Log("O Chefï¿½o executou seu ataque especial!");
         float damage = Random.Range(20, 50); // Dano do ataque especial.
         Player_TakeDamage(damage); // Aplica o dano ao jogador.
 
         // Atualiza o feedback para o jogador.
-        txt_battleFeedback.text = "O Chefão lançou um ataque devastador, causando " + damage + " de dano!";
+        txt_battleFeedback.text = "O Chefï¿½o lanï¿½ou um ataque devastador, causando " + damage + " de dano!";
     }
 
     void Player_TakeDamage(float _damage)
@@ -570,6 +572,8 @@ public class BattleManager : MonoBehaviour
         {
             Debug.Log("Perdeu!");
         }
+        if(pontoIncend!=null)
+            pontoIncend.AtualizarObjetivo(_victory);
     }
 
     public void Recharge(int _index = -1) // Metodo para recarregar os ataques.

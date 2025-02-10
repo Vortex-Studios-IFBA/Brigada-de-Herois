@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class Missao : MonoBehaviour
 {
+
     public bool concluida;
     public int turnosMax, totalTurnos, objetivos, eliminados;
     public float tempoMax, tempoFinal;
-    public int[] rooms;
+    public int[] rooms, inimigos;
 
     // Start is called before the first frame update
     void Start()
@@ -16,19 +17,15 @@ public class Missao : MonoBehaviour
         //antes disso receber resultados da fase
         VerificarPontuacao();
     }
-    public void IniciarMissao()
-    {
-        //scenemanager.loadScene
-    }
-    public void SairMissao()
-    {
-        //scenemanager.loadScene(Selecao Fase)
-    }
+    
     void VerificarPontuacao()
     {
         int score = 0;
         if(concluida == true)
+        {
+            print("fase foi concluida");
             score += 1;
+        }
         if(score > 0)
         {
             if(totalTurnos <= turnosMax)

@@ -39,6 +39,9 @@ public class playerController : MonoBehaviour
 
         navMeshAgent.enabled = false;
         movimentacaoLivre = false;
+
+        rechargeBt = GameObject.Find("Recharge");
+        rechargeBt.SetActive(false);
     }
 
     void Update()
@@ -59,12 +62,17 @@ public class playerController : MonoBehaviour
                 {
                     if (touch.phase == TouchPhase.Began)
                     {
+                        movendoCamera = true;
                         ultimoToqueTela = touch.position;
                     }
-                    else if (touch.phase == TouchPhase.Moved)
+                    
+                    if (touch.phase == TouchPhase.Ended)
                     {
-                        movendoCamera = true;
+                        movendoCamera = false;
                     }
+                }
+                else
+                {
                     if (touch.phase == TouchPhase.Ended)
                     {
                         movendoCamera = false;
@@ -146,7 +154,7 @@ public class playerController : MonoBehaviour
                 }
             }
 
-            movimentacaoText.text = movimentacaoLivre.ToString();
+            //movimentacaoText.text = movimentacaoLivre.ToString();
         }
 
         if (jogoConfig.jogoVertical)
@@ -199,7 +207,7 @@ public class playerController : MonoBehaviour
                 }
             }
 
-            movimentacaoText.text = movimentacaoLivre.ToString();
+            //movimentacaoText.text = movimentacaoLivre.ToString();
         }
     }
 
@@ -220,7 +228,14 @@ public class playerController : MonoBehaviour
         if(other.CompareTag("Recharge"))
         {
             rechargeBt.SetActive(true);
-            rechargeObj = other.gameObject;
+            rechargeObj = other.transform.parent.gameObject;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Recharge"))
+        {
+            rechargeBt.SetActive(false);
         }
     }
 }

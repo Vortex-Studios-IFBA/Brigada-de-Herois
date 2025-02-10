@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -163,8 +163,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: b246c4190f4e46ec9352fe15a7b09ce0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -820,8 +820,8 @@ MonoBehaviour:
     de Her\xF3is ensinar o protocolo de seguran\xE7a quando se trata do combate ao
     inc\xEAndio."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: b246c4190f4e46ec9352fe15a7b09ce0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -860,7 +860,7 @@ MonoBehaviour:
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 2
+  m_charWidthMaxAdj: 10
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
@@ -1241,19 +1241,8 @@ MonoBehaviour:
     equa\xE7\xE3o."
   - "O inc\xEAndio pode surgir de diferentes tipos de fonte de combust\xE3o, que
     exigem m\xE9todos especiais para combater e apagar o fogo de forma segura."
-  - "Inc\xEAndios da classe A envolvem materiais s\xF3lidos de f\xE1cil combust\xE3o,
-    como madeira, tecidos e papel."
-  - "Inc\xEAndios da classe B envolvem produtos inflam\xE1veis que queimem somente
-    em sua superf\xEDcie, como \xF3leos, tintas e gasolina."
-  - "Inc\xEAndios da classe C ocorrem em equipamentos el\xE9tricos energizados como
-    motores, transformadores, quadros de distribui\xE7\xE3o e fios."
-  - "Inc\xEAndios da classe D se referem a elementos que se inflamam ao entrar em
-    contato com a umidade do ar ou da pr\xF3pria \xE1gua. Magn\xE9sio, zirc\xF4nio
-    e tit\xE2nio s\xE3o elementos que podem reagir com o hidrog\xEAnio e causar grandes
-    explos\xF5es."
-  - "Por \xFAltimo, inc\xEAndios da classe K englobam \xF3leos de cozinha, gorduras
-    e graxa, esses podem facilmente causar acidentes portanto \xE9 preciso ter aten\xE7\xE3o
-    ao modo de combat\xEA-los."
+  - "Em caso de d\xFAvidas pode a qualquer momento sair da miss\xE3o e ler os manuais
+    sobre as diferentes classes e formas de preven\xE7\xE3o de inc\xEAndio."
   - "Use das ferramentas \xE0 sua disposi\xE7\xE3o para resfriar ou abafar o fogo,
     tendo no\xE7\xE3o das subst\xE2ncias contidas em cada uma delas na hora de escolher
     a correta para o combate."
@@ -1264,7 +1253,7 @@ MonoBehaviour:
     reabastecer com extintores e mangueiras que se encontram em pontos espec\xEDficos
     do campus."
   - "Fique de olho em sua volta, existem a\xE7\xF5es importantes a serem feitas em
-    certos momentos como deligar a energia por meio da intera\xE7\xE3o com as caixas
+    certos momentos como desligar a energia por meio da intera\xE7\xE3o com as caixas
     de eletricidade."
   titulos:
   - "ATEN\xC7\xC3O"
@@ -1272,28 +1261,20 @@ MonoBehaviour:
   - "ATEN\xC7\xC3O"
   - "Classes de inc\xEAndio"
   - "Classes de inc\xEAndio"
-  - "Classes de inc\xEAndio"
-  - "Classes de inc\xEAndio"
-  - "Classes de inc\xEAndio"
-  - "Classes de inc\xEAndio"
   - Suas ferramentas
   - Suas ferramentas
   - Suas ferramentas
   - "Antes de come\xE7ar"
   imgs:
-  - {fileID: 21300000, guid: 757bcc081eddeaf4992fbfe77c1f5a70, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 168e4e5a38153374ba0e886c0a048d57, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
+  - {fileID: 21300000, guid: c1a1fdf14d575544d9f60d9fddbf44ab, type: 3}
+  - {fileID: 21300000, guid: c1a1fdf14d575544d9f60d9fddbf44ab, type: 3}
+  - {fileID: 21300000, guid: c1a1fdf14d575544d9f60d9fddbf44ab, type: 3}
+  - {fileID: 21300000, guid: c1a1fdf14d575544d9f60d9fddbf44ab, type: 3}
+  - {fileID: 21300000, guid: c1a1fdf14d575544d9f60d9fddbf44ab, type: 3}
+  - {fileID: 21300000, guid: c1a1fdf14d575544d9f60d9fddbf44ab, type: 3}
+  - {fileID: 21300000, guid: c1a1fdf14d575544d9f60d9fddbf44ab, type: 3}
+  - {fileID: 21300000, guid: c1a1fdf14d575544d9f60d9fddbf44ab, type: 3}
+  - {fileID: 21300000, guid: c1a1fdf14d575544d9f60d9fddbf44ab, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

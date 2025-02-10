@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DadosFase {
-    public int[] salas;
+    public int[] salas, inimigos;
     public float tempo;
     public int turnos;
 }
@@ -14,7 +14,7 @@ public class ControlaJogo : MonoBehaviour
 {
     public static ControlaJogo Instance { get; private set; }
 
-    private bool pausado = false;
+    //private bool pausado = false;
     public int missao;
     public bool jogoVertical;
 
@@ -28,7 +28,8 @@ public class ControlaJogo : MonoBehaviour
     public float volumeMusica = 1.0f;
     public float volumeEfeitos = 1.0f;
 
-
+    public int saveLevel = 0;
+    public Save save;
     DadosFase faseInfo = new DadosFase();
 
     private void Awake()
@@ -46,6 +47,7 @@ public class ControlaJogo : MonoBehaviour
 
     private void Start()
     {
+        save = GetComponent<Save>();
         AplicarRotacaoTela(this);
     }
 
@@ -54,6 +56,15 @@ public class ControlaJogo : MonoBehaviour
         missao = index;
         SceneManager.LoadScene(3);
         SceneManager.sceneLoaded += CenaCarregada;
+    }
+    public bool FaseConcluida(int faseId)
+    {
+        SaveData dados = save.CarregarJogo();
+        if(dados!= null && faseId < dados.fases.Length)
+        {
+            return dados.fases[faseId].completou;
+        }
+        return false;
     }
     public void CarregarCena(int cenaID)
     {
@@ -67,10 +78,13 @@ public class ControlaJogo : MonoBehaviour
         OnCenaCarregada?.Invoke();
     }
 
-    public void AtualizarInfo(float time, int turns, int[] rm = null)
+    public void AtualizarInfo(int level,float time, int turns, int[] rm = null, int[] enmy = null)
     {
+        saveLevel = level;
         if(rm != null)
             faseInfo.salas = rm;
+        if(enmy != null)
+            faseInfo.inimigos = enmy;
         faseInfo.tempo = time;
         faseInfo.turnos = turns;
         //guarda a condiçao das estrelas da fase
@@ -83,6 +97,23 @@ public class ControlaJogo : MonoBehaviour
             salass.Add(num);
         }
         return salass;
+    }
+    public List<int> Inimigos()
+    {
+        List<int> inimigoss = new List<int>();
+        foreach(int num in faseInfo.salas)
+        {
+            inimigoss.Add(num);
+        }
+        return inimigoss;
+    }
+    public float TempoMax()
+    {
+        return faseInfo.tempo;
+    }
+    public int TurnosMax()
+    {
+        return faseInfo.turnos;
     }
 
     public void AplicarRotacaoTela(ControlaJogo instJogo)

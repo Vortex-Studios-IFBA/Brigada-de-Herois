@@ -15,13 +15,30 @@ public class UI_MissionSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //antes disso as missoes precisam receber os dados do save
+        if(Time.timeScale == 0)
+            Time.timeScale = 1;
         int prevId = -1;
         for(int i = 0; i < transform.childCount; i++)
         {
             int num = 1 + i;
             TMP_Text levelId = transform.GetChild(i).GetChild(1).GetComponent<TMP_Text>();
             levelId.text = num.ToString();
+
+            SaveData dados = FindObjectOfType<ControlaJogo>().save.CarregarJogo();
+            
+            if(dados!=null)
+            {
+                transform.GetChild(i).GetComponent<Missao>().concluida = dados.fases[i].completou;
+
+                if(FindObjectOfType<ControlaJogo>().FaseConcluida(i))
+                {
+                    
+                    transform.GetChild(i).GetComponent<Missao>().totalTurnos = dados.fases[i].turnos;
+                    transform.GetChild(i).GetComponent<Missao>().tempoFinal = dados.fases[i].tempo;
+                }
+            }
+            
+
             if(num > 1 && prevId >= 0)
             {
                 if(!transform.GetChild(prevId).GetComponent<Missao>().concluida)
@@ -53,7 +70,9 @@ public class UI_MissionSelect : MonoBehaviour
     {
         if(missao == missao_selecionada && missao_selecionada != null)
         {
-            FindObjectOfType<ControlaJogo>().AtualizarInfo(0,0,missao.GetComponent<Missao>().rooms);
+            print("nivel " + missao.transform.GetSiblingIndex().ToString());
+            FindObjectOfType<ControlaJogo>().AtualizarInfo(missao.transform.GetSiblingIndex(),0,0,
+                missao.GetComponent<Missao>().rooms,missao.GetComponent<Missao>().inimigos);
             FindObjectOfType<ControlaJogo>().EntrarFase(missao.transform.GetSiblingIndex());
         }
         else if(missao != missao_selecionada)

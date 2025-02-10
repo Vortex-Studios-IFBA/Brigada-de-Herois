@@ -17,6 +17,7 @@ public class NPCController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.enabled = false; 
         noNavMesh = false;
+        entradaIfba = GameObject.Find("Entrada IFBA").transform;
     }
 
     private void Update()
@@ -56,7 +57,7 @@ public class NPCController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("NavMeshAgent não está ativo ou não está em uma área válida do NavMesh.");
+            Debug.LogError("NavMeshAgent nï¿½o estï¿½ ativo ou nï¿½o estï¿½ em uma ï¿½rea vï¿½lida do NavMesh.");
         }
     }
 }

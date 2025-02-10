@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -559,8 +559,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: b246c4190f4e46ec9352fe15a7b09ce0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -623,7 +623,7 @@ MonoBehaviour:
   m_margin: {x: -120.182434, y: 0, z: -125.925125, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &99200094
@@ -714,6 +714,7 @@ MonoBehaviour:
   tempoMax: 360
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &99284844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1380,7 +1381,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 483782351}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -1708,6 +1709,7 @@ MonoBehaviour:
   tempoMax: 180
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &258237789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2218,6 +2220,7 @@ MonoBehaviour:
   tempoMax: 360
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &293064424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2517,6 +2520,7 @@ MonoBehaviour:
   tempoMax: 240
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &312232146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3324,7 +3328,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1349728732}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -3525,13 +3529,13 @@ MonoBehaviour:
   - Suas ferramentas
   - "Antes de come\xE7ar"
   imgs:
-  - {fileID: 21300000, guid: 757bcc081eddeaf4992fbfe77c1f5a70, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 168e4e5a38153374ba0e886c0a048d57, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
+  - {fileID: 21300000, guid: f7db444db9eeae74f8e093b6ef380cf0, type: 3}
+  - {fileID: 21300000, guid: e870db32d8a6c58428d7af60da6547ea, type: 3}
+  - {fileID: 21300000, guid: 514c48d72fa7c464688c49e4beb723a3, type: 3}
+  - {fileID: 21300000, guid: 086539587c4d81b4e8088fb4b9641568, type: 3}
+  - {fileID: 21300000, guid: 086539587c4d81b4e8088fb4b9641568, type: 3}
+  - {fileID: 21300000, guid: 086539587c4d81b4e8088fb4b9641568, type: 3}
+  - {fileID: 21300000, guid: e1499a03f35283b408d39119089c6fdf, type: 3}
 --- !u!1 &490317822
 GameObject:
   m_ObjectHideFlags: 0
@@ -5218,8 +5222,8 @@ MonoBehaviour:
     de Her\xF3is ensinar o protocolo de seguran\xE7a quando se trata do combate ao
     inc\xEAndio."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: b246c4190f4e46ec9352fe15a7b09ce0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5258,7 +5262,7 @@ MonoBehaviour:
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 2
+  m_charWidthMaxAdj: 10
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
@@ -5282,7 +5286,7 @@ MonoBehaviour:
   m_margin: {x: -120, y: -93.21571, z: -119.977875, w: -61.09896}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &748177878
@@ -5354,8 +5358,8 @@ MonoBehaviour:
     de Her\xF3is ensinar o protocolo de seguran\xE7a quando se trata do combate ao
     inc\xEAndio."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: b246c4190f4e46ec9352fe15a7b09ce0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5394,7 +5398,7 @@ MonoBehaviour:
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 2
+  m_charWidthMaxAdj: 10
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
@@ -5418,7 +5422,7 @@ MonoBehaviour:
   m_margin: {x: -120, y: -93.21571, z: -119.977875, w: -61.09896}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &753496386
@@ -6438,6 +6442,7 @@ MonoBehaviour:
   tempoMax: 300
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &933513305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7301,8 +7306,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: b246c4190f4e46ec9352fe15a7b09ce0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7365,7 +7370,7 @@ MonoBehaviour:
   m_margin: {x: -120.182434, y: 0, z: -125.925125, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1170072441
@@ -8394,7 +8399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.078431375, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8650,6 +8655,7 @@ MonoBehaviour:
   tempoMax: 180
   tempoFinal: 0
   rooms: 2c000000
+  inimigos: 04000000
 --- !u!114 &1323688477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9265,15 +9271,15 @@ MonoBehaviour:
   - Suas ferramentas
   - "Antes de come\xE7ar"
   imgs:
-  - {fileID: 21300000, guid: 757bcc081eddeaf4992fbfe77c1f5a70, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 168e4e5a38153374ba0e886c0a048d57, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
-  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 21300000, guid: 4c6e15bb768513f41a3b7062630bd08f, type: 3}
+  - {fileID: 21300000, guid: 514c48d72fa7c464688c49e4beb723a3, type: 3}
+  - {fileID: 21300000, guid: 81cc1ae58d373144790c97b01644c21c, type: 3}
+  - {fileID: 21300000, guid: e6ac21f0e6ed85d40adf8a059aecb92c, type: 3}
+  - {fileID: 21300000, guid: 166aceeeb4c3b594a9d2ff4c12f4d956, type: 3}
+  - {fileID: 21300000, guid: 248848469ede42543a8e19ba3d328155, type: 3}
+  - {fileID: 21300000, guid: d282233679d50ad4c9c7b47e8ee79067, type: 3}
+  - {fileID: 21300000, guid: 086539587c4d81b4e8088fb4b9641568, type: 3}
+  - {fileID: 21300000, guid: 086539587c4d81b4e8088fb4b9641568, type: 3}
+  - {fileID: 21300000, guid: e1499a03f35283b408d39119089c6fdf, type: 3}
 --- !u!1 &1363410188
 GameObject:
   m_ObjectHideFlags: 0
@@ -9769,6 +9775,7 @@ MonoBehaviour:
   tempoMax: 360
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &1437767181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10133,6 +10140,7 @@ MonoBehaviour:
   tempoMax: 300
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &1482362152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10926,6 +10934,7 @@ MonoBehaviour:
   tempoMax: 360
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &1614462415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11790,7 +11799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.07510989, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12805,10 +12814,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: turnosMax
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: rooms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: inimigos.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
@@ -12818,6 +12831,10 @@ PrefabInstance:
     - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: rooms.Array.data[1]
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: inimigos.Array.data[0]
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5128790660541147346, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: m_Pivot.x
@@ -12997,6 +13014,7 @@ MonoBehaviour:
   tempoMax: 180
   tempoFinal: 0
   rooms: 
+  inimigos: 
 --- !u!114 &1921071478
 MonoBehaviour:
   m_ObjectHideFlags: 0

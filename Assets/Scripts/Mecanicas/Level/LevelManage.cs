@@ -8,19 +8,33 @@ public class LevelManage : MonoBehaviour
 {
     [SerializeField] TMP_Text timer, objetivos;
     //[SerializeField] List<GameObject> salasIncendio;
+    private int nivel;
     public float tempo = 0;
     public int objetivosTT = 0, objetivosFeito = 0, turnos;
+    [SerializeField] GameObject[] estrelas;
+    [SerializeField] GameObject ui_fase, telaResultado;
 
     bool concluiu;
     // Start is called before the first frame update
     void Start()
     {
+        nivel = FindObjectOfType<ControlaJogo>().saveLevel;
         foreach(Ponto_Incendio ptInc in FindObjectsOfType<Ponto_Incendio>())
         {
-            objetivosTT += 1;
+            int salaIndex = FindObjectOfType<ControlaJogo>().Salas().FindIndex(sala => sala == ptInc.salaNum);
+
+            if (salaIndex != -1) 
+            {
+                print("okfoi" + ptInc.salaNum.ToString());
+                ptInc.Spawnar(FindObjectOfType<ControlaJogo>().Inimigos()[salaIndex]);
+                objetivosTT += 1; 
+            }
+            
         }
         AtualizarContador();
         
+        telaResultado = GameObject.Find("Resultados");
+        telaResultado.SetActive(false);
         SceneManager.LoadSceneAsync("Manual",LoadSceneMode.Additive);
     }
 
@@ -29,6 +43,7 @@ public class LevelManage : MonoBehaviour
     {
         if(!concluiu)
         {
+            //e se não estiver em batalha, ou confere logo após o ultimo inimigo morrer
             if(objetivosFeito == objetivosTT)
             {
                 concluiu = true;
@@ -53,12 +68,47 @@ public class LevelManage : MonoBehaviour
     {
         objetivos.text = "Objetivos: "+ objetivosFeito.ToString() +"/"+ objetivosTT.ToString();
     }
+    public void EntrarBatalha(int classse)
+    {
+        //tem que ver isso
+        FindObjectOfType<ControlaJogo>().CarregarCena(4);
+        ui_fase.SetActive(false);
+        
+    }
+    public void SairBatalha(int classse)
+    {
+        ui_fase.SetActive(true);
+        SceneManager.UnloadSceneAsync(classse);
+    }
     IEnumerator TerminarMissao()
     {
-        FindObjectOfType<ControlaJogo>().AtualizarInfo(tempo,turnos);
         //aqui evento fim de missao
+        telaResultado.SetActive(true);
         
+        int score = 1;
+            if(turnos <= FindObjectOfType<ControlaJogo>().TurnosMax())
+                score += 1;
+            if(tempo <= FindObjectOfType<ControlaJogo>().TempoMax())
+                score += 1;
+            for(int i = 0; i < score; i++)
+            {
+                estrelas[i].SetActive(true);
+                yield return new WaitForSeconds(1f);
+            }  
+        
+        FindObjectOfType<ControlaJogo>().AtualizarInfo(nivel,tempo,turnos);
         //aqui salvar
+
+        SaveData dados = FindObjectOfType<ControlaJogo>().save.CarregarJogo()??new SaveData(10);
+        
+        dados.fases[nivel].completou = true;
+        dados.fases[nivel].tempo = tempo;
+        dados.fases[nivel].turnos = turnos;
+        
+        FindObjectOfType<ControlaJogo>().save.SalvarJogo(dados);
+        
+        //no save tem que pegar FindObjectOfType<ControlaJogo>().TempoMax() e TurnosMax() 
+        //                      salvando dentro das variaveis do respectivo nivel
         
         yield return new WaitForSeconds(5f);
         FindObjectOfType<ControlaJogo>().CarregarCena(1);
