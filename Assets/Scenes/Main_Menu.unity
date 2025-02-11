@@ -1119,7 +1119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4983377799568996473, guid: d07f6dd554d311643984f1de8aa388c4, type: 3}
       propertyPath: jogoVertical
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4983377799568996473, guid: d07f6dd554d311643984f1de8aa388c4, type: 3}
       propertyPath: verticalTexto
