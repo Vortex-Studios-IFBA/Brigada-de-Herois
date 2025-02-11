@@ -20,11 +20,14 @@ public class Ponto_Incendio : MonoBehaviour
     public void AtualizarObjetivo(bool vitoria)
     {
         FindObjectOfType<LevelManage>().SairBatalha(inim.classe);
+        Debug.Log("Atualizou objetivo");
+        Debug.Log("Objetivo antes do if: " + FindObjectOfType<LevelManage>().objetivosFeito);
         if(vitoria)
         {
             //desativar indicador de incendio
             indicador.SetActive(false);
             FindObjectOfType<LevelManage>().objetivosFeito += 1;
+            Debug.Log("Objetivos feitos é:" + FindObjectOfType<LevelManage>().objetivosFeito);
         }
         else if(!vitoria)
         {

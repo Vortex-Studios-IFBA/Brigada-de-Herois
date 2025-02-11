@@ -136,6 +136,11 @@ public class BattleManager : MonoBehaviour
         Pokemon_Inicialize();
     }
 
+    private void Start()
+    {
+        pontoIncend = FindObjectOfType<LevelManage>().GetInimigoAtual()?.ponto.GetComponent<Ponto_Incendio>();
+    }
+
     void Pokemon_Inicialize() // Inicializacao das ferramentas do jogador e inimigo.
     {
         player_pokemonInfo = new PokemonInfo[player_pokemon.Length];
@@ -516,6 +521,7 @@ public class BattleManager : MonoBehaviour
             {
 
                 Result(true);
+                //FindObjectOfType<Inimigo>().Derrotado();
             }
             else
             {
@@ -575,16 +581,18 @@ public class BattleManager : MonoBehaviour
     {
         if (_victory)
         {
+            
             Debug.Log("Venceu!");
-            if(pontoIncend!=null)
-                pontoIncend.AtualizarObjetivo(_victory);
+            pontoIncend.AtualizarObjetivo(_victory);
+            // if(pontoIncend !=null)
+
         }
         else
         {
             Debug.Log("Perdeu!");
         }
-        if(pontoIncend!=null)
-            pontoIncend.AtualizarObjetivo(_victory);
+        //if(pontoIncend!=null)
+        //    pontoIncend.AtualizarObjetivo(_victory);
     }
 
     public void Recharge(int _index = -1) // Metodo para recarregar os ataques.
