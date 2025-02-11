@@ -26,6 +26,6 @@ public class Inimigo : MonoBehaviour
     void OnCollisionEnter(Collision col)
     {
         FindObjectOfType<LevelManage>().EntrarBatalha(classe,ponto);
-        print("ok0 "+ ponto);
+        print("ok0 "+ ponto.ToString());
     }
 }

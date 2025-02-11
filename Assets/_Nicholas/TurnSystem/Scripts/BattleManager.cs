@@ -111,6 +111,11 @@ public class BattleManager : MonoBehaviour
 
     public Ponto_Incendio pontoIncend;
 
+    public void PegaPonto(Ponto_Incendio pt)
+    {
+        pontoIncend = pt;
+    }
+
     void Awake()
     {
         if (instance == null)
@@ -509,7 +514,7 @@ public class BattleManager : MonoBehaviour
 
             if (EnemyPokemon_DeadAll_Get()) 
             {
-                
+
                 Result(true);
             }
             else

@@ -72,11 +72,18 @@ public class LevelManage : MonoBehaviour
     {
         //tem que ver isso
         SceneManager.LoadSceneAsync(4,LoadSceneMode.Additive);
-        FindObjectOfType<BattleManager>().pontoIncend = pontIncend.GetComponent<Ponto_Incendio>();
-        print("ok1" + FindObjectOfType<BattleManager>().pontoIncend.ToString());
+        //Ponto_Incendio ptt = FindObjectOfType<BattleManager>().pontoIncend;
+        
+        FindObjectOfType<BattleManager>().PegaPonto(pontIncend.GetComponent<Ponto_Incendio>());
+        //ptt = pontIncend.GetComponent<Ponto_Incendio>();
+        print("ok1");
         //ui_fase.SetActive(false);
         cameraMain.SetActive(false);
         
+    }
+    public void Entrou(Ponto_Incendio pt)
+    {
+        FindObjectOfType<BattleManager>().pontoIncend = pt;
     }
     public void SairBatalha(int classse)
     {
