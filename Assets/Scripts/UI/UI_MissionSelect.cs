@@ -72,7 +72,8 @@ public class UI_MissionSelect : MonoBehaviour
         if(missao == missao_selecionada && missao_selecionada != null)
         {
             print("nivel " + missao.transform.GetSiblingIndex().ToString());
-            FindObjectOfType<ControlaJogo>().AtualizarInfo(missao.transform.GetSiblingIndex(),0,0,
+            FindObjectOfType<ControlaJogo>().AtualizarInfo(missao.transform.GetSiblingIndex(),
+                missao.GetComponent<Missao>().tempoMax, missao.GetComponent<Missao>().turnosMax,
                 missao.GetComponent<Missao>().rooms,missao.GetComponent<Missao>().inimigos);
             FindObjectOfType<ControlaJogo>().EntrarFase(missao.transform.GetSiblingIndex());
             FindObjectOfType<AudioController>().TocarMusica(1);

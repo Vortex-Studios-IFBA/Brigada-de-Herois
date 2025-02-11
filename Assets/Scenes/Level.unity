@@ -13777,6 +13777,7 @@ GameObject:
   - component: {fileID: 416262981}
   - component: {fileID: 416262983}
   - component: {fileID: 416262982}
+  - component: {fileID: 416262984}
   m_Layer: 5
   m_Name: Ext2
   m_TagString: Untagged
@@ -13841,6 +13842,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416262980}
   m_CullTransparentMesh: 1
+--- !u!95 &416262984
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416262980}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0527c19312228d14289d7f97312c22ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &417430208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14562,6 +14584,7 @@ GameObject:
   - component: {fileID: 442630004}
   - component: {fileID: 442630006}
   - component: {fileID: 442630005}
+  - component: {fileID: 442630007}
   m_Layer: 5
   m_Name: Ext1
   m_TagString: Untagged
@@ -14626,6 +14649,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442630003}
   m_CullTransparentMesh: 1
+--- !u!95 &442630007
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442630003}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0527c19312228d14289d7f97312c22ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &443318658
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14869,6 +14913,7 @@ GameObject:
   - component: {fileID: 456297903}
   - component: {fileID: 456297905}
   - component: {fileID: 456297904}
+  - component: {fileID: 456297906}
   m_Layer: 5
   m_Name: Estrela2
   m_TagString: Untagged
@@ -14933,6 +14978,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456297902}
   m_CullTransparentMesh: 1
+--- !u!95 &456297906
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456297902}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8fe2040b947a2aa478460397d68e3641, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &457626385
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16267,6 +16333,7 @@ GameObject:
   - component: {fileID: 501081326}
   - component: {fileID: 501081328}
   - component: {fileID: 501081327}
+  - component: {fileID: 501081329}
   m_Layer: 5
   m_Name: Estrela1
   m_TagString: Untagged
@@ -16331,6 +16398,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501081325}
   m_CullTransparentMesh: 1
+--- !u!95 &501081329
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501081325}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8937d51f4ca64d478dd6293d3afc3b0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &504499847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22156,6 +22244,7 @@ GameObject:
   - component: {fileID: 649954668}
   - component: {fileID: 649954670}
   - component: {fileID: 649954669}
+  - component: {fileID: 649954671}
   m_Layer: 5
   m_Name: Ext1
   m_TagString: Untagged
@@ -22220,6 +22309,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649954667}
   m_CullTransparentMesh: 1
+--- !u!95 &649954671
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649954667}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0527c19312228d14289d7f97312c22ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &650701653
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -31640,6 +31750,7 @@ GameObject:
   - component: {fileID: 919084894}
   - component: {fileID: 919084896}
   - component: {fileID: 919084895}
+  - component: {fileID: 919084897}
   m_Layer: 5
   m_Name: Ext2
   m_TagString: Untagged
@@ -31704,6 +31815,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919084893}
   m_CullTransparentMesh: 1
+--- !u!95 &919084897
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919084893}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0527c19312228d14289d7f97312c22ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &920531307
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42653,6 +42785,7 @@ GameObject:
   - component: {fileID: 1219165434}
   - component: {fileID: 1219165436}
   - component: {fileID: 1219165435}
+  - component: {fileID: 1219165437}
   m_Layer: 5
   m_Name: Estrela1
   m_TagString: Untagged
@@ -42717,6 +42850,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1219165433}
   m_CullTransparentMesh: 1
+--- !u!95 &1219165437
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219165433}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8937d51f4ca64d478dd6293d3afc3b0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1219319306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62371,6 +62525,7 @@ GameObject:
   - component: {fileID: 1528900479}
   - component: {fileID: 1528900481}
   - component: {fileID: 1528900480}
+  - component: {fileID: 1528900482}
   m_Layer: 5
   m_Name: Estrela3
   m_TagString: Untagged
@@ -62435,6 +62590,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528900478}
   m_CullTransparentMesh: 1
+--- !u!95 &1528900482
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528900478}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b238c1408ddcff409a7a706d2a56f6d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &1529145185
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -64893,6 +65069,7 @@ GameObject:
   - component: {fileID: 1605848477}
   - component: {fileID: 1605848479}
   - component: {fileID: 1605848478}
+  - component: {fileID: 1605848480}
   m_Layer: 5
   m_Name: Estrela2
   m_TagString: Untagged
@@ -64957,6 +65134,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605848476}
   m_CullTransparentMesh: 1
+--- !u!95 &1605848480
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605848476}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8fe2040b947a2aa478460397d68e3641, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1607366158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66123,6 +66321,7 @@ GameObject:
   - component: {fileID: 1636893232}
   - component: {fileID: 1636893234}
   - component: {fileID: 1636893233}
+  - component: {fileID: 1636893235}
   m_Layer: 5
   m_Name: Mang
   m_TagString: Untagged
@@ -66187,6 +66386,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636893231}
   m_CullTransparentMesh: 1
+--- !u!95 &1636893235
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636893231}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0527c19312228d14289d7f97312c22ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &1638156518
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -78947,6 +79167,7 @@ GameObject:
   - component: {fileID: 2006858344}
   - component: {fileID: 2006858346}
   - component: {fileID: 2006858345}
+  - component: {fileID: 2006858347}
   m_Layer: 5
   m_Name: Mang
   m_TagString: Untagged
@@ -79011,6 +79232,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006858343}
   m_CullTransparentMesh: 1
+--- !u!95 &2006858347
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006858343}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0527c19312228d14289d7f97312c22ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &2008378878
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -79596,6 +79838,7 @@ GameObject:
   - component: {fileID: 2034000621}
   - component: {fileID: 2034000623}
   - component: {fileID: 2034000622}
+  - component: {fileID: 2034000624}
   m_Layer: 5
   m_Name: Estrela3
   m_TagString: Untagged
@@ -79660,6 +79903,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034000620}
   m_CullTransparentMesh: 1
+--- !u!95 &2034000624
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034000620}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b238c1408ddcff409a7a706d2a56f6d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &2034528092
 MeshCollider:
   m_ObjectHideFlags: 0
