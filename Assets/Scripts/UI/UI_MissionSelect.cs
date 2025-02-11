@@ -38,6 +38,7 @@ public class UI_MissionSelect : MonoBehaviour
                 }
             }
             
+            transform.GetChild(i).GetComponent<Missao>().VerificarPontuacao();
 
             if(num > 1 && prevId >= 0)
             {
@@ -86,7 +87,15 @@ public class UI_MissionSelect : MonoBehaviour
     void AtualizarResultados()
     {
         Missao mission = missao_selecionada.GetComponent<Missao>();
-        des_objetivos.text = "Pontos de Incêndio:\n" + mission.eliminados.ToString() + "/" + mission.objetivos.ToString();
+        if(mission.concluida)
+        {
+            des_objetivos.text = "Pontos de Incêndio:\n" + mission.objetivos.ToString() + "/" + mission.objetivos.ToString();
+        }
+        else
+        {
+            des_objetivos.text = "Pontos de Incêndio:\n" + mission.eliminados.ToString() + "/" + mission.objetivos.ToString();
+        }
+        
         des_turnos.text = "Turnos:\n" + mission.totalTurnos.ToString();
 
         float timer = mission.tempoFinal;

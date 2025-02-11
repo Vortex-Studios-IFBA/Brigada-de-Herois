@@ -24,10 +24,6 @@ public class Inimigo : MonoBehaviour
     {
         //play animação de ataque
     }
-    public void Derrotado()
-    {
-        FindObjectOfType<LevelManage>().EliminarInimigo(this);
-    }
     void OnCollisionEnter(Collision col)
     {
         if (!entrouBatalha) 

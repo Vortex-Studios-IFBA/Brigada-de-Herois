@@ -233,6 +233,9 @@ public class BattleManager : MonoBehaviour
         {
             Player_PokemonCurrent_Set(_value);
             UpdatePokemonSelectionButtons(); // Atualiza os bot�es
+
+            FindObjectOfType<LevelManage>().turnos+= 1;
+
             StartCoroutine(Turn_Routine());
         }
     }
@@ -292,6 +295,8 @@ public class BattleManager : MonoBehaviour
     public void Player_Atk(int _index) // Metodo chamado quando os botoes de ataque sao clicados.
     {
         Debug.Log("Jogador atacou.");
+
+        FindObjectOfType<LevelManage>().turnos+= 1;
 
         if (PlayerTurn)
         {

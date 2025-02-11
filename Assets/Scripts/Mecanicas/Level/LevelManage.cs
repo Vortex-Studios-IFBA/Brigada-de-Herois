@@ -90,7 +90,7 @@ public class LevelManage : MonoBehaviour
             }
         };
         print("ok1");
-        //ui_fase.SetActive(false);
+        ui_fase.SetActive(false);
         cameraMain.SetActive(false);
         
     }
@@ -100,7 +100,7 @@ public class LevelManage : MonoBehaviour
     }
     public void SairBatalha(int classse)
     {
-        //ui_fase.SetActive(true);
+        ui_fase.SetActive(true);
         cameraMain.SetActive(true);
         SceneManager.UnloadSceneAsync(4);
     }

@@ -27,7 +27,8 @@ public class Ponto_Incendio : MonoBehaviour
             //desativar indicador de incendio
             indicador.SetActive(false);
             FindObjectOfType<LevelManage>().objetivosFeito += 1;
-            Debug.Log("Objetivos feitos é:" + FindObjectOfType<LevelManage>().objetivosFeito);
+            FindObjectOfType<LevelManage>().AtualizarContador();
+            Debug.Log("Objetivos feitos ï¿½:" + FindObjectOfType<LevelManage>().objetivosFeito);
         }
         else if(!vitoria)
         {

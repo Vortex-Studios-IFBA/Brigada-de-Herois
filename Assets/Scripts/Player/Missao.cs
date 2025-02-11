@@ -15,10 +15,10 @@ public class Missao : MonoBehaviour
     void Start()
     {
         //antes disso receber resultados da fase
-        VerificarPontuacao();
+        //VerificarPontuacao();
     }
     
-    void VerificarPontuacao()
+    public void VerificarPontuacao()
     {
         int score = 0;
         if(concluida == true)
@@ -34,7 +34,7 @@ public class Missao : MonoBehaviour
                 score += 1;
             for(int i = 0; i < score; i++)
             {
-                transform.GetChild(1).GetChild(i).gameObject.GetComponent<Image>().color = new Color32(255,153,16,255);
+                transform.GetChild(0).GetChild(i).gameObject.GetComponent<Image>().color = new Color32(255,153,16,255);
             }  
         }
     }
