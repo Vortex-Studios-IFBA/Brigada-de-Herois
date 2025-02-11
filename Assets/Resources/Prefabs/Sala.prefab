@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   classe: 0
+  ponto: {fileID: 0}
 --- !u!1 &5931749115790842200
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6992856370626806521, guid: d73e254c2d6eead49ba823903fa05d22, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7605394855551508612, guid: d73e254c2d6eead49ba823903fa05d22, type: 3}

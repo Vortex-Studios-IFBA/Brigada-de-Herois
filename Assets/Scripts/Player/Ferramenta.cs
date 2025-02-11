@@ -56,5 +56,6 @@ public class Ferramenta : MonoBehaviour
         //aumentar cargas de ataques de acordo com o tipo de ferramenta
         GameObject rch = FindObjectOfType<playerController>().rechargeObj;
         Destroy(rch);
+        GetComponent<playerController>().rechargeBt.SetActive(false);
     }
 }
