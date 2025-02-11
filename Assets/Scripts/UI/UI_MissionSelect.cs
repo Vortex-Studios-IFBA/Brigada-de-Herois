@@ -75,6 +75,7 @@ public class UI_MissionSelect : MonoBehaviour
             FindObjectOfType<ControlaJogo>().AtualizarInfo(missao.transform.GetSiblingIndex(),0,0,
                 missao.GetComponent<Missao>().rooms,missao.GetComponent<Missao>().inimigos);
             FindObjectOfType<ControlaJogo>().EntrarFase(missao.transform.GetSiblingIndex());
+            FindObjectOfType<AudioController>().TocarMusica(1);
         }
         else if(missao != missao_selecionada)
         {
@@ -83,6 +84,7 @@ public class UI_MissionSelect : MonoBehaviour
             select.SetActive(true);
         }
         AtualizarResultados();
+        FindObjectOfType<AudioController>().TocarEfeito(2); 
     }
     void AtualizarResultados()
     {

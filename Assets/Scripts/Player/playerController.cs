@@ -238,15 +238,25 @@ public class playerController : MonoBehaviour
 
     public void SonsPassos()
     {
-        if (tocandoSomMovimento && !audioTocando)
+        Debug.Log(tocandoSomMovimento);
+        if (tocandoSomMovimento)
         {
-            audioController.TocarEfeito(3);
-            audioTocando = true;
+            if (jogoConfig.efeitosSource.isPlaying == false)
+            {
+                jogoConfig.efeitosSource.clip = audioController.efeitosSonoros[3];
+                jogoConfig.efeitosSource.loop = false;
+                jogoConfig.efeitosSource.Play();
+                tocandoSomMovimento = false;
+                Debug.Log("Tocando Som passos");
+            }
         }
         else 
         {
-            jogoConfig.efeitosSource.Stop();
-            audioTocando = false;
+            if (!tocandoSomMovimento)
+            {
+                jogoConfig.efeitosSource.Stop();
+                tocandoSomMovimento = false;
+            }
         }
 
     }

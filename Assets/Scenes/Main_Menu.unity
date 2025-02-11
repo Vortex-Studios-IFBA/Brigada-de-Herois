@@ -217,10 +217,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1128379578}
+      - m_Target: {fileID: 2079211594155772863, guid: d07f6dd554d311643984f1de8aa388c4, type: 3}
         m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: TocarEfeito
-        m_Mode: 3
+        m_MethodName: TocarEfeitoMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -335,17 +335,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1128379578 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2079211594155772863, guid: d07f6dd554d311643984f1de8aa388c4, type: 3}
-  m_PrefabInstance: {fileID: 334112761636878593}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 334112761636878594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7120aebebee813b449aa7b19a4f64513, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1133602740
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,10 +902,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1128379578}
+      - m_Target: {fileID: 2079211594155772863, guid: d07f6dd554d311643984f1de8aa388c4, type: 3}
         m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
-        m_MethodName: TocarEfeito
-        m_Mode: 3
+        m_MethodName: TocarEfeitoMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1116,6 +1105,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2079211594155772863, guid: d07f6dd554d311643984f1de8aa388c4, type: 3}
+      propertyPath: efeitosSonoros.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: bf80c6ce93911a6458f45630966bd1c9, type: 3}
+    - target: {fileID: 2079211594155772863, guid: d07f6dd554d311643984f1de8aa388c4, type: 3}
+      propertyPath: efeitosSonoros.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: b4d0ff5e41a82c54083d80bf4c0d27d4, type: 3}
     - target: {fileID: 2128887936765041378, guid: d07f6dd554d311643984f1de8aa388c4, type: 3}
       propertyPath: m_Name
       value: GameControl
