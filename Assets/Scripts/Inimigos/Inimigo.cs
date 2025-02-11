@@ -5,6 +5,7 @@ using UnityEngine;
 public class Inimigo : MonoBehaviour
 {
     public int classe;
+    public GameObject ponto;
     //componentes de animação
     
     // Start is called before the first frame update
@@ -24,6 +25,7 @@ public class Inimigo : MonoBehaviour
     }
     void OnCollisionEnter(Collision col)
     {
-        FindObjectOfType<LevelManage>().EntrarBatalha(classe);
+        FindObjectOfType<LevelManage>().EntrarBatalha(classe,ponto);
+        print("ok0 "+ ponto);
     }
 }

@@ -507,7 +507,11 @@ public class BattleManager : MonoBehaviour
             Enemy_PokemonInfo_Current.healthCurrent = 0;
             Enemy_PokemonInfo_Current.dead = true;
 
-            if (EnemyPokemon_DeadAll_Get()) Result(true);
+            if (EnemyPokemon_DeadAll_Get()) 
+            {
+                
+                Result(true);
+            }
             else
             {
                 List<int> _list_pokemonLiveIndex = new();
@@ -567,6 +571,8 @@ public class BattleManager : MonoBehaviour
         if (_victory)
         {
             Debug.Log("Venceu!");
+            if(pontoIncend!=null)
+                pontoIncend.AtualizarObjetivo(_victory);
         }
         else
         {

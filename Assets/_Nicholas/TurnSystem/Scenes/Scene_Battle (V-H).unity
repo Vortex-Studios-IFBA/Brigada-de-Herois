@@ -954,7 +954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3281979177691754109, guid: 08062aed57c51574f92280ed34aa5ae5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1883,9 +1883,6 @@ MonoBehaviour:
   enemy_pokemon:
   - {fileID: 11400000, guid: 9415409c04d53d347af2d14f59930370, type: 2}
   - {fileID: 11400000, guid: 29373f349a384434a85ee4309c867a39, type: 2}
-  - {fileID: 11400000, guid: 5516f5ece89601a478f48e0482d0e42f, type: 2}
-  - {fileID: 11400000, guid: c390bd7130da7644f8028e47fca32912, type: 2}
-  - {fileID: 11400000, guid: 99b23775d48cc574e9b6857173f59459, type: 2}
   enemy_pokemonInfo: []
   player_pokemonSpawnPos: {x: 0, y: 0, z: -2.8}
   enemy_pokemonSpawnPos: {x: 0, y: 0, z: 1}
@@ -1926,6 +1923,7 @@ MonoBehaviour:
   cg_playerPokemonHealthBar: {fileID: 1936752739}
   cg_enemyPokemonHealthBar: {fileID: 1551556642}
   color_disable: {r: 1, g: 1, b: 1, a: 0.39215687}
+  pontoIncend: {fileID: 0}
 --- !u!1 &467636716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,6 +2600,7 @@ MonoBehaviour:
   cg_playerPokemonHealthBar: {fileID: 715025589}
   cg_enemyPokemonHealthBar: {fileID: 436350014}
   color_disable: {r: 1, g: 1, b: 1, a: 0.39215687}
+  pontoIncend: {fileID: 0}
 --- !u!1 &642137389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3216,7 +3215,6 @@ GameObject:
   m_Component:
   - component: {fileID: 779085839}
   - component: {fileID: 779085838}
-  - component: {fileID: 779085837}
   m_Layer: 0
   m_Name: '[CAM] Camera'
   m_TagString: Untagged
@@ -3224,14 +3222,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &779085837
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779085836}
-  m_Enabled: 1
 --- !u!20 &779085838
 Camera:
   m_ObjectHideFlags: 0
@@ -5720,7 +5710,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1583559570
 MonoBehaviour:
   m_ObjectHideFlags: 0

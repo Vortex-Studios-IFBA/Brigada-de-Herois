@@ -12,7 +12,7 @@ public class LevelManage : MonoBehaviour
     public float tempo = 0;
     public int objetivosTT = 0, objetivosFeito = 0, turnos;
     [SerializeField] GameObject[] estrelas;
-    [SerializeField] GameObject ui_fase, telaResultado;
+    [SerializeField] GameObject ui_fase, telaResultado, cameraMain;
 
     bool concluiu;
     // Start is called before the first frame update
@@ -68,17 +68,21 @@ public class LevelManage : MonoBehaviour
     {
         objetivos.text = "Objetivos: "+ objetivosFeito.ToString() +"/"+ objetivosTT.ToString();
     }
-    public void EntrarBatalha(int classse)
+    public void EntrarBatalha(int classse, GameObject pontIncend)
     {
         //tem que ver isso
-        FindObjectOfType<ControlaJogo>().CarregarCena(4);
-        ui_fase.SetActive(false);
+        SceneManager.LoadSceneAsync(4,LoadSceneMode.Additive);
+        FindObjectOfType<BattleManager>().pontoIncend = pontIncend.GetComponent<Ponto_Incendio>();
+        print("ok1" + FindObjectOfType<BattleManager>().pontoIncend.ToString());
+        //ui_fase.SetActive(false);
+        cameraMain.SetActive(false);
         
     }
     public void SairBatalha(int classse)
     {
-        ui_fase.SetActive(true);
-        SceneManager.UnloadSceneAsync(classse);
+        //ui_fase.SetActive(true);
+        cameraMain.SetActive(true);
+        SceneManager.UnloadSceneAsync(4);
     }
     IEnumerator TerminarMissao()
     {
