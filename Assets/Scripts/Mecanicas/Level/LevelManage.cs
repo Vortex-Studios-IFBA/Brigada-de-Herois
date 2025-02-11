@@ -136,6 +136,7 @@ public class LevelManage : MonoBehaviour
         
         yield return new WaitForSeconds(5f);
         FindObjectOfType<ControlaJogo>().CarregarCena(1);
+        FindObjectOfType<AudioController>().TocarMusica(0);
     }
 
     public void EncontrarInimigos()
