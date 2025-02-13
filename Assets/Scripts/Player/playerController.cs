@@ -8,6 +8,7 @@ public class playerController : MonoBehaviour
     VirtualJoystick joystick;
     ControlaJogo jogoConfig;
     NavMeshAgent navMeshAgent;
+    AudioController audioController;
     Rigidbody rig;
 
     public float vel;
@@ -24,6 +25,8 @@ public class playerController : MonoBehaviour
     public GameObject rechargeBt;
     public GameObject rechargeObj;
 
+    private bool tocandoSomMovimento = false;
+    private bool audioTocando;
 
     void Start()
     {
@@ -31,6 +34,7 @@ public class playerController : MonoBehaviour
        
         navMeshAgent = GetComponent<NavMeshAgent>();
         jogoConfig = FindObjectOfType<ControlaJogo>();
+        audioController = FindObjectOfType<AudioController>();
 
         if (jogoConfig != null)
         {
@@ -47,7 +51,8 @@ public class playerController : MonoBehaviour
     void Update()
     {
         ControlarMovimentacao(); 
-        ControlarCamera(); 
+        ControlarCamera();
+        SonsPassos();
     }
 
     void ControlarCamera()
@@ -127,6 +132,7 @@ public class playerController : MonoBehaviour
                 {
                     Quaternion targetRotation = Quaternion.LookRotation(ajusteMovimento);
                     transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 0);
+                    tocandoSomMovimento = true;
                 }
             }
             else
@@ -151,10 +157,16 @@ public class playerController : MonoBehaviour
                 {
                     Quaternion targetRotation = Quaternion.LookRotation(ajusteMovimento);
                     transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 0);
+                    tocandoSomMovimento = true;
                 }
             }
 
             //movimentacaoText.text = movimentacaoLivre.ToString();
+        }
+        else
+        {
+
+            tocandoSomMovimento = false;
         }
 
         if (jogoConfig.jogoVertical)
@@ -184,6 +196,7 @@ public class playerController : MonoBehaviour
                 {
                     Quaternion targetRotation = Quaternion.LookRotation(movement);
                     transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * vel);
+                    tocandoSomMovimento = true;
                 }
             }
             else
@@ -204,10 +217,16 @@ public class playerController : MonoBehaviour
                 {
                     Quaternion targetRotation = Quaternion.LookRotation(movement);
                     transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * vel);
+                    tocandoSomMovimento = true;
                 }
             }
 
             //movimentacaoText.text = movimentacaoLivre.ToString();
+        }
+        else
+        {
+
+            tocandoSomMovimento = false;
         }
     }
 
@@ -215,6 +234,31 @@ public class playerController : MonoBehaviour
     {
         movimentacaoLivre = !movimentacaoLivre;
         Debug.Log("Trocou a movimentação: " + movimentacaoLivre);
+    }
+
+    public void SonsPassos()
+    {
+        Debug.Log(tocandoSomMovimento);
+        if (tocandoSomMovimento)
+        {
+            if (jogoConfig.efeitosSource.isPlaying == false)
+            {
+                jogoConfig.efeitosSource.clip = audioController.efeitosSonoros[3];
+                jogoConfig.efeitosSource.loop = false;
+                jogoConfig.efeitosSource.Play();
+                tocandoSomMovimento = false;
+                Debug.Log("Tocando Som passos");
+            }
+        }
+        else 
+        {
+            if (!tocandoSomMovimento)
+            {
+                jogoConfig.efeitosSource.Stop();
+                tocandoSomMovimento = false;
+            }
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)

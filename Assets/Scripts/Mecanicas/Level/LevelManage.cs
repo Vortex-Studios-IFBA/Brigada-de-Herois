@@ -12,7 +12,10 @@ public class LevelManage : MonoBehaviour
     public float tempo = 0;
     public int objetivosTT = 0, objetivosFeito = 0, turnos;
     [SerializeField] GameObject[] estrelas;
-    [SerializeField] GameObject ui_fase, telaResultado;
+    [SerializeField] GameObject ui_fase, telaResultado, cameraMain;
+
+    private List<Inimigo> inimigosAtivos = new List<Inimigo>();
+    private Inimigo inimigoAtual;
 
     bool concluiu;
     // Start is called before the first frame update
@@ -22,6 +25,7 @@ public class LevelManage : MonoBehaviour
         foreach(Ponto_Incendio ptInc in FindObjectsOfType<Ponto_Incendio>())
         {
             int salaIndex = FindObjectOfType<ControlaJogo>().Salas().FindIndex(sala => sala == ptInc.salaNum);
+            EncontrarInimigos();
 
             if (salaIndex != -1) 
             {
@@ -68,17 +72,37 @@ public class LevelManage : MonoBehaviour
     {
         objetivos.text = "Objetivos: "+ objetivosFeito.ToString() +"/"+ objetivosTT.ToString();
     }
-    public void EntrarBatalha(int classse)
+    public void EntrarBatalha(int classse, Inimigo inimigo)
     {
+        inimigoAtual = inimigo;
         //tem que ver isso
-        FindObjectOfType<ControlaJogo>().CarregarCena(4);
+        SceneManager.LoadSceneAsync(4, LoadSceneMode.Additive).completed += (asyncOp) =>
+        {
+            BattleManager battleManager = FindObjectOfType<BattleManager>();
+            if (battleManager != null)
+            {
+                battleManager.PegaPonto(inimigo.ponto.GetComponent<Ponto_Incendio>());
+                print("Ponto passado para BattleManager");
+            }
+            else
+            {
+                Debug.LogError("BattleManager não encontrado!");
+            }
+        };
+        print("ok1");
         ui_fase.SetActive(false);
+        cameraMain.SetActive(false);
         
+    }
+    public void Entrou(Ponto_Incendio pt)
+    {
+        FindObjectOfType<BattleManager>().pontoIncend = pt;
     }
     public void SairBatalha(int classse)
     {
         ui_fase.SetActive(true);
-        SceneManager.UnloadSceneAsync(classse);
+        cameraMain.SetActive(true);
+        SceneManager.UnloadSceneAsync(4);
     }
     IEnumerator TerminarMissao()
     {
@@ -112,5 +136,28 @@ public class LevelManage : MonoBehaviour
         
         yield return new WaitForSeconds(5f);
         FindObjectOfType<ControlaJogo>().CarregarCena(1);
+        FindObjectOfType<AudioController>().TocarMusica(0);
+    }
+
+    public void EncontrarInimigos()
+    {
+        inimigosAtivos.Clear();
+        inimigosAtivos.AddRange(FindObjectsOfType<Inimigo>());
+        Debug.LogWarning("Inimigos Encontrados: " +  inimigosAtivos.Count);
+    }
+
+    public void EliminarInimigo(Inimigo inimigo)
+    {
+        if (inimigosAtivos.Contains(inimigo))
+        {
+            inimigosAtivos.Remove(inimigo);
+            inimigo.gameObject.SetActive(false);
+            print("Inimigo derrotado e removido da lista.");
+        }
+    }
+
+    public Inimigo GetInimigoAtual()
+    {
+        return inimigoAtual;
     }
 }

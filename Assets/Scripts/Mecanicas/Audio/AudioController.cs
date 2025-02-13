@@ -23,9 +23,20 @@ public class AudioController : MonoBehaviour
     {
         if (jogo.musicaSource != null && musicas.Length > index)
         {
-            jogo.musicaSource.clip = musicas[index];
-            jogo.musicaSource.loop = true;
-            jogo.musicaSource.Play();
+            if (jogo.musicaSource.isPlaying)
+            {
+                jogo.musicaSource.Stop();
+                jogo.musicaSource.clip = musicas[index];
+                jogo.musicaSource.loop = true;
+                jogo.musicaSource.Play();
+            }
+            else
+            {
+                jogo.musicaSource.clip = musicas[index];
+                jogo.musicaSource.loop = true;
+                jogo.musicaSource.Play();
+            }
+
         }
     }
 
@@ -34,8 +45,16 @@ public class AudioController : MonoBehaviour
         if (jogo.efeitosSource != null && efeitosSonoros.Length > index)
         {
             jogo.efeitosSource.PlayOneShot(efeitosSonoros[index]);
-            Debug.Log("clicou");
+            
         }
+    }
+
+    public void TocarEfeitoMenu()
+    {
+        jogo.efeitosSource.clip = Resources.Load<AudioClip>("Assets/Audio/SoundefectsBrigada/som de clique.mp3");
+        jogo.efeitosSource.loop = false; 
+        jogo.efeitosSource.Play();
+        Debug.Log("clicou");
     }
 
     public void AjustarVolumeMusica(float volume)

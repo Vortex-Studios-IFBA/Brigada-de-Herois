@@ -38,6 +38,7 @@ public class UI_MissionSelect : MonoBehaviour
                 }
             }
             
+            transform.GetChild(i).GetComponent<Missao>().VerificarPontuacao();
 
             if(num > 1 && prevId >= 0)
             {
@@ -71,9 +72,11 @@ public class UI_MissionSelect : MonoBehaviour
         if(missao == missao_selecionada && missao_selecionada != null)
         {
             print("nivel " + missao.transform.GetSiblingIndex().ToString());
-            FindObjectOfType<ControlaJogo>().AtualizarInfo(missao.transform.GetSiblingIndex(),0,0,
+            FindObjectOfType<ControlaJogo>().AtualizarInfo(missao.transform.GetSiblingIndex(),
+                missao.GetComponent<Missao>().tempoMax, missao.GetComponent<Missao>().turnosMax,
                 missao.GetComponent<Missao>().rooms,missao.GetComponent<Missao>().inimigos);
             FindObjectOfType<ControlaJogo>().EntrarFase(missao.transform.GetSiblingIndex());
+            FindObjectOfType<AudioController>().TocarMusica(1);
         }
         else if(missao != missao_selecionada)
         {
@@ -82,11 +85,20 @@ public class UI_MissionSelect : MonoBehaviour
             select.SetActive(true);
         }
         AtualizarResultados();
+        FindObjectOfType<AudioController>().TocarEfeito(2); 
     }
     void AtualizarResultados()
     {
         Missao mission = missao_selecionada.GetComponent<Missao>();
-        des_objetivos.text = "Pontos de Incêndio:\n" + mission.eliminados.ToString() + "/" + mission.objetivos.ToString();
+        if(mission.concluida)
+        {
+            des_objetivos.text = "Pontos de Incêndio:\n" + mission.objetivos.ToString() + "/" + mission.objetivos.ToString();
+        }
+        else
+        {
+            des_objetivos.text = "Pontos de Incêndio:\n" + mission.eliminados.ToString() + "/" + mission.objetivos.ToString();
+        }
+        
         des_turnos.text = "Turnos:\n" + mission.totalTurnos.ToString();
 
         float timer = mission.tempoFinal;

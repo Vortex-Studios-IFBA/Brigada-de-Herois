@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ponto_Incendio : MonoBehaviour
@@ -12,18 +13,22 @@ public class Ponto_Incendio : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        
+        inim.ponto = this.gameObject;
     }
 
     // Update is called once per frame
     public void AtualizarObjetivo(bool vitoria)
     {
         FindObjectOfType<LevelManage>().SairBatalha(inim.classe);
+        Debug.Log("Atualizou objetivo");
+        Debug.Log("Objetivo antes do if: " + FindObjectOfType<LevelManage>().objetivosFeito);
         if(vitoria)
         {
             //desativar indicador de incendio
             indicador.SetActive(false);
             FindObjectOfType<LevelManage>().objetivosFeito += 1;
+            FindObjectOfType<LevelManage>().AtualizarContador();
+            Debug.Log("Objetivos feitos �:" + FindObjectOfType<LevelManage>().objetivosFeito);
         }
         else if(!vitoria)
         {

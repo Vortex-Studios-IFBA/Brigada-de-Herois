@@ -5,6 +5,8 @@ using UnityEngine;
 public class Inimigo : MonoBehaviour
 {
     public int classe;
+    private bool entrouBatalha = false;
+    public GameObject ponto;
     //componentes de animação
     
     // Start is called before the first frame update
@@ -24,6 +26,11 @@ public class Inimigo : MonoBehaviour
     }
     void OnCollisionEnter(Collision col)
     {
-        FindObjectOfType<LevelManage>().EntrarBatalha(classe);
+        if (!entrouBatalha) 
+        {
+            entrouBatalha = true; 
+            FindObjectOfType<LevelManage>().EntrarBatalha(classe, this);
+            print("Entrou em batalha: " + ponto.ToString());
+        }
     }
 }

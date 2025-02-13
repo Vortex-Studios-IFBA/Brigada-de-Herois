@@ -111,6 +111,11 @@ public class BattleManager : MonoBehaviour
 
     public Ponto_Incendio pontoIncend;
 
+    public void PegaPonto(Ponto_Incendio pt)
+    {
+        pontoIncend = pt;
+    }
+
     void Awake()
     {
         if (instance == null)
@@ -129,6 +134,11 @@ public class BattleManager : MonoBehaviour
         enemy_pokemonHealthBar_sizeIniX = rect_enemyPokemonHealthBar.sizeDelta.x;
 
         Pokemon_Inicialize();
+    }
+
+    private void Start()
+    {
+        pontoIncend = FindObjectOfType<LevelManage>().GetInimigoAtual()?.ponto.GetComponent<Ponto_Incendio>();
     }
 
     void Pokemon_Inicialize() // Inicializacao das ferramentas do jogador e inimigo.
@@ -223,6 +233,9 @@ public class BattleManager : MonoBehaviour
         {
             Player_PokemonCurrent_Set(_value);
             UpdatePokemonSelectionButtons(); // Atualiza os bot�es
+
+            FindObjectOfType<LevelManage>().turnos+= 1;
+
             StartCoroutine(Turn_Routine());
         }
     }
@@ -282,6 +295,8 @@ public class BattleManager : MonoBehaviour
     public void Player_Atk(int _index) // Metodo chamado quando os botoes de ataque sao clicados.
     {
         Debug.Log("Jogador atacou.");
+
+        FindObjectOfType<LevelManage>().turnos+= 1;
 
         if (PlayerTurn)
         {
@@ -507,7 +522,12 @@ public class BattleManager : MonoBehaviour
             Enemy_PokemonInfo_Current.healthCurrent = 0;
             Enemy_PokemonInfo_Current.dead = true;
 
-            if (EnemyPokemon_DeadAll_Get()) Result(true);
+            if (EnemyPokemon_DeadAll_Get()) 
+            {
+
+                Result(true);
+                //FindObjectOfType<Inimigo>().Derrotado();
+            }
             else
             {
                 List<int> _list_pokemonLiveIndex = new();
@@ -566,14 +586,18 @@ public class BattleManager : MonoBehaviour
     {
         if (_victory)
         {
+            
             Debug.Log("Venceu!");
+            pontoIncend.AtualizarObjetivo(_victory);
+            // if(pontoIncend !=null)
+
         }
         else
         {
             Debug.Log("Perdeu!");
         }
-        if(pontoIncend!=null)
-            pontoIncend.AtualizarObjetivo(_victory);
+        //if(pontoIncend!=null)
+        //    pontoIncend.AtualizarObjetivo(_victory);
     }
 
     public void Recharge(int _index = -1) // Metodo para recarregar os ataques.
