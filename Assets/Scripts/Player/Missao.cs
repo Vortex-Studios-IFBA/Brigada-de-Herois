@@ -14,6 +14,7 @@ public class Missao : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        objetivos = rooms.Length;
         //antes disso receber resultados da fase
         //VerificarPontuacao();
     }

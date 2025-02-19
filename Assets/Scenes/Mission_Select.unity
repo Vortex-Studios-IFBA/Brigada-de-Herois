@@ -713,8 +713,8 @@ MonoBehaviour:
   eliminados: 0
   tempoMax: 360
   tempoFinal: 0
-  rooms: 
-  inimigos: 
+  rooms: 2c0000001e00000001000000
+  inimigos: 040000000400000004000000
 --- !u!114 &99284844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1046,6 +1046,30 @@ PrefabInstance:
     - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: totalTurnos
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: rooms.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: inimigos.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: rooms.Array.data[0]
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: rooms.Array.data[1]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: inimigos.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: inimigos.Array.data[1]
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5128790660541147346, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: m_Pivot.x
@@ -1708,8 +1732,8 @@ MonoBehaviour:
   eliminados: 0
   tempoMax: 180
   tempoFinal: 0
-  rooms: 
-  inimigos: 
+  rooms: 290000001e000000
+  inimigos: 04000000
 --- !u!114 &258237789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2519,8 +2543,8 @@ MonoBehaviour:
   eliminados: 0
   tempoMax: 240
   tempoFinal: 0
-  rooms: 
-  inimigos: 
+  rooms: 0300000001000000
+  inimigos: 0400000004000000
 --- !u!114 &312232146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7752,7 +7776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: objetivos
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: turnosMax
@@ -7761,6 +7785,30 @@ PrefabInstance:
     - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: totalTurnos
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: rooms.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: inimigos.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: rooms.Array.data[0]
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: rooms.Array.data[1]
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: inimigos.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: inimigos.Array.data[1]
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5128790660541147346, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: m_Pivot.x
@@ -11533,6 +11581,30 @@ PrefabInstance:
       propertyPath: totalTurnos
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: rooms.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: inimigos.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: rooms.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: rooms.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: inimigos.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: inimigos.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5128790660541147346, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -11893,6 +11965,38 @@ PrefabInstance:
     - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: totalTurnos
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: rooms.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: inimigos.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: rooms.Array.data[0]
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: rooms.Array.data[1]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: rooms.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: inimigos.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: inimigos.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
+      propertyPath: inimigos.Array.data[2]
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5128790660541147346, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: m_Pivot.x
@@ -12895,8 +12999,8 @@ MonoBehaviour:
   eliminados: 0
   tempoMax: 180
   tempoFinal: 0
-  rooms: 
-  inimigos: 
+  rooms: 290000002c000000
+  inimigos: 04000000
 --- !u!114 &1921071478
 MonoBehaviour:
   m_ObjectHideFlags: 0
