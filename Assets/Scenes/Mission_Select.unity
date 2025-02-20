@@ -7780,7 +7780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: turnosMax
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4970536543395267734, guid: 9557d99758daffa469ed1767ebd0e332, type: 3}
       propertyPath: totalTurnos
@@ -12993,7 +12993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   concluida: 0
-  turnosMax: 1
+  turnosMax: 2
   totalTurnos: 0
   objetivos: 1
   eliminados: 0
